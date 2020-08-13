@@ -1,5 +1,5 @@
 /**
- * Sample React Native App
+ * Kuka React Native App
  * https://github.com/facebook/react-native
  *
  * Generated with the UI Kitten template
@@ -9,8 +9,8 @@
  *
  * @format
  */
-
-import React from 'react';
+import 'react-native-gesture-handler';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet } from 'react-native';
 import {
   ApplicationProvider,
@@ -22,36 +22,43 @@ import {
 } from '@ui-kitten/components';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import * as eva from '@eva-design/eva';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from '@react-navigation/stack';
+import auth from '@react-native-firebase/auth';
+import { GoogleSignin } from '@react-native-community/google-signin';
+import { LoginScreen } from './screens/LoginScreen';
+import { AgendaScreen } from './screens/AgendaScreen';
 
-/**
- * Use any valid `name` property from eva icons (e.g `github`, or `heart-outline`)
- * https://akveo.github.io/eva-icons
- */
-const HeartIcon = (props) => (
-  <Icon {...props} name='heart'/>
-);
+GoogleSignin.configure({ webClientId: '921635578637-ma0i915tikp1q0v9q9gmfuefvd8grom6.apps.googleusercontent.com' });
 
-export default () => (
-  <>
-    <IconRegistry icons={EvaIconsPack}/>
-    <ApplicationProvider {...eva} theme={eva.light}>
-      <Layout style={styles.container}>
-        <Text style={styles.text} category='h1'>
-          Welcome to UI Kitten 😻
-        </Text>
-        <Text style={styles.text} category='s1'>
-          Start with editing App.js to configure your App
-        </Text>
-        <Text style={styles.text} appearance='hint'>
-          For example, try changing theme to Dark by using eva.dark
-        </Text>
-        <Button style={styles.likeButton} accessoryLeft={HeartIcon}>
-          LIKE
-        </Button>
-      </Layout>
+export default () => {
+  const { Navigator, Screen } = createStackNavigator();
+  const [authUser, setAuthUser] = useState(null);
+
+  useEffect(() => {
+    return auth().onAuthStateChanged(
+      authUser => {
+        return authUser ? setAuthUser(authUser) : setAuthUser(null);
+      }
+    )
+  });
+
+  return <>
+    <IconRegistry icons={EvaIconsPack} />
+    <ApplicationProvider {...eva} theme={eva.dark}>
+      <SafeAreaProvider>
+        <NavigationContainer>
+          <Navigator>{authUser ?
+            <Screen name="Agenda" component={AgendaScreen}></Screen> :
+            <Screen name="Login" component={LoginScreen} />
+          }
+          </Navigator>
+        </NavigationContainer>
+      </SafeAreaProvider>
     </ApplicationProvider>
   </>
-);
+};
 
 const styles = StyleSheet.create({
   container: {
