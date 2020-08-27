@@ -21,6 +21,7 @@
     "@ui-kitten/eva-icons": "5.0.0",
     "react": "16.11.0",
     "react-native": "0.62.2",
+    "react-native-fbsdk": "^2.0.0",
     "react-native-gesture-handler": "^1.7.0",
     "react-native-reanimated": "^1.10.1",
     "react-native-safe-area-context": "^3.1.1",
