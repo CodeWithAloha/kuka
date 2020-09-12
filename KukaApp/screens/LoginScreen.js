@@ -73,7 +73,6 @@ export const LoginScreen = ({ navigation }) => {
       }
 
       credential = auth.FacebookAuthProvider.credential(data.accessToken);
-      console.log('post cred');
 
       await auth().signInWithCredential(credential);
     } catch (error) {
