@@ -1,19 +1,27 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
+import { Alert } from 'react-native';
 import auth from '@react-native-firebase/auth';
-import {Layout, Text, Input, Button} from '@ui-kitten/components';
+import { Layout, Text, Input, Button } from '@ui-kitten/components';
 import {
   GoogleSignin,
   GoogleSigninButton,
 } from '@react-native-community/google-signin';
-import {LoginManager, AccessToken} from 'react-native-fbsdk';
+import {
+  LoginManager,
+  AccessToken,
+  GraphRequest,
+  GraphRequestManager,
+} from 'react-native-fbsdk';
 
-export const LoginScreen = ({navigation}) => {
+export const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [inProgress, setInProgress] = useState(false);
   const [message, setMessage] = useState(null);
+  // in cases where account exists with different credentials
+  let linkCredential;
 
-  const emailSignIn = async () => {
+  const onEmailSignIn = async () => {
     try {
       setMessage(null);
       setInProgress(true);
@@ -29,9 +37,13 @@ export const LoginScreen = ({navigation}) => {
     try {
       setMessage(null);
       setInProgress(true);
-      const {idToken} = await GoogleSignin.signIn();
+      const { idToken } = await GoogleSignin.signIn();
       const cred = auth.GoogleAuthProvider.credential(idToken);
-      await auth().signInWithCredential(cred);
+      const userCred = await auth().signInWithCredential(cred);
+      if (linkCredential) {
+        await userCred.user.linkWithCredential(linkCredential);
+        linkCredential = null;
+      }
     } catch (error) {
       setMessage(error.message);
       console.error(error);
@@ -40,6 +52,7 @@ export const LoginScreen = ({navigation}) => {
   };
 
   const onFacebookSignIn = async () => {
+    let credential;
     try {
       setMessage(null);
       setInProgress(true);
@@ -50,40 +63,94 @@ export const LoginScreen = ({navigation}) => {
       ]);
 
       if (result.isCancelled) {
-        throw 'User cancelled the login process';
+        throw { message: 'User cancelled the login process' };
       }
 
       const data = await AccessToken.getCurrentAccessToken();
 
       if (!data) {
-        throw 'Something went wrong obtaining access token';
+        throw { message: 'Something went wrong obtaining access token' };
       }
 
-      const cred = auth.FacebookAuthProvider.credential(data.accessToken);
+      credential = auth.FacebookAuthProvider.credential(data.accessToken);
 
-      await auth().signInWithCredential(cred);
+      await auth().signInWithCredential(credential);
     } catch (error) {
-      setMessage(error.message);
-      console.error(error);
-      setInProgress(false);
+      if (error.code === 'auth/account-exists-with-different-credential') {
+        const request = new GraphRequest(
+          '/me?fields=email',
+          null,
+          async (error, result) => {
+            if (error) {
+              console.error(error.toString());
+              setMessage(error.toString());
+              setInProgress(false);
+            } else if (result) {
+              linkCredential = credential;
+              const providers = await auth().fetchSignInMethodsForEmail(
+                result.email
+              );
+              providerAlert(providers);
+            }
+          }
+        );
+        new GraphRequestManager().addRequest(request).start();
+      } else {
+        setMessage(error.message);
+        console.error(error);
+        setInProgress(false);
+      }
+    }
+  };
+
+  const providerAlert = providers => {
+    if (providers.includes('apple.com')) {
+      Alert.alert(
+        'Sign-in via Apple',
+        "Looks like you previously signed in via Apple. You'll need to sign-in there to continue.",
+        [
+          { text: 'Cancel', style: 'cancel' },
+          { text: 'Continue', onPress: () => {} },
+        ]
+      );
+    } else if (providers.includes('google.com')) {
+      Alert.alert(
+        'Sign-in via Google',
+        "Looks like you previously signed in via Google. You'll need to sign-in there to continue.",
+        [
+          { text: 'Cancel', style: 'cancel' },
+          { text: 'Continue', onPress: () => onGoogleSignIn() },
+        ]
+      );
+    } else if (providers.includes('facebook.com')) {
+      Alert.alert(
+        'Sign-in via Facebook',
+        "Looks like you previously signed in via Facebook. You'll need to sign-in there to continue.",
+        [
+          { text: 'Cancel', style: 'cancel' },
+          { text: 'Continue', onPress: () => onFacebookSignIn() },
+        ]
+      );
+    } else {
+      Alert.alert('Login Error', 'Sign in using a different provider');
     }
   };
 
   return (
-    <Layout style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+    <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Input
         value={email}
         label="EMAIL"
         placeholder="Email"
-        onChangeText={(nextValue) => setEmail(nextValue)}
+        onChangeText={nextValue => setEmail(nextValue)}
       />
       <Input
         value={password}
         label="PASSWORD"
         placeholder="Password"
-        onChangeText={(nextValue) => setPassword(nextValue)}
+        onChangeText={nextValue => setPassword(nextValue)}
       />
-      <Button onPress={emailSignIn} disabled={inProgress}>
+      <Button onPress={onEmailSignIn} disabled={inProgress}>
         Sign In
       </Button>
       <GoogleSigninButton
