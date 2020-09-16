@@ -18,6 +18,11 @@ const useStyles = makeStyles((theme: Theme) => ({
   avatar: {
     height: 100,
     width: 100
+  },
+  userId: {
+    fontSize: '10px',
+    color: theme.palette.text.hint,
+    marginTop: theme.spacing(2)
   }
 }));
 
@@ -53,6 +58,11 @@ function ProfileCard({ className, user, ...rest }: ProfileDetailsProps) {
               variant="body2"
             >
               {user.email}
+            </Typography>
+            <Typography
+              className={classes.userId}
+            >
+              {user.id}
             </Typography>
           </Box>
         </Box>

@@ -3,7 +3,18 @@ import clsx from 'clsx';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 import { useSnackbar } from 'notistack';
-import { Box, Button, Card, CardContent, CardHeader, Divider, Grid, makeStyles, TextField } from '@material-ui/core';
+import {
+  Box,
+  Button,
+  Card,
+  CardContent,
+  CardHeader,
+  Divider,
+  Grid,
+  makeStyles,
+  TextField,
+  Typography
+} from '@material-ui/core';
 import type { User } from 'src/types/user';
 import { Profile } from "src/types/profile";
 import { useDocumentData } from "react-firebase-hooks/firestore";
