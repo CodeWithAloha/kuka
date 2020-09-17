@@ -2,7 +2,8 @@ import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import clsx from 'clsx';
 import { Image as ImageIcon, } from 'react-feather';
-
+import { DATE_FMT_LONG } from "../../../constants";
+import { format } from "date-fns";
 import {
   Box,
   Link,
@@ -18,7 +19,6 @@ import {
 } from '@material-ui/core';
 import type { Theme } from 'src/theme';
 import type { Agenda } from "src/types/agenda";
-import moment from 'moment';
 
 interface ResultsProps {
   className?: string;
@@ -97,7 +97,7 @@ function Results({ className, agendaItems, ...rest }: ResultsProps) {
                   </Link>
                 </TableCell>
                 <TableCell>
-                  {moment(agendaItem.hearingTime.toDate()).format('lll')}
+                  {format(agendaItem.hearingTime.toDate(), DATE_FMT_LONG)}
                 </TableCell>
                 <TableCell>{agendaItem.isActive ? 'Active' : 'Inactive'}</TableCell>
               </TableRow>

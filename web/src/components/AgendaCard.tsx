@@ -4,7 +4,8 @@ import { Agenda } from "../types/agenda";
 import { Link as RouterLink } from 'react-router-dom';
 import daysRemaining from "../utils/daysRemaining";
 import type { Theme } from 'src/theme';
-import moment from 'moment';
+import { format } from "date-fns";
+import { DATE_FMT_LONG } from "../constants";
 
 interface AgendaCardProps {
   agendaItem: Agenda;
@@ -46,7 +47,7 @@ function AgendaCard({ agendaItem }: AgendaCardProps) {
                 variant="body2"
                 color="textSecondary"
               >
-                Testimony deadline in {daysRemaining(agendaItem.deadlineTime.toDate())} days
+                Testimony deadline in {daysRemaining(agendaItem.deadlineTime)} days
               </Typography>
             </Box>
             <Typography
@@ -89,7 +90,7 @@ function AgendaCard({ agendaItem }: AgendaCardProps) {
                     variant="h5"
                     color="textPrimary"
                   >
-                    {moment(agendaItem.hearingTime.toDate()).format('lll')}
+                    {format(agendaItem.hearingTime.toDate(), DATE_FMT_LONG)}
                   </Typography>
                 </Grid>
               </Grid>

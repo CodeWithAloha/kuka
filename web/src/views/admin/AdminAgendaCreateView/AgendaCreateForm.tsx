@@ -5,6 +5,7 @@ import clsx from 'clsx';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 import { useSnackbar } from 'notistack';
+import { format, parse } from "date-fns";
 import {
   Box,
   Button,
@@ -20,12 +21,12 @@ import {
   TextField,
   Typography
 } from '@material-ui/core';
-import moment from 'moment';
 import QuillEditor from 'src/components/QuillEditor';
 import { createAgendaItem, updateAgendaItem } from 'src/services/AgendaItem';
-import firebase from "src/firebase";
+import firebase, { storage } from "src/firebase";
 import type { Agenda } from "src/types/agenda";
 import SingleFileDropzone from "src/components/SingleFileDropzone";
+import { DATE_FMT_FORM } from "src/constants";
 
 
 interface AgendaCreateFormProps {
@@ -81,13 +82,13 @@ function AgendaCreateForm({ className, agendaItem, ...rest }: AgendaCreateFormPr
   const handleFileUpload = (acceptedFiles) => {
     const file = acceptedFiles[0];
     // setFiles((prevFiles) => [...prevFiles].concat(acceptedFiles));
-    // storage.ref()
-    //   .child('agenda-images/test.jpg')
-    //   .put(file)
-    //   .then((snapshot) => {
-    //     console.log('done upload!')
-    //     console.log(snapshot)
-    //   })
+    storage.ref()
+      .child('agenda-images/test.jpg')
+      .put(file)
+      .then((snapshot) => {
+        console.log('done upload!')
+        console.log(snapshot)
+      })
 
   }
 
@@ -96,8 +97,8 @@ function AgendaCreateForm({ className, agendaItem, ...rest }: AgendaCreateFormPr
     subtitle: '',
     description: '',
     billCode: '',
-    hearingTime: moment().format('YYYY-MM-DDTHH:mm'),
-    deadlineTime: moment().format('YYYY-MM-DDTHH:mm'),
+    hearingTime: format(new Date(), DATE_FMT_FORM),
+    deadlineTime: format(new Date(), DATE_FMT_FORM),
     heroImage: '',
     isActive: false,
   }
@@ -105,8 +106,8 @@ function AgendaCreateForm({ className, agendaItem, ...rest }: AgendaCreateFormPr
     initialValues = {
       ...initialValues,
       ...agendaItem,
-      hearingTime: moment(agendaItem.hearingTime.toDate()).format('YYYY-MM-DDTHH:mm'),
-      deadlineTime: moment(agendaItem.deadlineTime.toDate()).format('YYYY-MM-DDTHH:mm'),
+      hearingTime: format(agendaItem.hearingTime.toDate(), DATE_FMT_FORM),
+      deadlineTime: format(agendaItem.deadlineTime.toDate(), DATE_FMT_FORM),
     }
   }
 
@@ -130,8 +131,8 @@ function AgendaCreateForm({ className, agendaItem, ...rest }: AgendaCreateFormPr
       }) => {
         const newData = {
           ...values,
-          deadlineTime: firebase.firestore.Timestamp.fromDate(moment(values.deadlineTime).toDate()),
-          hearingTime: firebase.firestore.Timestamp.fromDate(moment(values.hearingTime).toDate()),
+          deadlineTime: firebase.firestore.Timestamp.fromDate(parse(values.deadlineTime, DATE_FMT_FORM, new Date())),
+          hearingTime: firebase.firestore.Timestamp.fromDate(parse(values.hearingTime, DATE_FMT_FORM, new Date())),
         };
         console.log(newData)
         if (agendaItem) {

@@ -1,8 +1,10 @@
-import moment from 'moment'
+import type { Timestamp } from '@firebase/firestore-types';
 
-const daysRemaining = (date: Date) => {
-  const now = moment();
-  return moment(date).diff(now, 'days');
+import { differenceInDays as differenceInDaysFns} from "date-fns";
+
+
+const daysRemaining = (date: Timestamp) => {
+  return differenceInDaysFns(date.toDate(), new Date())
 }
 
 export default daysRemaining;
