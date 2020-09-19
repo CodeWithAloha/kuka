@@ -52,6 +52,7 @@
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.3",
+    "sanitize-filename": "^1.6.3",
     "yup": "^0.28.5"
   },
   "devDependencies": {

@@ -1,6 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
-import { Avatar, Box, Card, CardContent, makeStyles, Typography } from '@material-ui/core';
+import { Avatar, Box, Card, CardContent, makeStyles, Typography, Chip } from '@material-ui/core';
+import { Face as FaceIcon } from '@material-ui/icons';
 import type { Theme } from 'src/theme';
 import type { User } from 'src/types/user';
 
@@ -64,6 +65,16 @@ function ProfileCard({ className, user, ...rest }: ProfileDetailsProps) {
             >
               {user.id}
             </Typography>
+          </Box>
+          <Box mt={2}>
+            {user.isAdmin && (
+              <Chip
+                label="Admin"
+                variant="outlined"
+                color="secondary"
+                icon={<FaceIcon />}
+              />
+            )}
           </Box>
         </Box>
       </CardContent>

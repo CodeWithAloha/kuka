@@ -62,7 +62,16 @@ export function AuthProvider({ children }: AuthProviderProps) {
           avatar: user.photoURL,
           email: user.email,
           name: user.displayName || user.email,
+          isAdmin: false,
         });
+
+        user.getIdTokenResult().then((result) => {
+          setUser((prev) => ({
+            ...prev,
+            isAdmin: Boolean(result.claims.isAdmin)
+          }))
+        })
+
         setAuthenticated(true)
 
       } else {

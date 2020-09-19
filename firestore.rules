@@ -3,11 +3,11 @@ service cloud.firestore {
   match /databases/{database}/documents {
 
     match /permissions/{userId} {
-      allow write: if request.auth != null && get(/databases/$(database)/documents/permissions/$(request.auth.uid)).data.isAdmin == true;
+      allow read, write: if request.auth != null && get(/databases/$(database)/documents/permissions/$(request.auth.uid)).data.isAdmin == true;
     }
 
     match /agendaItems/{agendaId} {
-      allow read: if true;
+      allow read;
       allow write: if request.auth != null && get(/databases/$(database)/documents/permissions/$(request.auth.uid)).data.isAdmin == true;
     }
 
@@ -16,7 +16,7 @@ service cloud.firestore {
     }
 
     match /testimonies/{testimonyId} {
-      allow read: if true
+      allow read;
       allow create: if request.auth != null;
       allow delete: if request.auth != null && get(/databases/$(database)/documents/permissions/$(request.auth.uid)).data.isAdmin == true;
     }

@@ -12,6 +12,7 @@ import {
   Card,
   CardContent,
   CardHeader,
+  CardMedia,
   Divider,
   FormHelperText,
   Grid,
@@ -27,6 +28,7 @@ import firebase, { storage } from "src/firebase";
 import type { Agenda } from "src/types/agenda";
 import SingleFileDropzone from "src/components/SingleFileDropzone";
 import { DATE_FMT_FORM } from "src/constants";
+import getSafeFilename from "../../../utils/getSafeFilename";
 
 
 interface AgendaCreateFormProps {
@@ -42,6 +44,9 @@ const useStyles = makeStyles((theme) => ({
     '& .ql-editor': {
       height: 400
     }
+  },
+  heroPreview: {
+    objectFit: 'contain'
   }
 }));
 
@@ -59,6 +64,9 @@ function AgendaCreateForm({ className, agendaItem, ...rest }: AgendaCreateFormPr
       });
     }).catch((err) => {
       console.error(err);
+      enqueueSnackbar('There was an error updating the record', {
+        variant: 'error'
+      });
       setStatus({ success: false });
       setSubmitting(false);
     })
@@ -79,17 +87,25 @@ function AgendaCreateForm({ className, agendaItem, ...rest }: AgendaCreateFormPr
     })
   }
 
-  const handleFileUpload = (acceptedFiles) => {
+  const handleFileUpload = (acceptedFiles, setFieldValue) => {
     const file = acceptedFiles[0];
-    // setFiles((prevFiles) => [...prevFiles].concat(acceptedFiles));
-    storage.ref()
-      .child('agenda-images/test.jpg')
-      .put(file)
-      .then((snapshot) => {
-        console.log('done upload!')
-        console.log(snapshot)
-      })
+    const newFilename = getSafeFilename(file.name);
 
+    const task = storage.ref()
+      .child(`agenda-images/${agendaItem.id}/${newFilename}`)
+      .put(file)
+
+    task.on(firebase.storage.TaskEvent.STATE_CHANGED, {
+      'error': (snapshot) => {
+        console.log("error uploading file")
+        console.log(snapshot)
+      },
+      'complete': () => {
+        task.snapshot.ref.getDownloadURL().then((value) => {
+          setFieldValue('heroImage', value)
+        })
+      }
+    })
   }
 
   let initialValues = {
@@ -134,7 +150,6 @@ function AgendaCreateForm({ className, agendaItem, ...rest }: AgendaCreateFormPr
           deadlineTime: firebase.firestore.Timestamp.fromDate(parse(values.deadlineTime, DATE_FMT_FORM, new Date())),
           hearingTime: firebase.firestore.Timestamp.fromDate(parse(values.hearingTime, DATE_FMT_FORM, new Date())),
         };
-        console.log(newData)
         if (agendaItem) {
           await updateRecord(newData, setStatus, setSubmitting);
         } else {
@@ -260,8 +275,18 @@ function AgendaCreateForm({ className, agendaItem, ...rest }: AgendaCreateFormPr
                 <Card>
                   <CardHeader title="Hero Image" />
                   <Divider />
+                  {values.heroImage ? (
+                    <CardMedia
+                      classes={{
+                        media: classes.heroPreview
+                      }}
+                      component="img"
+                      height="200"
+                      image={values.heroImage}
+                    />
+                  ) : null}
                   <CardContent>
-                    <SingleFileDropzone onFileDrop={handleFileUpload}/>
+                    <SingleFileDropzone onFileDrop={(files) => handleFileUpload(files, setFieldValue)}/>
                   </CardContent>
                 </Card>
               </Box>

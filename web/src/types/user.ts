@@ -5,4 +5,6 @@ export interface User {
   email: string;
   name: string;
   [key: string]: any;
+
+  isAdmin: boolean;
 }
