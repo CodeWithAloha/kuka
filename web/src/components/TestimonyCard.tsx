@@ -21,7 +21,7 @@ function TestimonyCard({ testimony }: TestimonyCardProps) {
   const classes = useStyles();
 
   return (
-    <Grid item xs={3} component={Card} className={classes.root}>
+    <Card className={classes.root}>
       <CardActionArea>
         <Link
           component={RouterLink}
@@ -48,7 +48,7 @@ function TestimonyCard({ testimony }: TestimonyCardProps) {
           </CardContent>
         </Link>
       </CardActionArea>
-    </Grid>
+    </Card>
   );
 }
 

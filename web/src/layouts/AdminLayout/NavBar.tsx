@@ -87,6 +87,27 @@ function NavBar({ onMobileClose, openMobile }: NavBarProps) {
             <ListItemText primary="Create Agenda Item" />
           </ListItem>
         </List>
+
+        <ListItem button component={NavLink} to="/admin/testimony-list">
+          <ListItemIcon><CalendarIcon /></ListItemIcon>
+          <ListItemText primary="Agenda Items" />
+        </ListItem>
+
+        <List
+          component="div"
+          dense
+          disablePadding
+        >
+          <ListItem
+            button
+            className={classes.nested}
+            component={NavLink}
+            to="/admin/agenda-create"
+          >
+            <ListItemIcon><PlusIcon /></ListItemIcon>
+            <ListItemText primary="Create Agenda Item" />
+          </ListItem>
+        </List>
       </List>
       <Divider />
     </Box>

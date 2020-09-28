@@ -1,14 +1,14 @@
 import React from 'react';
 import { Box, Card, CardActionArea, CardContent, CardMedia, Grid, makeStyles, Typography, Link } from '@material-ui/core';
-import { Agenda } from "../types/agenda";
+import { AgendaItem } from "../../../types/agendaItem";
 import { Link as RouterLink } from 'react-router-dom';
-import daysRemaining from "../utils/daysRemaining";
+import daysRemaining from "../../../utils/daysRemaining";
 import type { Theme } from 'src/theme';
 import { format } from "date-fns";
-import { DATE_FMT_LONG } from "../constants";
+import { DATE_FMT_LONG } from "../../../constants";
 
 interface AgendaCardProps {
-  agendaItem: Agenda;
+  agendaItem: AgendaItem;
 }
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -56,44 +56,44 @@ function AgendaCard({ agendaItem }: AgendaCardProps) {
               component="p"
               gutterBottom
             >
-              {agendaItem.subtitle}
+              {agendaItem.agendaType}
             </Typography>
 
-              <Grid
-                alignItems="center"
-                container
-                justify="space-between"
-                spacing={3}
-              >
-                <Grid item>
-                  <Typography
-                    variant="body2"
-                    color="textSecondary"
-                  >
-                    Bill
-                  </Typography>
-                  <Typography
-                    variant="h5"
-                    color="textPrimary"
-                  >
-                    {agendaItem.billCode}
-                  </Typography>
-                </Grid>
-                <Grid item>
-                  <Typography
-                    variant="body2"
-                    color="textSecondary"
-                  >
-                    Hearing On
-                  </Typography>
-                  <Typography
-                    variant="h5"
-                    color="textPrimary"
-                  >
-                    {format(agendaItem.hearingTime.toDate(), DATE_FMT_LONG)}
-                  </Typography>
-                </Grid>
+            <Grid
+              alignItems="center"
+              container
+              justify="space-between"
+              spacing={3}
+            >
+              <Grid item>
+                <Typography
+                  variant="body2"
+                  color="textSecondary"
+                >
+                  Bill
+                </Typography>
+                <Typography
+                  variant="h5"
+                  color="textPrimary"
+                >
+                  {agendaItem.billCode}
+                </Typography>
               </Grid>
+              <Grid item>
+                <Typography
+                  variant="body2"
+                  color="textSecondary"
+                >
+                  Hearing On
+                </Typography>
+                <Typography
+                  variant="h5"
+                  color="textPrimary"
+                >
+                  {format(agendaItem.sessionTime.toDate(), DATE_FMT_LONG)}
+                </Typography>
+              </Grid>
+            </Grid>
           </CardContent>
         </Link>
       </CardActionArea>

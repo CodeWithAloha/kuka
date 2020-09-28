@@ -25,7 +25,7 @@ import {
 import QuillEditor from 'src/components/QuillEditor';
 import { createAgendaItem, updateAgendaItem } from 'src/services/AgendaItem';
 import firebase, { storage } from "src/firebase";
-import type { Agenda } from "src/types/agenda";
+import type { AgendaItem } from "src/types/agendaItem";
 import SingleFileDropzone from "src/components/SingleFileDropzone";
 import { DATE_FMT_FORM } from "src/constants";
 import getSafeFilename from "../../../utils/getSafeFilename";
@@ -33,7 +33,7 @@ import getSafeFilename from "../../../utils/getSafeFilename";
 
 interface AgendaCreateFormProps {
   className?: string;
-  agendaItem?: Agenda;
+  agendaItem?: AgendaItem;
 }
 
 const useStyles = makeStyles((theme) => ({
@@ -113,7 +113,7 @@ function AgendaCreateForm({ className, agendaItem, ...rest }: AgendaCreateFormPr
     subtitle: '',
     description: '',
     billCode: '',
-    hearingTime: format(new Date(), DATE_FMT_FORM),
+    sessionTime: format(new Date(), DATE_FMT_FORM),
     deadlineTime: format(new Date(), DATE_FMT_FORM),
     heroImage: '',
     isActive: false,
@@ -122,7 +122,7 @@ function AgendaCreateForm({ className, agendaItem, ...rest }: AgendaCreateFormPr
     initialValues = {
       ...initialValues,
       ...agendaItem,
-      hearingTime: format(agendaItem.hearingTime.toDate(), DATE_FMT_FORM),
+      sessionTime: format(agendaItem.sessionTime.toDate(), DATE_FMT_FORM),
       deadlineTime: format(agendaItem.deadlineTime.toDate(), DATE_FMT_FORM),
     }
   }
@@ -136,7 +136,7 @@ function AgendaCreateForm({ className, agendaItem, ...rest }: AgendaCreateFormPr
         description: Yup.string().max(10240),
         billCode: Yup.string().max(32).required("Bill Code is required."),
         heroImage: Yup.string(),
-        hearingTime: Yup.date(),
+        sessionTime: Yup.date(),
         deadlineTime: Yup.date(),
         isActive: Yup.bool(),
       })}
@@ -148,7 +148,7 @@ function AgendaCreateForm({ className, agendaItem, ...rest }: AgendaCreateFormPr
         const newData = {
           ...values,
           deadlineTime: firebase.firestore.Timestamp.fromDate(parse(values.deadlineTime, DATE_FMT_FORM, new Date())),
-          hearingTime: firebase.firestore.Timestamp.fromDate(parse(values.hearingTime, DATE_FMT_FORM, new Date())),
+          sessionTime: firebase.firestore.Timestamp.fromDate(parse(values.sessionTime, DATE_FMT_FORM, new Date())),
         };
         if (agendaItem) {
           await updateRecord(newData, setStatus, setSubmitting);
@@ -232,14 +232,14 @@ function AgendaCreateForm({ className, agendaItem, ...rest }: AgendaCreateFormPr
                           fullWidth
                           label="Hearing Date and Time"
                           type="datetime-local"
-                          name="hearingTime"
+                          name="sessionTime"
                           InputLabelProps={{
                             shrink: true,
                           }}
                           onChange={handleChange}
-                          value={values.hearingTime}
-                          error={Boolean(touched.hearingTime && errors.hearingTime)}
-                          helperText={touched.hearingTime && errors.hearingTime}
+                          value={values.sessionTime}
+                          error={Boolean(touched.sessionTime && errors.sessionTime)}
+                          helperText={touched.sessionTime && errors.sessionTime}
                         />
                       </Grid>
                     </Grid>

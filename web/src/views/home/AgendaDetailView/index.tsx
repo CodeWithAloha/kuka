@@ -3,7 +3,7 @@ import { Container, makeStyles } from '@material-ui/core';
 import Page from 'src/components/Page';
 import type { Theme } from 'src/theme';
 import { agendaRef } from "src/services/AgendaItem";
-import type { Agenda } from "src/types/agenda";
+import type { AgendaItem } from "src/types/agendaItem";
 import { useDocumentData } from "react-firebase-hooks/firestore";
 import { useParams } from "react-router-dom";
 import AgendaPanel from './AgendaPanel';
@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 function AgendaDetailView() {
   const classes = useStyles();
   const { id } = useParams();
-  const [agendaItem, loading, error] = useDocumentData<Agenda>(
+  const [agendaItem, loading, error] = useDocumentData<AgendaItem>(
     agendaRef.doc(id),
     {
       idField: 'id',

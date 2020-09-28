@@ -86,13 +86,14 @@ function AccountInfo() {
         >
           Account
         </MenuItem>
-        {/*//TODO: restrict admin link to only admins*/}
-        <MenuItem
-          component={RouterLink}
-          to="/admin"
-        >
-          Admin
-        </MenuItem>
+        {user.isAdmin && (
+          <MenuItem
+            component={RouterLink}
+            to="/admin"
+          >
+            Admin
+          </MenuItem>
+        )}
         <MenuItem onClick={handleLogout}>
           Logout
         </MenuItem>

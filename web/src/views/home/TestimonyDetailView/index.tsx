@@ -1,13 +1,16 @@
 import React from 'react';
+import { find } from 'lodash';
 import { Box, Container, Grid, makeStyles, Typography } from '@material-ui/core';
 import Page from 'src/components/Page';
 import ReactPlayer from "react-player";
-import { useParams } from "react-router";
+import { useLocation, useParams } from "react-router";
 import { agendaRef } from "../../../services/AgendaItem";
-import { useDocumentDataOnce } from "react-firebase-hooks/firestore";
+import { useDocumentDataOnce, useCollectionDataOnce } from "react-firebase-hooks/firestore";
 import { testimonyRef } from "../../../services/Testimony";
-import type { Agenda } from "../../../types/agenda";
+import type { AgendaItem } from "../../../types/agendaItem";
 import type { Testimony } from "../../../types/testimony";
+import queryString from 'query-string';
+import TestimonyCard from "../../../components/TestimonyCard";
 
 
 const useStyles = makeStyles(() => ({
@@ -25,14 +28,21 @@ const useStyles = makeStyles(() => ({
 
 function TestimonyDetailView() {
   const classes = useStyles();
-  const { agendaId, testimonyId} = useParams();
+  const { agendaId, testimonyId } = useParams();
+  const location = useLocation();
+  const { indexStr }  = queryString.parse(location.search)
+  const index = Number.parseInt(indexStr as string);
 
-  const [agendaItem, agendaLoading, agendaError] = useDocumentDataOnce<Agenda>(
+  const [agendaItem, agendaLoading, agendaError] = useDocumentDataOnce<AgendaItem>(
     agendaRef.doc(agendaId)
   )
-  const [testimony, testimonyLoading, testimonyError] = useDocumentDataOnce<Testimony>(
-    testimonyRef.doc(testimonyId)
+
+  const [ testimonyList, testimonyListLoading, testimonyListError] = useCollectionDataOnce<Testimony>(
+    testimonyRef.orderBy('createdAt'),
+    { idField: 'id' }
   )
+
+  const selectedTestimony = find(testimonyList, { id: testimonyId });
 
   return (
     <Page
@@ -53,13 +63,13 @@ function TestimonyDetailView() {
             xs={12}
             md={9}
           >
-            {agendaItem && testimony && (
+            {agendaItem && selectedTestimony && (
               <div className={classes.playerWrapper}>
                 <ReactPlayer
                   className={classes.reactPlayer}
                   controls
                   height={"100%"}
-                  url={testimony.embedUrl}
+                  url={selectedTestimony.embedUrl}
                   width={"100%"}
                 />
               </div>
@@ -71,7 +81,9 @@ function TestimonyDetailView() {
             xs={6}
             md={3}
           >
-            Testimony list here
+            {testimonyList && testimonyList.map((testimony) => (
+              <TestimonyCard testimony={testimony} />
+            ))}
           </Grid>
         </Grid>
       </Container>

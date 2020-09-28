@@ -10,7 +10,7 @@
   },
   "compileOnSave": true,
   "include": [
-    "src",
-    "../web/types"
+    "src"
+//    "../web/src/types"
   ]
 }

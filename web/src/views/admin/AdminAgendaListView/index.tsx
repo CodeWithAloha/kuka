@@ -4,7 +4,7 @@ import Page from 'src/components/Page';
 import type { Theme } from 'src/theme';
 import { agendaRef } from "src/services/AgendaItem";
 import Header from './Header';
-import type { Agenda } from "src/types/agenda";
+import type { AgendaItem } from "src/types/agendaItem";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import Results from './Results';
 
@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 function AgendaCreateView() {
   const classes = useStyles();
-  const [agendaItems, loading, error] = useCollectionData<Agenda>(
+  const [agendaItems, loading, error] = useCollectionData<AgendaItem>(
     agendaRef,
     {
       idField: 'id',

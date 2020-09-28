@@ -4,7 +4,7 @@ import Page from 'src/components/Page';
 import type { Theme } from 'src/theme';
 import { agendaRef } from "src/services/AgendaItem";
 import Header from './Header';
-import type { Agenda } from "src/types/agenda";
+import type { AgendaItem } from "src/types/agendaItem";
 import { useDocumentDataOnce } from "react-firebase-hooks/firestore";
 import { useParams } from 'react-router-dom';
 import AgendaCreateForm from "../AdminAgendaCreateView/AgendaCreateForm";
@@ -21,7 +21,7 @@ function AgendaCreateView() {
   const classes = useStyles();
   const { id } = useParams();
 
-  const [agendaItem, loading, error] = useDocumentDataOnce<Agenda>(
+  const [agendaItem, loading, error] = useDocumentDataOnce<AgendaItem>(
     agendaRef.doc(id),
     { idField: 'id' }
   );

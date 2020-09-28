@@ -124,7 +124,7 @@ const routes: Routes = [
     routes: [
       {
         exact: true,
-        path: '/',
+        path: '/:currentTab?',
         component: HomeView
       },
       {

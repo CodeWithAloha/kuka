@@ -18,11 +18,11 @@ import {
   TableRow,
 } from '@material-ui/core';
 import type { Theme } from 'src/theme';
-import type { Agenda } from "src/types/agenda";
+import type { AgendaItem } from "src/types/agendaItem";
 
 interface ResultsProps {
   className?: string;
-  agendaItems: Agenda[];
+  agendaItems: AgendaItem[];
 }
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -97,7 +97,7 @@ function Results({ className, agendaItems, ...rest }: ResultsProps) {
                   </Link>
                 </TableCell>
                 <TableCell>
-                  {format(agendaItem.hearingTime.toDate(), DATE_FMT_LONG)}
+                  {format(agendaItem.sessionTime.toDate(), DATE_FMT_LONG)}
                 </TableCell>
                 <TableCell>{agendaItem.isActive ? 'Active' : 'Inactive'}</TableCell>
               </TableRow>
