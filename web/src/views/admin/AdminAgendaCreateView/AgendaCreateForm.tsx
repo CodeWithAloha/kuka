@@ -114,7 +114,6 @@ function AgendaCreateForm({ className, agendaItem, ...rest }: AgendaCreateFormPr
     description: '',
     billCode: '',
     sessionTime: format(new Date(), DATE_FMT_FORM),
-    deadlineTime: format(new Date(), DATE_FMT_FORM),
     heroImage: '',
     isActive: false,
   }
@@ -123,7 +122,6 @@ function AgendaCreateForm({ className, agendaItem, ...rest }: AgendaCreateFormPr
       ...initialValues,
       ...agendaItem,
       sessionTime: format(agendaItem.sessionTime.toDate(), DATE_FMT_FORM),
-      deadlineTime: format(agendaItem.deadlineTime.toDate(), DATE_FMT_FORM),
     }
   }
 
@@ -137,7 +135,6 @@ function AgendaCreateForm({ className, agendaItem, ...rest }: AgendaCreateFormPr
         billCode: Yup.string().max(32).required("Bill Code is required."),
         heroImage: Yup.string(),
         sessionTime: Yup.date(),
-        deadlineTime: Yup.date(),
         isActive: Yup.bool(),
       })}
       onSubmit={async (values, {
@@ -147,7 +144,6 @@ function AgendaCreateForm({ className, agendaItem, ...rest }: AgendaCreateFormPr
       }) => {
         const newData = {
           ...values,
-          deadlineTime: firebase.firestore.Timestamp.fromDate(parse(values.deadlineTime, DATE_FMT_FORM, new Date())),
           sessionTime: firebase.firestore.Timestamp.fromDate(parse(values.sessionTime, DATE_FMT_FORM, new Date())),
         };
         if (agendaItem) {

@@ -65,7 +65,6 @@ export interface AgendaItem {
 
   // TODO: maybe use withConverter() so we never have to deal with Timestamps.
   sessionTime: Timestamp;  // source=EventDate + EventTime localized to HST
-  deadlineTime: Timestamp; // calculated on ingestion, 1 business day prior to sessionTime
   isActive: boolean;       // when "EventAgendaStatusId" === 10, "EventAgendaStatusName" === "Final",
 
   eventUrl: string;        // source=EventInSiteURL

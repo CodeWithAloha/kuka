@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { first, max, orderBy, trim } from 'lodash';
-import { addBusinessDays, format } from 'date-fns';
+import { format } from 'date-fns';
 import { AgendaAttachment, AgendaItem } from "../../../web/src/types/agendaItem";
 import parseLegistarDateToUtc from "../utils/parseLegistarDateToUtc";
 import { firestore } from 'firebase-admin';
@@ -230,9 +230,6 @@ export async function eventItemToAgenda(event: any, eventItem: any): Promise<Age
 
     description,
     billCode: matter.MatterFile,
-    deadlineTime: firestore.Timestamp.fromDate(
-      addBusinessDays(eventTime, -1)
-    ),
     eventUrl: event.EventInSiteURL,
     sessionTime: firestore.Timestamp.fromDate(eventTime),
 

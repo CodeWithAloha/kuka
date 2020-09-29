@@ -43,12 +43,6 @@ function AgendaCard({ agendaItem }: AgendaCardProps) {
               >
                 {agendaItem.title}
               </Typography>
-              <Typography
-                variant="body2"
-                color="textSecondary"
-              >
-                Testimony deadline in {daysRemaining(agendaItem.deadlineTime)} days
-              </Typography>
             </Box>
             <Typography
               variant="body1"

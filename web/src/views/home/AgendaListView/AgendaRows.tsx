@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, CardContent, CardHeader, Grid, Link, makeStyles, Typography, Divider } from '@material-ui/core';
 import { AgendaItem } from "../../../types/agendaItem";
 import type { Theme } from 'src/theme';
-import { format } from "date-fns";
+import { addBusinessDays, format } from "date-fns";
 import { truncate } from 'lodash';
 import { DATETIME_FMT_HUMANIZED } from "../../../constants";
 
@@ -94,7 +94,10 @@ function AgendaRows({ agendaItems }: AgendaCardProps) {
                   variant="h5"
                   color="textPrimary"
                 >
-                  {format(agendaItem.deadlineTime.toDate(), DATETIME_FMT_HUMANIZED)}
+                  {format(
+                    addBusinessDays(agendaItem.sessionTime.toDate(), -1),
+                    DATETIME_FMT_HUMANIZED
+                  )}
                 </Typography>
                 <br />
                 <Typography

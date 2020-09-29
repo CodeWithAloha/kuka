@@ -29,13 +29,14 @@ function HomeView() {
     let q;
 
     if (currentTab === 'history') {
+      // TODO: items need to be submitted a few business days prior to session time.
       q = agendaRef
-        .where('deadlineTime', '<', new Date())
-        .orderBy("deadlineTime", "desc")
+        .where('sessionTime', '<', new Date())
+        .orderBy("sessionTime", "desc")
     } else {
       q = agendaRef
-        .where('deadlineTime', '>', new Date())
-        .orderBy("deadlineTime", "asc")
+        .where('sessionTime', '>', new Date())
+        .orderBy("sessionTime", "asc")
     }
 
     setQuery(q);
