@@ -11,8 +11,10 @@ export const AgendaScreen = () => {
     }
   };
 
-  return <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-    <Text>Agenda</Text>
-    <Button onPress={signOut}>Sign Out</Button>
-  </ Layout>
-}
+  return (
+    <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Agenda</Text>
+      <Button onPress={signOut}>Sign Out</Button>
+    </Layout>
+  );
+};

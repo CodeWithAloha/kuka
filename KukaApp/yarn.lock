@@ -1046,6 +1046,11 @@
   resolved "https://registry.yarnpkg.com/@react-native-firebase/auth/-/auth-8.3.1.tgz#ff696a7a0f82894d57bff0d743c5d43e704f8f6c"
   integrity sha512-TqPW49E52zmNSQb/Hp/izqYi9cyI5xO6CaSgqfCobUnzsldQ8Ge41tgbQRORG6XmB/BWIJeHl4PlR5NNHF/org==
 
+"@react-native-firebase/firestore@^7.8.2":
+  version "7.8.2"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/firestore/-/firestore-7.8.2.tgz#732a5743a37e5e238c748e03bfb41c38ccb04fdd"
+  integrity sha512-eqKk/Z+dYpcVfHzI9tQ+/s2fqsZwYbyheazP7yWthF4D9EMoe6BNPVE4AuFvPrrAsnxJebH9a/9jhP3YaMj/Zw==
+
 "@react-navigation/core@^5.12.3":
   version "5.12.3"
   resolved "https://registry.yarnpkg.com/@react-navigation/core/-/core-5.12.3.tgz#0484fcca290569a0dc10b70b99f00edd3f1fd93c"
@@ -2185,6 +2190,11 @@ data-urls@^1.0.0:
     abab "^2.0.0"
     whatwg-mimetype "^2.2.0"
     whatwg-url "^7.0.0"
+
+date-fns@^2.16.1:
+  version "2.16.1"
+  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.16.1.tgz#05775792c3f3331da812af253e1a935851d3834b"
+  integrity sha512-sAJVKx/FqrLYHAQeN7VpJrPhagZc9R4ImZIWYRFZaaohR3KzmuK88touwsSwSVT8Qcbd4zoDsnGfX4GFB4imyQ==
 
 dayjs@^1.8.15:
   version "1.8.32"
