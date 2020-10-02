@@ -12,5 +12,24 @@
   },
   "storage": {
     "rules": "storage.rules"
+  },
+  "hosting": {
+    "predeploy": [
+      "npm --prefix web run lint",
+      "npm --prefix web run build"
+    ],
+    "source": "web",
+    "public": "web/build",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
   }
 }
