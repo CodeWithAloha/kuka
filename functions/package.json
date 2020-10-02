@@ -1,7 +1,7 @@
 {
   "name": "functions",
   "scripts": {
-    "lint": "tslint --project tsconfig.json",
+    "lint": "eslint src --ext .tsx,.ts,.js,.jsx",
     "build": "tsc",
     "serve": "npm run build && firebase emulators:start --only functions",
     "shell": "npm run build && firebase functions:shell",
@@ -29,9 +29,12 @@
     "string-similarity": "^4.0.2"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.34.0",
+    "@typescript-eslint/parser": "^2.34.0",
     "@types/string-similarity": "^3.0.0",
+    "eslint": "^6.8.0",
+    "eslint-plugin-import": "^2.22.1",
     "firebase-functions-test": "^0.2.0",
-    "tslint": "^5.12.0",
     "typescript": "^3.8.0"
   },
   "private": true

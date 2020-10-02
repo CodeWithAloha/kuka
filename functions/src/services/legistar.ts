@@ -108,7 +108,7 @@ export async function getMatterAttachments(matterId: number): Promise<AgendaAtta
     fileName: attachment.MatterAttachmentName,
     link: attachment.MatterAttachmentHyperlink,
     sortKey: attachment.MatterAttachmentSort,
-    _sourceMatterAttachmentId: attachment.MatterAttachmentId,
+    _sourceMatterAttachmentId: attachment.MatterAttachmentId
   }))
 }
 
@@ -239,6 +239,6 @@ export async function eventItemToAgenda(event: any, eventItem: any): Promise<Age
     _sourceEventId: event.EventId,
     _sourceEventItemId: eventItem.EventItemId,
     _sourceMatterId: eventItem.EventItemMatterId,
-    _sourceMatterTextId: matterText.MatterTextId,
+    _sourceMatterTextId: matterText.MatterTextId
   }
 }

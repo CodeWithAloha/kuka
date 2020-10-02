@@ -60,22 +60,11 @@ const mirrorCustomClaims = functions.firestore.document('permissions/{uid}')
     })
   })
 
-const legistar = functions.https.onRequest(async (req, res) => {
-  const startDate = await db
-    .collection("crawlers")
-    .doc('legistar')
-    .get()
-    .then((doc) => {
-      if (doc.exists) {
-        console.debug('Doc exists, using last date')
-        // @ts-ignore
-        return doc.data()._lastUpdated.toDate();
-      } else {
-        console.debug('doc does not exist, using 1-week as boundary.')
-        return new Date(Date.now() - 7 * 24 * 3600 * 1000)  //default to last week
-      }
-    }
-  );
+const legistarUpdate = functions.https.onRequest(async (req, res) => {
+  // TODO: Unsure how event timestamps are updated, if an incremental update is done
+  // we could miss data. Use a rolling 7-day window to hopefully capture a more
+  // complete dataset.
+  const startDate = new Date(Date.now() - 7 * 24 * 3600 * 1000)  //default to last week
 
   console.log(`crawler start date: ${startDate}`);
   const updatedEvents = await getEvents(startDate);
@@ -107,11 +96,11 @@ const legistar = functions.https.onRequest(async (req, res) => {
     console.log('Batch updated.')
   }
 
-  res.json({ ok: 'you da man' });
+  res.json({ ok: 'done' });
 });
 
 module.exports = {
   authOnCreate,
   mirrorCustomClaims,
-  legistar,
+  legistarUpdate
 };

@@ -5,6 +5,7 @@ import { Helmet } from 'react-helmet';
 interface PageProps {
   children?: ReactNode;
   title?: string;
+  [key: string]: any;
 }
 
 // FIXME: fix props for typescript
