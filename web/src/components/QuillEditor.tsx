@@ -15,13 +15,13 @@ const useStyles = makeStyles((theme: Theme) => ({
       borderLeft: 'none',
       borderTop: 'none',
       borderRight: 'none',
-      borderBottom: `1px solid ${theme.palette.divider}`,
+      borderBottom: `1px solid ${theme.palette.divider}`
     },
     '& .ql-container': {
       border: 'none',
       '& .ql-editor': {
         fontFamily: theme.typography.fontFamily,
-        fontSize: 16,
+        fontSize: 16
       }
     }
   }

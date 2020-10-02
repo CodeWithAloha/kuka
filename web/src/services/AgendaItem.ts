@@ -10,7 +10,7 @@ export const createAgendaItem = (payload: AgendaItem) => {
   return agendaRef
     .add({
       ...payload,
-      updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
+      updatedAt: firebase.firestore.FieldValue.serverTimestamp()
     });
 };
 
@@ -19,6 +19,6 @@ export const updateAgendaItem = (id: string, payload: AgendaItem) => {
     .doc(id)
     .update({
       ...payload,
-      updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
+      updatedAt: firebase.firestore.FieldValue.serverTimestamp()
     })
 }

@@ -10,7 +10,9 @@ interface ClaimsDocumentData extends admin.firestore.DocumentData {
   _lastCommitted?: admin.firestore.Timestamp
 }
 
-
+/**
+ * Sets some basic user profile data when a user is created
+ */
 const authOnCreate = functions.auth.user().onCreate((userRecord) => {
   const { uid } = userRecord;
 
@@ -81,8 +83,8 @@ const legistar = functions.https.onRequest(async (req, res) => {
   for (const event of updatedEvents) {
     // use for-loop instead of async to limit server requests
 
-    console.log("Crawling Event:")
-    console.log(event)
+    // console.log("Crawling Event:")
+    // console.log(event)
     const eventItems = await getEventItems(event.EventId);
     const batch = db.batch();
 

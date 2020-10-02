@@ -11,7 +11,7 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
-  makeStyles,
+  makeStyles
 } from '@material-ui/core';
 import { Calendar as CalendarIcon, Plus as PlusIcon } from 'react-feather';
 import Logo from 'src/components/Logo';
@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
   },
   nested: {
     paddingLeft: theme.spacing(5)
-  },
+  }
 }));
 
 function NavBar({ onMobileClose, openMobile }: NavBarProps) {
@@ -138,6 +138,6 @@ function NavBar({ onMobileClose, openMobile }: NavBarProps) {
       </Hidden>
     </>
   );
-};
+}
 
 export default NavBar;

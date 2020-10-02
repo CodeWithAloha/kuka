@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import clsx from 'clsx';
-import { Image as ImageIcon, } from 'react-feather';
+import { Image as ImageIcon } from 'react-feather';
 import { DATE_FMT_LONG } from "../../../constants";
 import { format } from "date-fns";
 import {
@@ -15,7 +15,7 @@ import {
   TableCell,
   TableContainer,
   TableHead,
-  TableRow,
+  TableRow
 } from '@material-ui/core';
 import type { Theme } from 'src/theme';
 import type { AgendaItem } from "src/types/agendaItem";
@@ -27,7 +27,7 @@ interface ResultsProps {
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
-    marginTop: theme.spacing(3),
+    marginTop: theme.spacing(3)
   },
   imageCell: {
     fontSize: 0,

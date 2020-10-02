@@ -12,11 +12,11 @@ const useStyles = makeStyles(() => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    height: '100%',
+    height: '100%'
   },
   indicator: {
-    position: 'relative',
-  },
+    position: 'relative'
+  }
 }));
 
 

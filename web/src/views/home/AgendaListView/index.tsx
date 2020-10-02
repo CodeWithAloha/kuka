@@ -22,7 +22,7 @@ function HomeView() {
   currentTab = currentTab || 'upcoming';
   const tabs = [
     { value: 'upcoming', label: 'Upcoming' },
-    { value: 'history', label: 'History' },
+    { value: 'history', label: 'History' }
   ];
 
   useEffect(() => {
@@ -47,7 +47,7 @@ function HomeView() {
     query,
     {
       idField: 'id',
-      snapshotListenOptions: { includeMetadataChanges: true },
+      snapshotListenOptions: { includeMetadataChanges: true }
     }
   );
 

@@ -8,6 +8,6 @@ export const profileRef = firestore.collection('users')
 
 export const updateProfile = (userId: string, values: Profile) => {
   return profileRef.doc(userId).set({
-    ...values,
+    ...values
   })
 }

@@ -4,12 +4,13 @@ import { Box, Button, Container, makeStyles, Typography, useMediaQuery, useTheme
 import type { Theme } from 'src/theme';
 import Page from 'src/components/Page';
 
+// eslint-disable-next-line no-unused-vars
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
     minHeight: '100%',
     display: 'flex',
-    alignItems: 'center',
-  },
+    alignItems: 'center'
+  }
 }));
 
 function NotFoundView() {

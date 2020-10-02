@@ -18,6 +18,7 @@ type Routes = {
 
 
 // see https://gist.github.com/maxacarvalho/6734b066891bc25bcf1dff033207fd2d
+// eslint-disable-next-line no-shadow
 export const renderRoutes = (routes: Routes = []): JSX.Element => (
   <Suspense fallback={<LoadingScreen />}>
     <Switch>
@@ -109,9 +110,11 @@ const routes: Routes = [
         exact: true,
         path: '/admin',
         // By default, go to agenda list.
+        // eslint-disable-next-line react/display-name
         component: () => <Redirect to="/admin/agenda-list" />
       },
       {
+        // eslint-disable-next-line react/display-name
         component: () => <Redirect to="/404" />
       }
     ]
@@ -138,6 +141,7 @@ const routes: Routes = [
         component: lazy(() => import('./views/home/TestimonyDetailView'))
       },
       {
+        // eslint-disable-next-line react/display-name
         component: () => <Redirect to="/404" />
       }
     ]

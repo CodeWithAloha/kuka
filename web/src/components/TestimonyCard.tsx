@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Card, CardActionArea, CardContent, CardMedia, Link, makeStyles, Typography } from '@material-ui/core';
+import { Card, CardActionArea, CardContent, CardMedia, Link, makeStyles, Typography } from '@material-ui/core';
 import { Testimony } from "../types/testimony";
 import { Link as RouterLink } from 'react-router-dom';
 import type { Theme } from 'src/theme';
@@ -8,12 +8,13 @@ interface TestimonyCardProps {
   testimony: Testimony;
 }
 
+// eslint-disable-next-line no-unused-vars
 const useStyles = makeStyles((theme: Theme) => ({
   root: {},
   media: {
     height: 0,
-    paddingTop: '60%',
-  },
+    paddingTop: '60%'
+  }
 }));
 
 

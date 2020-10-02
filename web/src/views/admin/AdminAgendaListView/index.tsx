@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     minHeight: '100%',
     marginTop: theme.spacing(3),
     marginBottom: theme.spacing(3),
-    backgroundColor: theme.palette.background.default,
+    backgroundColor: theme.palette.background.default
   }
 }));
 
@@ -23,7 +23,7 @@ function AgendaCreateView() {
     agendaRef,
     {
       idField: 'id',
-      snapshotListenOptions: { includeMetadataChanges: true },
+      snapshotListenOptions: { includeMetadataChanges: true }
     }
   );
 

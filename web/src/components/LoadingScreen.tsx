@@ -24,6 +24,6 @@ function LoadingScreen() {
       </Box>
     </div>
   );
-};
+}
 
 export default LoadingScreen;

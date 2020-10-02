@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import React, { createContext, useEffect, useState, } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 import SplashScreen from 'src/components/SplashScreen';
 import firebase, { auth } from 'src/firebase';
 import { User } from "../types/user";
@@ -42,11 +42,11 @@ const initialState: AuthState = {
   logout: () => Promise.resolve(),
   signInWithEmailAndPassword: () => Promise.resolve(),
   signInWithGoogle: () => Promise.resolve(),
-  createUserWithEmailAndPassword: () => Promise.resolve(),
+  createUserWithEmailAndPassword: () => Promise.resolve()
 };
 
 export const AuthContext = createContext<AuthState>({
-  ...initialState,
+  ...initialState
 });
 
 export function AuthProvider({ children }: AuthProviderProps) {
@@ -55,22 +55,30 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const [isAuthenticated, setAuthenticated] = useState(false)
 
   useEffect(() => {
-    auth.onAuthStateChanged((user) => {
-      if (user) {
-        setUser({
-          id: user.uid,
-          avatar: user.photoURL,
-          email: user.email,
-          name: user.displayName || user.email,
-          isAdmin: false,
-        });
-
-        user.getIdTokenResult().then((result) => {
+    if (auth.currentUser) {
+      auth.currentUser.getIdTokenResult()
+        .then((result) => {
           setUser((prev) => ({
             ...prev,
             isAdmin: Boolean(result.claims.isAdmin)
           }))
         })
+        .catch((err) => {
+          throw new Error(err)
+        })
+    }
+  }, [])
+
+  useEffect(() => {
+    auth.onAuthStateChanged((userData) => {
+      if (user) {
+        setUser({
+          id: userData.uid,
+          avatar: userData.photoURL,
+          email: userData.email,
+          name: userData.displayName || userData.email,
+          isAdmin: false
+        });
 
         setAuthenticated(true)
 
@@ -80,7 +88,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
       }
       setInitialized(true)
     });
-  }, []);
+  }, [user]);
 
   if (!isInitialized) {
     return <SplashScreen />;
@@ -97,7 +105,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
         logout,
         signInWithEmailAndPassword,
         signInWithGoogle,
-        createUserWithEmailAndPassword,
+        createUserWithEmailAndPassword
       }}
     >
       {children}

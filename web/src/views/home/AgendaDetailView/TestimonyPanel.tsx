@@ -1,7 +1,6 @@
 import React from 'react';
-import { Typography } from "@material-ui/core";
+import { Grid, makeStyles, Typography } from "@material-ui/core";
 import { AgendaItem } from "../../../types/agendaItem";
-import { makeStyles, Grid } from "@material-ui/core";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import { testimonyRef } from "../../../services/Testimony";
 import TestimonyCard from "../../../components/TestimonyCard";
@@ -30,7 +29,7 @@ function TestimonyPanel({ agendaItem }: AgendaPanelProps){
       .where('agendaId', '==', agendaItem.id),
     {
       idField: 'id',
-      snapshotListenOptions: { includeMetadataChanges: true },
+      snapshotListenOptions: { includeMetadataChanges: true }
     }
   )
 

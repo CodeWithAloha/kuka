@@ -1,9 +1,17 @@
 import React from 'react';
-import { Box, Card, CardActionArea, CardContent, CardMedia, Grid, makeStyles, Typography, Link } from '@material-ui/core';
+import {
+  Box,
+  Card,
+  CardActionArea,
+  CardContent,
+  CardMedia,
+  Grid,
+  Link,
+  makeStyles,
+  Typography
+} from '@material-ui/core';
 import { AgendaItem } from "../../../types/agendaItem";
 import { Link as RouterLink } from 'react-router-dom';
-import daysRemaining from "../../../utils/daysRemaining";
-import type { Theme } from 'src/theme';
 import { format } from "date-fns";
 import { DATE_FMT_LONG } from "../../../constants";
 
@@ -11,12 +19,12 @@ interface AgendaCardProps {
   agendaItem: AgendaItem;
 }
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles(() => ({
   root: {},
   media: {
     height: 0,
-    paddingTop: '56.25%', // 16:9
-  },
+    paddingTop: '56.25%' // 16:9
+  }
 }));
 
 

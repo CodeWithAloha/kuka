@@ -5,7 +5,7 @@ const getSafeFilename = (filename: string) => {
   const now = new Date()
   const secondsSinceEpoch = Math.round(now.getTime() / 1000)
   console.log(filename)
-  let fn = sanitize(filename);
+  const fn = sanitize(filename);
   return fn.replace(/^([^.]*)\.(.*)$/, `$1.${secondsSinceEpoch}.$2`);
 }
 

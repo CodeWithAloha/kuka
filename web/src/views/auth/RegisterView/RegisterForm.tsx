@@ -51,7 +51,7 @@ function RegisterForm({ className, ...rest }: FirebaseAuthRegisterProps) {
         validationSchema={
           Yup.object().shape({
             email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
-            password: Yup.string().min(7).max(255).required('Password is required'),
+            password: Yup.string().min(7).max(255).required('Password is required')
           }
         )}
         onSubmit={async (values, {

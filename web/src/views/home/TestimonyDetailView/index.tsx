@@ -3,13 +3,12 @@ import { find } from 'lodash';
 import { Box, Container, Grid, makeStyles, Typography } from '@material-ui/core';
 import Page from 'src/components/Page';
 import ReactPlayer from "react-player";
-import { useLocation, useParams } from "react-router";
+import { useParams } from "react-router";
 import { agendaRef } from "../../../services/AgendaItem";
-import { useDocumentDataOnce, useCollectionDataOnce } from "react-firebase-hooks/firestore";
+import { useCollectionDataOnce, useDocumentDataOnce } from "react-firebase-hooks/firestore";
 import { testimonyRef } from "../../../services/Testimony";
 import type { AgendaItem } from "../../../types/agendaItem";
 import type { Testimony } from "../../../types/testimony";
-import queryString from 'query-string';
 import TestimonyCard from "../../../components/TestimonyCard";
 
 
@@ -18,7 +17,7 @@ const useStyles = makeStyles(() => ({
   reactPlayer: {
     position: 'absolute',
     top: 0,
-    left: 0,
+    left: 0
   },
   playerWrapper: {
     position: 'relative',
@@ -29,15 +28,12 @@ const useStyles = makeStyles(() => ({
 function TestimonyDetailView() {
   const classes = useStyles();
   const { agendaId, testimonyId } = useParams();
-  const location = useLocation();
-  const { indexStr }  = queryString.parse(location.search)
-  const index = Number.parseInt(indexStr as string);
 
-  const [agendaItem, agendaLoading, agendaError] = useDocumentDataOnce<AgendaItem>(
+  const [agendaItem ] = useDocumentDataOnce<AgendaItem>(
     agendaRef.doc(agendaId)
   )
 
-  const [ testimonyList, testimonyListLoading, testimonyListError] = useCollectionDataOnce<Testimony>(
+  const [ testimonyList ] = useCollectionDataOnce<Testimony>(
     testimonyRef.orderBy('createdAt'),
     { idField: 'id' }
   )
@@ -82,7 +78,7 @@ function TestimonyDetailView() {
             md={3}
           >
             {testimonyList && testimonyList.map((testimony) => (
-              <TestimonyCard testimony={testimony} />
+              <TestimonyCard key={testimony.id} testimony={testimony} />
             ))}
           </Grid>
         </Grid>

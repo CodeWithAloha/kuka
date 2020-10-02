@@ -14,10 +14,10 @@ interface TopBarProps {
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
-    zIndex: theme.zIndex.drawer + 100,
+    zIndex: theme.zIndex.drawer + 100
   },
   toolbar: {
-    height: 64,
+    height: 64
   }
 }));
 

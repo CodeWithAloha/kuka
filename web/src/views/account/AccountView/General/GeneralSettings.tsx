@@ -32,11 +32,11 @@ function GeneralSettings({ className, user, ...rest }: GeneralSettingsProps) {
       enableReinitialize
       initialValues={{
         zipCode: profile.zipCode || '',
-        lobbyGroup: profile.lobbyGroup || '',
+        lobbyGroup: profile.lobbyGroup || ''
       }}
       validationSchema={Yup.object().shape({
         zipCode: Yup.string().max(32),
-        lobbyGroup: Yup.string().max(255),
+        lobbyGroup: Yup.string().max(255)
       })}
       onSubmit={async (values, {
         setSubmitting
@@ -48,7 +48,7 @@ function GeneralSettings({ className, user, ...rest }: GeneralSettingsProps) {
               variant: 'success'
             });
           })
-          .catch(() => {})
+          .catch((err) => {console.error(err)})
           .finally(() => {
             setSubmitting(false);
           })

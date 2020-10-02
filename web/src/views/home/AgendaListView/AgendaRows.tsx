@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginBottom: theme.spacing(3)
   },
   cardTitle: {
-    color: theme.palette.text.secondary,
+    color: theme.palette.text.secondary
   },
   cardDescription: {
   }

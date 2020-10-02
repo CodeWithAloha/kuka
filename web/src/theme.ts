@@ -1,4 +1,4 @@
-import { createMuiTheme, } from '@material-ui/core';
+import { createMuiTheme } from '@material-ui/core';
 import type { Theme as MuiTheme } from '@material-ui/core/styles/createMuiTheme';
 import type {
   Palette as MuiPalette,
@@ -25,25 +25,25 @@ const themesOptions: ThemeOptions = {
   typography: {
     h1: {
       fontWeight: 400,
-      fontSize: 40,
+      fontSize: 40
     },
     h2: {
       fontWeight: 400,
-      fontSize: 30,
+      fontSize: 30
     },
     h3: {
       fontWeight: 400,
-      fontSize: 24,
+      fontSize: 24
     },
     h4: {
-      fontSize: 20,
+      fontSize: 20
     },
     h5: {
-      fontSize: 16,
+      fontSize: 16
     },
     h6: {
-      fontSize: 14,
-    },
+      fontSize: 14
+    }
 
   },
   overrides: {
@@ -53,7 +53,7 @@ const themesOptions: ThemeOptions = {
           '-moz-osx-font-smoothing': 'grayscale',
           height: '100%',
           width: '100%',
-          WebkitFontSmoothing: 'antialiased',
+          WebkitFontSmoothing: 'antialiased'
         },
         body: {
           height: '100%',
@@ -63,13 +63,13 @@ const themesOptions: ThemeOptions = {
           height: '100%',
           width: '100%'
         }
-      },
+      }
     },
     MuiLinearProgress: {
       root: {
         overflow: 'hidden'
       }
-    },
+    }
   },
   palette: {
     primary: {
@@ -77,9 +77,9 @@ const themesOptions: ThemeOptions = {
     },
     secondary: {
       main: '#0089A8'
-    },
+    }
 
-  },
+  }
 };
 
 export const createTheme = () => {

@@ -14,14 +14,14 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   cardContainer: {
     paddingBottom: 80,
-    paddingTop: 80,
+    paddingTop: 80
   },
   cardContent: {
     padding: theme.spacing(4),
     display: 'flex',
     flexDirection: 'column',
     minHeight: 400
-  },
+  }
 }));
 
 function RegisterView() {

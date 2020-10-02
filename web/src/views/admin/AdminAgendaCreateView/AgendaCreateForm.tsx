@@ -101,9 +101,14 @@ function AgendaCreateForm({ className, agendaItem, ...rest }: AgendaCreateFormPr
         console.log(snapshot)
       },
       'complete': () => {
-        task.snapshot.ref.getDownloadURL().then((value) => {
-          setFieldValue('heroImage', value)
-        })
+        task.snapshot.ref
+          .getDownloadURL()
+          .then((value) => {
+            setFieldValue('heroImage', value)
+          })
+          .catch((err) => {
+            throw new Error(err)
+          })
       }
     })
   }
@@ -115,13 +120,13 @@ function AgendaCreateForm({ className, agendaItem, ...rest }: AgendaCreateFormPr
     billCode: '',
     sessionTime: format(new Date(), DATE_FMT_FORM),
     heroImage: '',
-    isActive: false,
+    isActive: false
   }
   if (agendaItem) {
     initialValues = {
       ...initialValues,
       ...agendaItem,
-      sessionTime: format(agendaItem.sessionTime.toDate(), DATE_FMT_FORM),
+      sessionTime: format(agendaItem.sessionTime.toDate(), DATE_FMT_FORM)
     }
   }
 
@@ -135,7 +140,7 @@ function AgendaCreateForm({ className, agendaItem, ...rest }: AgendaCreateFormPr
         billCode: Yup.string().max(32).required("Bill Code is required."),
         heroImage: Yup.string(),
         sessionTime: Yup.date(),
-        isActive: Yup.bool(),
+        isActive: Yup.bool()
       })}
       onSubmit={async (values, {
         setErrors,
@@ -144,7 +149,7 @@ function AgendaCreateForm({ className, agendaItem, ...rest }: AgendaCreateFormPr
       }) => {
         const newData = {
           ...values,
-          sessionTime: firebase.firestore.Timestamp.fromDate(parse(values.sessionTime, DATE_FMT_FORM, new Date())),
+          sessionTime: firebase.firestore.Timestamp.fromDate(parse(values.sessionTime, DATE_FMT_FORM, new Date()))
         };
         if (agendaItem) {
           await updateRecord(newData, setStatus, setSubmitting);
@@ -230,7 +235,7 @@ function AgendaCreateForm({ className, agendaItem, ...rest }: AgendaCreateFormPr
                           type="datetime-local"
                           name="sessionTime"
                           InputLabelProps={{
-                            shrink: true,
+                            shrink: true
                           }}
                           onChange={handleChange}
                           value={values.sessionTime}

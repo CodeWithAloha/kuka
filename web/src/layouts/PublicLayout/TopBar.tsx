@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     '& + &': {
       marginLeft: theme.spacing(2)
     }
-  },
+  }
 }));
 
 function TopBar({ className, ...rest }: TopBarProps) {

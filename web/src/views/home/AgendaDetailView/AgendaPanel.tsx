@@ -1,7 +1,6 @@
 import React from 'react';
-import { Typography } from "@material-ui/core";
+import { Link, makeStyles, Typography } from "@material-ui/core";
 import { AgendaItem } from "../../../types/agendaItem";
-import { makeStyles, Link } from "@material-ui/core";
 import MuiLinkify from 'material-ui-linkify';
 
 interface AgendaPanelProps {
@@ -10,16 +9,16 @@ interface AgendaPanelProps {
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    marginTop: theme.spacing(5),
+    marginTop: theme.spacing(5)
   },
   preformatted: {
     fontFamily: theme.typography.fontFamily,
     fontSize: theme.typography.body1.fontSize,
     whiteSpace: 'pre-wrap',
-    wordBreak: 'keep-all',
+    wordBreak: 'keep-all'
   },
   header: {
-    marginTop: theme.spacing(3),
+    marginTop: theme.spacing(3)
   }
 }));
 

@@ -19,7 +19,7 @@ function AccountView() {
   const [currentTab, setCurrentTab] = useState<string>('general');
 
   const tabs = [
-    { value: 'general', label: 'General' },
+    { value: 'general', label: 'General' }
   ];
 
   const handleTabsChange = (event: ChangeEvent<{}>, value: string): void => {
