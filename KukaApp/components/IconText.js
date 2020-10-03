@@ -12,7 +12,7 @@ export const IconText = ({ name, children, style, ...rest }) => {
         width={24}
         height={24}
         fill={theme['text-hint-color']}
-        style={{ marginHorizontal: 8 }}
+        style={{ marginRight: 8 }}
       />
       <Text>{children}</Text>
     </View>

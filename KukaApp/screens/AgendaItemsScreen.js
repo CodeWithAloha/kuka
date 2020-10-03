@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View } from 'react-native';
+import { View, TouchableOpacity } from 'react-native';
 import {
   Layout,
   TabView,
@@ -13,28 +13,9 @@ import { differenceInCalendarDays } from 'date-fns';
 import { TopNav } from '../components/TopNav';
 import { IconText } from '../components/IconText';
 
-const UpcomingList = () => {
+const UpcomingList = ({ navigation }) => {
   const [agendas, setAgendas] = useState();
   const [now, setNow] = useState(new Date());
-
-  const renderItem = ({ item, index }) => {
-    const days = differenceInCalendarDays(
-      new Date(item.deadlineTime.toDate()),
-      now
-    );
-
-    return (
-      <View style={{ padding: 16 }}>
-        <Text>{item.title}</Text>
-        <IconText name="book-outline" style={{ marginTop: 16 }}>
-          {item.billCode}
-        </IconText>
-        <IconText name="clock-outline" style={{ marginTop: 16 }}>
-          {days}
-        </IconText>
-      </View>
-    );
-  };
 
   useEffect(() => {
     (async () => {
@@ -59,6 +40,31 @@ const UpcomingList = () => {
     })();
   }, []);
 
+  const handlePress = item => {
+    navigation.navigate('Agenda', item);
+  };
+
+  const renderItem = ({ item, index }) => {
+    const days = differenceInCalendarDays(
+      new Date(item.deadlineTime.toDate()),
+      now
+    );
+
+    return (
+      <TouchableOpacity onPress={() => handlePress(item)}>
+        <View style={{ padding: 16 }}>
+          <Text>{item.title}</Text>
+          <IconText name="book-outline" style={{ marginTop: 16 }}>
+            {item.billCode}
+          </IconText>
+          <IconText name="clock-outline" style={{ marginTop: 16 }}>
+            {days + ' days left to sumbit testimony'}
+          </IconText>
+        </View>
+      </TouchableOpacity>
+    );
+  };
+
   return (
     <>
       {agendas && agendas.length !== 0 ? (
@@ -76,17 +82,23 @@ const UpcomingList = () => {
   );
 };
 
-const HistoryList = () => {
+const HistoryList = ({ navigation }) => {
   const [agendas, setAgendas] = useState();
+
+  const handlePress = () => {
+    navigation.navigate('Agenda');
+  };
 
   const renderItem = ({ item, index }) => {
     return (
-      <View style={{ padding: 16 }}>
-        <Text>{item.title}</Text>
-        <IconText name="book-outline" style={{ marginTop: 16 }}>
-          {item.billCode}
-        </IconText>
-      </View>
+      <TouchableOpacity onPress={handlePress}>
+        <View style={{ padding: 16 }} onPress={handlePress}>
+          <Text>{item.title}</Text>
+          <IconText name="book-outline" style={{ marginTop: 16 }}>
+            {item.billCode}
+          </IconText>
+        </View>
+      </TouchableOpacity>
     );
   };
 
@@ -135,10 +147,10 @@ export const AgendaItemsScreen = ({ navigation, route }) => {
         shouldLoadComponent={index => index === selectedIndex}
       >
         <Tab title="UPCOMING">
-          <UpcomingList />
+          <UpcomingList navigation={navigation} />
         </Tab>
         <Tab title="HISTORY">
-          <HistoryList />
+          <HistoryList navigation={navigation} />
         </Tab>
       </TabView>
     </Layout>
