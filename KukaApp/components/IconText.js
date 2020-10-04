@@ -6,7 +6,7 @@ export const IconText = ({ name, children, style, ...rest }) => {
   const theme = useTheme();
 
   return (
-    <View style={[{ flexDirection: 'row' }, style]}>
+    <View style={[{ flexDirection: 'row', alignItems: 'center' }, style]}>
       <Icon
         name={name}
         width={24}
@@ -14,7 +14,7 @@ export const IconText = ({ name, children, style, ...rest }) => {
         fill={theme['text-hint-color']}
         style={{ marginRight: 8 }}
       />
-      <Text>{children}</Text>
+      <Text appearance="hint">{children}</Text>
     </View>
   );
 };

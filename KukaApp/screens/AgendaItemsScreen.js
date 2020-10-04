@@ -58,7 +58,7 @@ const UpcomingList = ({ navigation }) => {
             {item.billCode}
           </IconText>
           <IconText name="clock-outline" style={{ marginTop: 16 }}>
-            {days + ' days left to sumbit testimony'}
+            {days + ' days left to submit testimony'}
           </IconText>
         </View>
       </TouchableOpacity>
@@ -85,13 +85,13 @@ const UpcomingList = ({ navigation }) => {
 const HistoryList = ({ navigation }) => {
   const [agendas, setAgendas] = useState();
 
-  const handlePress = () => {
-    navigation.navigate('Agenda');
+  const handlePress = item => {
+    navigation.navigate('Agenda', item);
   };
 
   const renderItem = ({ item, index }) => {
     return (
-      <TouchableOpacity onPress={handlePress}>
+      <TouchableOpacity onPress={() => handlePress(item)}>
         <View style={{ padding: 16 }} onPress={handlePress}>
           <Text>{item.title}</Text>
           <IconText name="book-outline" style={{ marginTop: 16 }}>

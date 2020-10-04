@@ -7,17 +7,19 @@ import { TopNav } from '../components/TopNav';
 import { IconText } from '../components/IconText';
 
 export const AgendaScreen = ({ navigation, route }) => {
-  console.log(route.params);
+  const { deadlineTime, sessionTime } = route.params;
+  const deadlineDate = new Date(deadlineTime.toDate());
+  const sessionDate = new Date(sessionTime.toDate());
 
-  const deadlineDays = differenceInCalendarDays(
-    new Date(route.params.deadlineTime.toDate()),
-    new Date()
-  );
-
-  const sessionDays = differenceInCalendarDays(
-    new Date(route.params.sessionTime.toDate()),
-    new Date()
-  );
+  const now = new Date();
+  let deadlineDays;
+  let sessionDays;
+  if (now < deadlineDate) {
+    deadlineDays = differenceInCalendarDays(deadlineDate, now);
+    sessionDays = differenceInCalendarDays(sessionDate, now);
+  } else {
+    sessionDays = differenceInCalendarDays(now, sessionDate);
+  }
 
   const signOut = async () => {
     try {
@@ -35,18 +37,17 @@ export const AgendaScreen = ({ navigation, route }) => {
         <IconText name="book-outline" style={{ marginTop: 16 }}>
           {route.params.billCode}
         </IconText>
-        <IconText name="clock-outline" style={{ marginTop: 16 }}>
-          {deadlineDays + ' days left to sumbit testimony'}
-        </IconText>
+        {!!deadlineDays && (
+          <IconText name="clock-outline" style={{ marginTop: 16 }}>
+            {deadlineDays + ' days left to submit testimony'}
+          </IconText>
+        )}
       </Layout>
       <ScrollView contentContainerStyle={{ padding: 16 }}>
-        <Text>
-          {'Hearing on ' +
-            format(route.params.sessionTime.toDate(), 'MMMM d, yyyy') +
-            ' (' +
-            sessionDays +
-            ' days from now)'}
-        </Text>
+        <Text>{`Hearing on ${format(
+          sessionDate,
+          'MMMM d, yyyy'
+        )} (${sessionDays}d ${deadlineDays ? 'from now' : 'ago'})\n`}</Text>
         <Text>{route.params.description}</Text>
         <Button>Record Testimony</Button>
         {/* sign out button is temporary for testing purposes*/}
