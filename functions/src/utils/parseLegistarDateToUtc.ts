@@ -3,7 +3,7 @@ import { zonedTimeToUtc } from 'date-fns-tz';
 
 /**
  * Parses a legistar date and time component (stored in separate fields) into
- * a single Date object with UTC timezone
+ * a single Date object with correct timezone
  *
  * @param dateComponent a legistar date component, i.e. 2018-01-01T00:00:00
  * @param timeComponent legistar time component, i.e. '9:00 AM'
