@@ -1,4 +1,4 @@
-import type { Timestamp } from "@firebase/firestore-types";
+import type { Timestamp } from '@firebase/firestore-types';
 
 export interface Testimony {
   id?: string;
@@ -6,7 +6,7 @@ export interface Testimony {
 
   embedUrl?: string;
   thumbUrl?: string;
-  position: "APPROVE" | "DISAPPROVE" | "COMMENT";
+  position: 'APPROVE' | 'DISAPPROVE' | 'COMMENT';
   // storagePath?: string;
 
   // takes a snapshot of the data at the time of submission

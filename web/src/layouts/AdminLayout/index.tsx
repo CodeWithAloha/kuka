@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     display: 'flex',
     height: '100%',
     overflow: 'hidden',
-    width: '100%'
+    width: '100%',
   },
   wrapper: {
     display: 'flex',
@@ -22,22 +22,22 @@ const useStyles = makeStyles((theme: Theme) => ({
     overflow: 'hidden',
     paddingTop: 64,
     [theme.breakpoints.up('lg')]: {
-      paddingLeft: 256
-    }
+      paddingLeft: 256,
+    },
   },
   contentContainer: {
     display: 'flex',
     flex: '1 1 auto',
-    overflow: 'hidden'
+    overflow: 'hidden',
   },
   content: {
     flex: '1 1 auto',
     height: '100%',
-    overflow: 'auto'
-  }
+    overflow: 'auto',
+  },
 }));
 
-function AdminLayout({ children }: AdminLayoutProps){
+function AdminLayout({ children }: AdminLayoutProps) {
   const classes = useStyles();
   const [isSideNavOpen, setSideNavOpen] = useState<boolean>(false);
 
@@ -60,4 +60,3 @@ function AdminLayout({ children }: AdminLayoutProps){
 }
 
 export default AdminLayout;
-

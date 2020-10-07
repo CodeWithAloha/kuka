@@ -5,7 +5,7 @@ import clsx from 'clsx';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 import { useSnackbar } from 'notistack';
-import { format, parse } from "date-fns";
+import { format, parse } from 'date-fns';
 import {
   Box,
   Button,
@@ -20,16 +20,15 @@ import {
   Paper,
   Switch,
   TextField,
-  Typography
+  Typography,
 } from '@material-ui/core';
 import QuillEditor from 'src/components/QuillEditor';
 import { createAgendaItem, updateAgendaItem } from 'src/services/AgendaItem';
-import firebase, { storage } from "src/firebase";
-import type { AgendaItem } from "src/types/agendaItem";
-import SingleFileDropzone from "src/components/SingleFileDropzone";
-import { DATE_FMT_FORM } from "src/constants";
-import getSafeFilename from "../../../utils/getSafeFilename";
-
+import firebase, { storage } from 'src/firebase';
+import type { AgendaItem } from 'src/types/agendaItem';
+import SingleFileDropzone from 'src/components/SingleFileDropzone';
+import { DATE_FMT_FORM } from 'src/constants';
+import getSafeFilename from '../../../utils/getSafeFilename';
 
 interface AgendaCreateFormProps {
   className?: string;
@@ -38,19 +37,19 @@ interface AgendaCreateFormProps {
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    marginTop: theme.spacing(2)
+    marginTop: theme.spacing(2),
   },
   editor: {
     '& .ql-editor': {
-      height: 400
-    }
+      height: 400,
+    },
   },
   heroPreview: {
-    objectFit: 'contain'
-  }
+    objectFit: 'contain',
+  },
 }));
 
-function AgendaCreateForm({ className, agendaItem, ...rest }: AgendaCreateFormProps){
+function AgendaCreateForm({ className, agendaItem, ...rest }: AgendaCreateFormProps) {
   const classes = useStyles();
   const history = useHistory();
   const { enqueueSnackbar } = useSnackbar();
@@ -60,32 +59,32 @@ function AgendaCreateForm({ className, agendaItem, ...rest }: AgendaCreateFormPr
       setStatus({ success: true });
       setSubmitting(true);
       enqueueSnackbar('Agenda Item Updated', {
-        variant: 'success'
+        variant: 'success',
       });
     }).catch((err) => {
       console.error(err);
       enqueueSnackbar('There was an error updating the record', {
-        variant: 'error'
+        variant: 'error',
       });
       setStatus({ success: false });
       setSubmitting(false);
-    })
-  }
+    });
+  };
 
   const createRecord = async (values, setStatus, setSubmitting) => {
     createAgendaItem(values).then((docRef) => {
       setStatus({ success: true });
       setSubmitting(true);
       enqueueSnackbar('Agenda Item Created', {
-        variant: 'success'
+        variant: 'success',
       });
       history.push(`/admin/agenda-detail/${docRef.id}/edit`);
     }).catch((err) => {
       console.error(err);
       setStatus({ success: false });
       setSubmitting(false);
-    })
-  }
+    });
+  };
 
   const handleFileUpload = (acceptedFiles, setFieldValue) => {
     const file = acceptedFiles[0];
@@ -93,25 +92,25 @@ function AgendaCreateForm({ className, agendaItem, ...rest }: AgendaCreateFormPr
 
     const task = storage.ref()
       .child(`agenda-images/${agendaItem.id}/${newFilename}`)
-      .put(file)
+      .put(file);
 
     task.on(firebase.storage.TaskEvent.STATE_CHANGED, {
-      'error': (snapshot) => {
-        console.log("error uploading file")
-        console.log(snapshot)
+      error: (snapshot) => {
+        console.log('error uploading file');
+        console.log(snapshot);
       },
-      'complete': () => {
+      complete: () => {
         task.snapshot.ref
           .getDownloadURL()
           .then((value) => {
-            setFieldValue('heroImage', value)
+            setFieldValue('heroImage', value);
           })
           .catch((err) => {
-            throw new Error(err)
-          })
-      }
-    })
-  }
+            throw new Error(err);
+          });
+      },
+    });
+  };
 
   let initialValues = {
     title: '',
@@ -120,14 +119,14 @@ function AgendaCreateForm({ className, agendaItem, ...rest }: AgendaCreateFormPr
     billCode: '',
     sessionTime: format(new Date(), DATE_FMT_FORM),
     heroImage: '',
-    isActive: false
-  }
+    isActive: false,
+  };
   if (agendaItem) {
     initialValues = {
       ...initialValues,
       ...agendaItem,
-      sessionTime: format(agendaItem.sessionTime.toDate(), DATE_FMT_FORM)
-    }
+      sessionTime: format(agendaItem.sessionTime.toDate(), DATE_FMT_FORM),
+    };
   }
 
   return (
@@ -137,19 +136,18 @@ function AgendaCreateForm({ className, agendaItem, ...rest }: AgendaCreateFormPr
         title: Yup.string().max(128).required(),
         subtitle: Yup.string().max(255).required(),
         description: Yup.string().max(10240),
-        billCode: Yup.string().max(32).required("Bill Code is required."),
+        billCode: Yup.string().max(32).required('Bill Code is required.'),
         heroImage: Yup.string(),
         sessionTime: Yup.date(),
-        isActive: Yup.bool()
+        isActive: Yup.bool(),
       })}
       onSubmit={async (values, {
-        setErrors,
         setStatus,
-        setSubmitting
+        setSubmitting,
       }) => {
         const newData = {
           ...values,
-          sessionTime: firebase.firestore.Timestamp.fromDate(parse(values.sessionTime, DATE_FMT_FORM, new Date()))
+          sessionTime: firebase.firestore.Timestamp.fromDate(parse(values.sessionTime, DATE_FMT_FORM, new Date())),
         };
         if (agendaItem) {
           await updateRecord(newData, setStatus, setSubmitting);
@@ -167,7 +165,7 @@ function AgendaCreateForm({ className, agendaItem, ...rest }: AgendaCreateFormPr
         isValid,
         setFieldValue,
         touched,
-        values
+        values,
       }) => (
         <form
           onSubmit={handleSubmit}
@@ -200,7 +198,10 @@ function AgendaCreateForm({ className, agendaItem, ...rest }: AgendaCreateFormPr
                     <TextField
                       error={Boolean(touched.subtitle && errors.subtitle)}
                       fullWidth
-                      helperText={touched.subtitle && errors.subtitle ? errors.subtitle : 'Short description shown on the Agenda item card'}
+                      helperText={
+                        touched.subtitle && errors.subtitle
+                          ? errors.subtitle : 'Short description shown on the Agenda item card'
+                      }
                       label="Subtitle"
                       name="subtitle"
                       onBlur={handleBlur}
@@ -235,7 +236,7 @@ function AgendaCreateForm({ className, agendaItem, ...rest }: AgendaCreateFormPr
                           type="datetime-local"
                           name="sessionTime"
                           InputLabelProps={{
-                            shrink: true
+                            shrink: true,
                           }}
                           onChange={handleChange}
                           value={values.sessionTime}
@@ -279,7 +280,7 @@ function AgendaCreateForm({ className, agendaItem, ...rest }: AgendaCreateFormPr
                   {values.heroImage ? (
                     <CardMedia
                       classes={{
-                        media: classes.heroPreview
+                        media: classes.heroPreview,
                       }}
                       component="img"
                       height="200"
@@ -287,7 +288,7 @@ function AgendaCreateForm({ className, agendaItem, ...rest }: AgendaCreateFormPr
                     />
                   ) : null}
                   <CardContent>
-                    <SingleFileDropzone onFileDrop={(files) => handleFileUpload(files, setFieldValue)}/>
+                    <SingleFileDropzone onFileDrop={(files) => handleFileUpload(files, setFieldValue)} />
                   </CardContent>
                 </Card>
               </Box>
@@ -335,7 +336,9 @@ function AgendaCreateForm({ className, agendaItem, ...rest }: AgendaCreateFormPr
               type="submit"
               disabled={isSubmitting}
             >
-              {agendaItem ? 'Update' : 'Create'} Agenda Item
+              {agendaItem ? 'Update' : 'Create'}
+              {' '}
+              Agenda Item
             </Button>
           </Box>
         </form>

@@ -1,22 +1,22 @@
 import React from 'react';
-import { Card, CardActionArea, CardContent, CardMedia, Link, makeStyles, Typography } from '@material-ui/core';
-import { Testimony } from "../types/testimony";
+import {
+  Card, CardActionArea, CardContent, CardMedia, Link, makeStyles, Typography,
+} from '@material-ui/core';
 import { Link as RouterLink } from 'react-router-dom';
-import type { Theme } from 'src/theme';
+import { Testimony } from '../types/testimony';
 
 interface TestimonyCardProps {
   testimony: Testimony;
 }
 
 // eslint-disable-next-line no-unused-vars
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles(() => ({
   root: {},
   media: {
     height: 0,
-    paddingTop: '60%'
-  }
+    paddingTop: '60%',
+  },
 }));
-
 
 function TestimonyCard({ testimony }: TestimonyCardProps) {
   const classes = useStyles();
@@ -44,7 +44,9 @@ function TestimonyCard({ testimony }: TestimonyCardProps) {
               variant="body2"
               color="textSecondary"
             >
-              Submitted from {testimony.zipCode}
+              Submitted from
+              {' '}
+              {testimony.zipCode}
             </Typography>
           </CardContent>
         </Link>

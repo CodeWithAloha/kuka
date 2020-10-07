@@ -1,10 +1,12 @@
 import React from 'react';
-import { Card, CardContent, CardHeader, Grid, Link, makeStyles, Typography, Divider } from '@material-ui/core';
-import { AgendaItem } from "../../../types/agendaItem";
+import {
+  Card, CardContent, CardHeader, Grid, Link, makeStyles, Typography, Divider,
+} from '@material-ui/core';
 import type { Theme } from 'src/theme';
-import { addBusinessDays, format } from "date-fns";
+import { addBusinessDays, format } from 'date-fns';
 import { truncate } from 'lodash';
-import { DATETIME_FMT_HUMANIZED } from "../../../constants";
+import { AgendaItem } from '../../../types/agendaItem';
+import { DATETIME_FMT_HUMANIZED } from '../../../constants';
 
 interface AgendaCardProps {
   agendaItems: AgendaItem[];
@@ -12,15 +14,14 @@ interface AgendaCardProps {
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
-    marginBottom: theme.spacing(3)
+    marginBottom: theme.spacing(3),
   },
   cardTitle: {
-    color: theme.palette.text.secondary
+    color: theme.palette.text.secondary,
   },
   cardDescription: {
-  }
+  },
 }));
-
 
 function AgendaRows({ agendaItems }: AgendaCardProps) {
   const classes = useStyles();
@@ -28,10 +29,10 @@ function AgendaRows({ agendaItems }: AgendaCardProps) {
   return (
     <>
       {agendaItems.length === 0 && (
-        <Typography variant={"h3"}>No upcoming agenda items found</Typography>
+        <Typography variant="h3">No upcoming agenda items found</Typography>
       )}
       {agendaItems.map((agendaItem) => (
-        <Card variant={"outlined"} className={classes.root}  key={agendaItem.id}>
+        <Card variant="outlined" className={classes.root} key={agendaItem.id}>
           <CardHeader
             title={agendaItem.billCode}
             subheader={agendaItem.agendaType}
@@ -41,14 +42,14 @@ function AgendaRows({ agendaItems }: AgendaCardProps) {
 
             <Grid container spacing={3}>
               <Grid item md={9}>
-                <Typography variant={"h4"}>
+                <Typography variant="h4">
                   <Link href={`/agenda/${agendaItem.id}`}>{agendaItem.title}</Link>
                 </Typography>
                 <Typography
-                  variant={"body1"}
+                  variant="body1"
                   className={classes.cardDescription}
                 >
-                  {truncate(agendaItem.description, { length: 500})}
+                  {truncate(agendaItem.description, { length: 500 })}
                 </Typography>
               </Grid>
 
@@ -67,8 +68,7 @@ function AgendaRows({ agendaItems }: AgendaCardProps) {
                     <Link href={agendaItem.agendaFile}>Link to File</Link>
                   ) : (
                     <span>N/A</span>
-                  )
-                  }
+                  )}
                 </Typography>
                 <br />
                 <Typography
@@ -96,7 +96,7 @@ function AgendaRows({ agendaItems }: AgendaCardProps) {
                 >
                   {format(
                     addBusinessDays(agendaItem.sessionTime.toDate(), -1),
-                    DATETIME_FMT_HUMANIZED
+                    DATETIME_FMT_HUMANIZED,
                   )}
                 </Typography>
                 <br />

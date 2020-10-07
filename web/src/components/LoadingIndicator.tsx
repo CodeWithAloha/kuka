@@ -2,7 +2,6 @@ import React from 'react';
 import { CircularProgress, makeStyles } from '@material-ui/core';
 import clsx from 'clsx';
 
-
 interface LoadingIndicatorProps {
   className?: string;
 }
@@ -12,13 +11,12 @@ const useStyles = makeStyles(() => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    height: '100%'
+    height: '100%',
   },
   indicator: {
-    position: 'relative'
-  }
+    position: 'relative',
+  },
 }));
-
 
 function LoadingIndicator({ className, ...rest }: LoadingIndicatorProps) {
   const classes = useStyles();
@@ -29,6 +27,5 @@ function LoadingIndicator({ className, ...rest }: LoadingIndicatorProps) {
     </div>
   );
 }
-
 
 export default LoadingIndicator;

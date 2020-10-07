@@ -11,9 +11,9 @@ interface PageProps {
 // FIXME: fix props for typescript
 const Page = forwardRef<HTMLDivElement, PageProps>(
   ({
-     // eslint-disable-next-line react/prop-types
+    // eslint-disable-next-line react/prop-types
     children,
-     // eslint-disable-next-line react/prop-types
+    // eslint-disable-next-line react/prop-types
     title = '',
     ...rest
   }, ref) => (
@@ -26,8 +26,8 @@ const Page = forwardRef<HTMLDivElement, PageProps>(
       </Helmet>
       {children}
     </div>
-));
-
+  ),
+);
 
 Page.displayName = 'Page';
 export default Page;

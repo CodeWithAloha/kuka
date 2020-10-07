@@ -2,19 +2,19 @@ import React from 'react';
 import { Container, makeStyles } from '@material-ui/core';
 import Page from 'src/components/Page';
 import type { Theme } from 'src/theme';
-import { agendaRef } from "src/services/AgendaItem";
-import Header from './Header';
-import type { AgendaItem } from "src/types/agendaItem";
-import { useDocumentDataOnce } from "react-firebase-hooks/firestore";
+import { agendaRef } from 'src/services/AgendaItem';
+import type { AgendaItem } from 'src/types/agendaItem';
+import { useDocumentDataOnce } from 'react-firebase-hooks/firestore';
 import { useParams } from 'react-router-dom';
-import AgendaCreateForm from "../AdminAgendaCreateView/AgendaCreateForm";
+import Header from './Header';
+import AgendaCreateForm from '../AdminAgendaCreateView/AgendaCreateForm';
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
     minHeight: '100%',
     paddingTop: theme.spacing(3),
-    paddingBottom: 100
-  }
+    paddingBottom: 100,
+  },
 }));
 
 function AgendaCreateView() {
@@ -23,7 +23,7 @@ function AgendaCreateView() {
 
   const [agendaItem, loading, error] = useDocumentDataOnce<AgendaItem>(
     agendaRef.doc(id),
-    { idField: 'id' }
+    { idField: 'id' },
   );
 
   return (
@@ -33,7 +33,12 @@ function AgendaCreateView() {
     >
       <Container maxWidth="lg">
         <Header />
-        {error && <strong>Error: {JSON.stringify(error)}</strong>}
+        {error && (
+        <strong>
+          Error:
+          {JSON.stringify(error)}
+        </strong>
+        )}
         {loading && <span>Collection: Loading...</span>}
         {agendaItem && <AgendaCreateForm agendaItem={agendaItem} />}
       </Container>

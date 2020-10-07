@@ -1,3 +1,3 @@
 import { firestore } from 'src/firebase';
 
-export const testimonyRef = firestore.collection('testimonies')
+export const testimonyRef = firestore.collection('testimonies');

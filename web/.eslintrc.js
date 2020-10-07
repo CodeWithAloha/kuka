@@ -15,7 +15,9 @@ module.exports = {
         "@typescript-eslint"
     ],
     "extends": [
-        "react-app",
+        // "react-app",
+        "airbnb-typescript",
+        "airbnb/hooks",
         "eslint:recommended",
         "plugin:react/recommended"
     ],
@@ -29,6 +31,8 @@ module.exports = {
         "process": true
     },
     "rules": {
+        "max-len": ["error", { "code": 120 }],
+
         // https://github.com/typescript-eslint/typescript-eslint/issues/2315
         // There is an outstanding issue for "import type" statements
         "no-duplicate-imports": "off",
@@ -43,38 +47,16 @@ module.exports = {
         "@typescript-eslint/prefer-for-of": "warn",
         "@typescript-eslint/triple-slash-reference": "error",
         "@typescript-eslint/unified-signatures": "warn",
-        "comma-dangle": "warn",
-        "constructor-super": "error",
-        "eqeqeq": [
-            "warn",
-            "always"
-        ],
-        "import/no-deprecated": "warn",
-        "import/no-extraneous-dependencies": "error",
-        "import/no-unassigned-import": "off",
-        "no-cond-assign": "error",
-        "no-duplicate-case": "error",
-        "no-empty": [
-            "error",
-            {
-                "allowEmptyCatch": true
-            }
-        ],
-        "no-invalid-this": "error",
-        "no-new-wrappers": "error",
-        "no-redeclare": "error",
-        "no-sequences": "error",
-        "no-shadow": [
-            "error",
-            {
-                "hoist": "all"
-            }
-        ],
-        "no-throw-literal": "error",
-        "no-unsafe-finally": "error",
-        "no-unused-labels": "error",
-        "no-var": "warn",
-        "no-void": "error",
-        "prefer-const": "warn"
+
+        "react/no-array-index-key": "off",
+
+        // proptypes aren't used
+        "react/prop-types": "off",
+        "react/require-default-props": "off",
+        "react/jsx-props-no-spreading": "off",
+        "import/prefer-default-export": "warn",
+
+        // Disable old rules, overridden by @typescript-eslint
+        "no-unused-vars": "off",
     }
 };

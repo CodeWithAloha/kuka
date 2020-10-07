@@ -11,7 +11,7 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
-  makeStyles
+  makeStyles,
 } from '@material-ui/core';
 import { Calendar as CalendarIcon, Plus as PlusIcon } from 'react-feather';
 import Logo from 'src/components/Logo';
@@ -21,19 +21,18 @@ interface NavBarProps {
   openMobile: boolean;
 }
 
-
 const useStyles = makeStyles((theme) => ({
   mobileDrawer: {
-    width: 256
+    width: 256,
   },
   desktopDrawer: {
     width: 256,
     top: 64,
-    height: 'calc(100% - 64px)'
+    height: 'calc(100% - 64px)',
   },
   nested: {
-    paddingLeft: theme.spacing(5)
-  }
+    paddingLeft: theme.spacing(5),
+  },
 }));
 
 function NavBar({ onMobileClose, openMobile }: NavBarProps) {

@@ -9,8 +9,8 @@ const useStyles = makeStyles((theme: Theme) => ({
   root: {
     minHeight: '100%',
     paddingTop: theme.spacing(3),
-    paddingBottom: 100
-  }
+    paddingBottom: 100,
+  },
 }));
 
 function AgendaCreateView() {

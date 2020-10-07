@@ -10,8 +10,8 @@ const useStyles = makeStyles((theme: Theme) => ({
     height: '100%',
     justifyContent: 'center',
     minHeight: '100%',
-    padding: theme.spacing(3)
-  }
+    padding: theme.spacing(3),
+  },
 }));
 
 function LoadingScreen() {

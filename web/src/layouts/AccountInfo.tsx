@@ -1,18 +1,20 @@
 import React, { useRef, useState } from 'react';
 import { Link as RouterLink, useHistory } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
-import { Avatar, Box, ButtonBase, Hidden, makeStyles, Menu, MenuItem, Typography } from '@material-ui/core';
+import {
+  Avatar, Box, ButtonBase, Hidden, makeStyles, Menu, MenuItem, Typography,
+} from '@material-ui/core';
 import useAuth from 'src/hooks/useAuth';
 
 const useStyles = makeStyles((theme) => ({
   avatar: {
     height: 32,
     width: 32,
-    marginRight: theme.spacing(1)
+    marginRight: theme.spacing(1),
   },
   popover: {
-    width: 200
-  }
+    width: 200,
+  },
 }));
 
 function AccountInfo() {
@@ -39,7 +41,7 @@ function AccountInfo() {
     } catch (err) {
       console.error(err);
       enqueueSnackbar('Unable to logout', {
-        variant: 'error'
+        variant: 'error',
       });
     }
   };
@@ -72,7 +74,7 @@ function AccountInfo() {
         onClose={handleClose}
         anchorOrigin={{
           vertical: 'bottom',
-          horizontal: 'center'
+          horizontal: 'center',
         }}
         keepMounted
         PaperProps={{ className: classes.popover }}

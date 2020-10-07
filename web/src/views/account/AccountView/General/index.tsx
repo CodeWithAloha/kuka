@@ -10,7 +10,7 @@ interface GeneralProps {
 }
 
 const useStyles = makeStyles(() => ({
-  root: {}
+  root: {},
 }));
 
 function General({ className, ...rest }: GeneralProps) {

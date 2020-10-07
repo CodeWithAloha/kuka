@@ -8,12 +8,12 @@ import {
   Grid,
   Link,
   makeStyles,
-  Typography
+  Typography,
 } from '@material-ui/core';
-import { AgendaItem } from "../../../types/agendaItem";
 import { Link as RouterLink } from 'react-router-dom';
-import { format } from "date-fns";
-import { DATE_FMT_LONG } from "../../../constants";
+import { format } from 'date-fns';
+import { AgendaItem } from '../../../types/agendaItem';
+import { DATE_FMT_LONG } from '../../../constants';
 
 interface AgendaCardProps {
   agendaItem: AgendaItem;
@@ -23,10 +23,9 @@ const useStyles = makeStyles(() => ({
   root: {},
   media: {
     height: 0,
-    paddingTop: '56.25%' // 16:9
-  }
+    paddingTop: '56.25%', // 16:9
+  },
 }));
-
 
 function AgendaCard({ agendaItem }: AgendaCardProps) {
   const classes = useStyles();

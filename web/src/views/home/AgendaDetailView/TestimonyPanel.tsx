@@ -1,10 +1,10 @@
 import React from 'react';
-import { Grid, makeStyles, Typography } from "@material-ui/core";
-import { AgendaItem } from "../../../types/agendaItem";
-import { useCollectionData } from "react-firebase-hooks/firestore";
-import { testimonyRef } from "../../../services/Testimony";
-import TestimonyCard from "../../../components/TestimonyCard";
-import { Testimony } from "../../../types/testimony";
+import { Grid, makeStyles, Typography } from '@material-ui/core';
+import { useCollectionData } from 'react-firebase-hooks/firestore';
+import { AgendaItem } from '../../../types/agendaItem';
+import { testimonyRef } from '../../../services/Testimony';
+import TestimonyCard from '../../../components/TestimonyCard';
+import { Testimony } from '../../../types/testimony';
 
 interface AgendaPanelProps {
   agendaItem: AgendaItem;
@@ -16,12 +16,11 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     marginTop: theme.spacing(3),
-    marginBottom: theme.spacing(3)
-  }
+    marginBottom: theme.spacing(3),
+  },
 }));
 
-
-function TestimonyPanel({ agendaItem }: AgendaPanelProps){
+function TestimonyPanel({ agendaItem }: AgendaPanelProps) {
   const classes = useStyles();
 
   const [testimonies, loading, error] = useCollectionData<Testimony>(
@@ -29,13 +28,13 @@ function TestimonyPanel({ agendaItem }: AgendaPanelProps){
       .where('agendaId', '==', agendaItem.id),
     {
       idField: 'id',
-      snapshotListenOptions: { includeMetadataChanges: true }
-    }
-  )
+      snapshotListenOptions: { includeMetadataChanges: true },
+    },
+  );
 
   return (
     <div className={classes.root}>
-      <Typography className={classes.title} variant={"h2"}>
+      <Typography className={classes.title} variant="h2">
         Testimonies
       </Typography>
 
@@ -43,7 +42,7 @@ function TestimonyPanel({ agendaItem }: AgendaPanelProps){
         {error && <div>error</div>}
         {loading && <div>loading</div>}
         {testimonies && testimonies.map((testimony) => (
-          <Grid item xs={6} md={3} key={testimony.id} >
+          <Grid item xs={6} md={3} key={testimony.id}>
             <TestimonyCard testimony={testimony} />
           </Grid>
         ))}
@@ -53,7 +52,7 @@ function TestimonyPanel({ agendaItem }: AgendaPanelProps){
 
       </Grid>
     </div>
-  )
+  );
 }
 
 export default TestimonyPanel;

@@ -1,42 +1,43 @@
 import React from 'react';
 import { find } from 'lodash';
-import { Box, Container, Grid, makeStyles, Typography } from '@material-ui/core';
+import {
+  Box, Container, Grid, makeStyles, Typography,
+} from '@material-ui/core';
 import Page from 'src/components/Page';
-import ReactPlayer from "react-player";
-import { useParams } from "react-router";
-import { agendaRef } from "../../../services/AgendaItem";
-import { useCollectionDataOnce, useDocumentDataOnce } from "react-firebase-hooks/firestore";
-import { testimonyRef } from "../../../services/Testimony";
-import type { AgendaItem } from "../../../types/agendaItem";
-import type { Testimony } from "../../../types/testimony";
-import TestimonyCard from "../../../components/TestimonyCard";
-
+import ReactPlayer from 'react-player';
+import { useParams } from 'react-router';
+import { useCollectionDataOnce, useDocumentDataOnce } from 'react-firebase-hooks/firestore';
+import { agendaRef } from '../../../services/AgendaItem';
+import { testimonyRef } from '../../../services/Testimony';
+import type { AgendaItem } from '../../../types/agendaItem';
+import type { Testimony } from '../../../types/testimony';
+import TestimonyCard from '../../../components/TestimonyCard';
 
 const useStyles = makeStyles(() => ({
   root: {},
   reactPlayer: {
     position: 'absolute',
     top: 0,
-    left: 0
+    left: 0,
   },
   playerWrapper: {
     position: 'relative',
-    paddingTop: '56.25%' /* Player ratio: 100 / (1280 / 720) */
-  }
+    paddingTop: '56.25%', /* Player ratio: 100 / (1280 / 720) */
+  },
 }));
 
 function TestimonyDetailView() {
   const classes = useStyles();
   const { agendaId, testimonyId } = useParams();
 
-  const [agendaItem ] = useDocumentDataOnce<AgendaItem>(
-    agendaRef.doc(agendaId)
-  )
+  const [agendaItem] = useDocumentDataOnce<AgendaItem>(
+    agendaRef.doc(agendaId),
+  );
 
-  const [ testimonyList ] = useCollectionDataOnce<Testimony>(
+  const [testimonyList] = useCollectionDataOnce<Testimony>(
     testimonyRef.orderBy('createdAt'),
-    { idField: 'id' }
-  )
+    { idField: 'id' },
+  );
 
   const selectedTestimony = find(testimonyList, { id: testimonyId });
 
@@ -64,9 +65,9 @@ function TestimonyDetailView() {
                 <ReactPlayer
                   className={classes.reactPlayer}
                   controls
-                  height={"100%"}
+                  height="100%"
                   url={selectedTestimony.embedUrl}
-                  width={"100%"}
+                  width="100%"
                 />
               </div>
             )}

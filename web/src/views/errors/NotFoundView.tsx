@@ -1,16 +1,17 @@
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-import { Box, Button, Container, makeStyles, Typography, useMediaQuery, useTheme } from '@material-ui/core';
-import type { Theme } from 'src/theme';
+import {
+  Box, Button, Container, makeStyles, Typography, useMediaQuery, useTheme,
+} from '@material-ui/core';
 import Page from 'src/components/Page';
 
 // eslint-disable-next-line no-unused-vars
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     minHeight: '100%',
     display: 'flex',
-    alignItems: 'center'
-  }
+    alignItems: 'center',
+  },
 }));
 
 function NotFoundView() {

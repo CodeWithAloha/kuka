@@ -1,15 +1,16 @@
 import React, { ChangeEvent, useEffect, useState } from 'react';
-import { Box, Container, makeStyles, Tab, Tabs } from '@material-ui/core';
-import { useHistory, useParams } from "react-router-dom";
+import {
+  Box, Container, makeStyles, Tab, Tabs,
+} from '@material-ui/core';
+import { useHistory, useParams } from 'react-router-dom';
 import Page from 'src/components/Page';
-import { useCollectionData } from "react-firebase-hooks/firestore";
-import { AgendaItem } from "../../../types/agendaItem";
-import { agendaRef } from "../../../services/AgendaItem";
-import AgendaRows from './AgendaRows'
-
+import { useCollectionData } from 'react-firebase-hooks/firestore';
+import { AgendaItem } from '../../../types/agendaItem';
+import { agendaRef } from '../../../services/AgendaItem';
+import AgendaRows from './AgendaRows';
 
 const useStyles = makeStyles(() => ({
-  root: {}
+  root: {},
 }));
 
 function HomeView() {
@@ -17,12 +18,12 @@ function HomeView() {
   const classes = useStyles();
   let { currentTab } = useParams();
   const [query, setQuery] = useState(
-    agendaRef.where('isActive', '==', true)
+    agendaRef.where('isActive', '==', true),
   );
   currentTab = currentTab || 'upcoming';
   const tabs = [
     { value: 'upcoming', label: 'Upcoming' },
-    { value: 'history', label: 'History' }
+    { value: 'history', label: 'History' },
   ];
 
   useEffect(() => {
@@ -32,27 +33,26 @@ function HomeView() {
       // TODO: items need to be submitted a few business days prior to session time.
       q = agendaRef
         .where('sessionTime', '<', new Date())
-        .orderBy("sessionTime", "desc")
+        .orderBy('sessionTime', 'desc');
     } else {
       q = agendaRef
         .where('sessionTime', '>', new Date())
-        .orderBy("sessionTime", "asc")
+        .orderBy('sessionTime', 'asc');
     }
 
     setQuery(q);
-
-  }, [currentTab])
+  }, [currentTab]);
 
   const [agendaItems, loading, error] = useCollectionData<AgendaItem>(
     query,
     {
       idField: 'id',
-      snapshotListenOptions: { includeMetadataChanges: true }
-    }
+      snapshotListenOptions: { includeMetadataChanges: true },
+    },
   );
 
   const handleTabsChange = (event: ChangeEvent<{}>, value: string): void => {
-    history.push(`/${value}`)
+    history.push(`/${value}`);
   };
 
   return (
@@ -80,7 +80,12 @@ function HomeView() {
         </Box>
 
         <Box mt={3}>
-          {error && <strong>Error: {JSON.stringify(error)}</strong>}
+          {error && (
+          <strong>
+            Error:
+            {JSON.stringify(error)}
+          </strong>
+          )}
           {loading && <p>Loading</p>}
           {agendaItems && <AgendaRows agendaItems={agendaItems} />}
         </Box>

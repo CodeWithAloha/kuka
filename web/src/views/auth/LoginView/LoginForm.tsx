@@ -2,7 +2,9 @@ import React from 'react';
 import clsx from 'clsx';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
-import { Box, Button, Divider, FormHelperText, makeStyles, TextField, Typography } from '@material-ui/core';
+import {
+  Box, Button, Divider, FormHelperText, makeStyles, TextField, Typography,
+} from '@material-ui/core';
 import type { Theme } from 'src/theme';
 import useAuth from 'src/hooks/useAuth';
 import useIsMountedRef from 'src/hooks/useIsMountedRef';
@@ -14,17 +16,17 @@ interface FirebaseAuthLoginProps {
 const useStyles = makeStyles((theme: Theme) => ({
   root: {},
   googleButton: {
-    backgroundColor: theme.palette.common.white
+    backgroundColor: theme.palette.common.white,
   },
   providerIcon: {
-    marginRight: theme.spacing(2)
+    marginRight: theme.spacing(2),
   },
   divider: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   dividerText: {
-    margin: theme.spacing(2)
-  }
+    margin: theme.spacing(2),
+  },
 }));
 
 function LoginForm({ className, ...rest }: FirebaseAuthLoginProps) {
@@ -35,7 +37,7 @@ function LoginForm({ className, ...rest }: FirebaseAuthLoginProps) {
   const handleGoogleClick = async () => {
     try {
       await signInWithGoogle();
-    } catch(err) {
+    } catch (err) {
       console.error(err);
     }
   };
@@ -46,16 +48,16 @@ function LoginForm({ className, ...rest }: FirebaseAuthLoginProps) {
         initialValues={{
           email: '',
           password: '',
-          submit: null
+          submit: null,
         }}
         validationSchema={Yup.object().shape({
           email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
-          password: Yup.string().max(255).required('Password is required')
+          password: Yup.string().max(255).required('Password is required'),
         })}
         onSubmit={async (values, {
           setErrors,
           setStatus,
-          setSubmitting
+          setSubmitting,
         }) => {
           try {
             await signInWithEmailAndPassword(values.email, values.password);
@@ -81,7 +83,7 @@ function LoginForm({ className, ...rest }: FirebaseAuthLoginProps) {
           handleSubmit,
           isSubmitting,
           touched,
-          values
+          values,
         }) => (
           <form
             noValidate

@@ -1,4 +1,4 @@
-import type { Timestamp } from "@firebase/firestore-types";
+import type { Timestamp } from '@firebase/firestore-types';
 
 /**
  * Notes on Legistar and conversion to the internal model.
@@ -41,33 +41,32 @@ import type { Timestamp } from "@firebase/firestore-types";
  *
  */
 
-
 export interface AgendaAttachment {
-  id: number;        // source=MatterAttachmentId
-  fileName: string;  // source=MatterAttachmentName
-  link: string;      // source=MatterAttachmentHyperlink
-  sortKey: number;   // source=MatterAttachmentSort
+  id: number; // source=MatterAttachmentId
+  fileName: string; // source=MatterAttachmentName
+  link: string; // source=MatterAttachmentHyperlink
+  sortKey: number; // source=MatterAttachmentSort
 
   // data origin
   _sourceMatterAttachmentId: number;
 }
 
 export interface AgendaItem {
-  id: string;             // source=EventItemId
-  title: string;           // source=EventItemTitle
-  agendaType: string;      // source=EventItemMatterType
-  agendaFile: string | null;  // source=EventAgendaFile, usually attached to the event
-  location: string;        // source=EventLocation
-  description: string;     // source=MatterTextPlain
-  billCode: string;        // source=MatterFile
-  heroImage?: string;      // add some pizzazz for bills we care about.
+  id: string; // source=EventItemId
+  title: string; // source=EventItemTitle
+  agendaType: string; // source=EventItemMatterType
+  agendaFile: string | null; // source=EventAgendaFile, usually attached to the event
+  location: string; // source=EventLocation
+  description: string; // source=MatterTextPlain
+  billCode: string; // source=MatterFile
+  heroImage?: string; // add some pizzazz for bills we care about.
   attachments: AgendaAttachment[];
 
   // TODO: maybe use withConverter() so we never have to deal with Timestamps.
-  sessionTime: Timestamp;  // source=EventDate + EventTime localized to HST
-  isActive: boolean;       // when "EventAgendaStatusId" === 10, "EventAgendaStatusName" === "Final",
+  sessionTime: Timestamp; // source=EventDate + EventTime localized to HST
+  isActive: boolean; // when "EventAgendaStatusId" === 10, "EventAgendaStatusName" === "Final",
 
-  eventUrl: string;        // source=EventInSiteURL
+  eventUrl: string; // source=EventInSiteURL
 
   // Internally managed fields
   // removed createdAt field to make create/updates easier to maintain -- firestore does not
@@ -82,4 +81,3 @@ export interface AgendaItem {
   _sourceMatterId: number;
   _sourceMatterTextId: number;
 }
-

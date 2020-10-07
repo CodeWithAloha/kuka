@@ -1,7 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
 import { useDropzone } from 'react-dropzone';
-import type { DropzoneOptions } from "react-dropzone";
+import type { DropzoneOptions } from 'react-dropzone';
 import { Box, makeStyles, Typography } from '@material-ui/core';
 import type { Theme } from '../theme';
 
@@ -21,13 +21,13 @@ const useStyles = makeStyles((theme: Theme) => ({
     '&:hover': {
       backgroundColor: theme.palette.action.hover,
       opacity: 0.5,
-      cursor: 'pointer'
-    }
+      cursor: 'pointer',
+    },
   },
   dragActive: {
     backgroundColor: theme.palette.action.active,
-    opacity: 0.5
-  }
+    opacity: 0.5,
+  },
 }));
 
 function SingleFileDropzone({ className, onFileDrop, ...rest }: FilesDropzoneProps) {
@@ -36,7 +36,7 @@ function SingleFileDropzone({ className, onFileDrop, ...rest }: FilesDropzonePro
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop: onFileDrop,
     accept: 'image/jpeg, image/png',
-    multiple: false
+    multiple: false,
   });
 
   return (
@@ -47,7 +47,7 @@ function SingleFileDropzone({ className, onFileDrop, ...rest }: FilesDropzonePro
       <div
         className={clsx({
           [classes.dropZone]: true,
-          [classes.dragActive]: isDragActive
+          [classes.dragActive]: isDragActive,
         })}
         {...getRootProps()}
       >

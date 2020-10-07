@@ -1,5 +1,5 @@
 import React from 'react';
-import { AgendaItem } from "../../../types/agendaItem";
+import { AgendaItem } from '../../../types/agendaItem';
 
 interface ResultProps {
   agendaItems: AgendaItem[];
@@ -7,10 +7,12 @@ interface ResultProps {
 }
 
 function Results({ agendaItems, layout }: ResultProps) {
+  console.log(agendaItems);
+  console.log(layout);
   return (
     <>
     </>
-  )
+  );
 }
 
 export default Results;

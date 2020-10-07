@@ -1,15 +1,15 @@
 import React from 'react';
 import { Container, makeStyles } from '@material-ui/core';
 import Page from 'src/components/Page';
-import { agendaRef } from "src/services/AgendaItem";
-import type { AgendaItem } from "src/types/agendaItem";
-import { useDocumentData } from "react-firebase-hooks/firestore";
-import { useParams } from "react-router-dom";
+import { agendaRef } from 'src/services/AgendaItem';
+import type { AgendaItem } from 'src/types/agendaItem';
+import { useDocumentData } from 'react-firebase-hooks/firestore';
+import { useParams } from 'react-router-dom';
 import AgendaPanel from './AgendaPanel';
-import TestimonyPanel from "./TestimonyPanel";
+import TestimonyPanel from './TestimonyPanel';
 
 const useStyles = makeStyles(() => ({
-  root: {}
+  root: {},
 }));
 
 function AgendaDetailView() {
@@ -19,8 +19,8 @@ function AgendaDetailView() {
     agendaRef.doc(id),
     {
       idField: 'id',
-      snapshotListenOptions: { includeMetadataChanges: true }
-    }
+      snapshotListenOptions: { includeMetadataChanges: true },
+    },
   );
 
   return (
@@ -29,7 +29,12 @@ function AgendaDetailView() {
       title="Agenda Detail"
     >
       <Container maxWidth="lg">
-        {error && <strong>Error: {JSON.stringify(error)}</strong>}
+        {error && (
+        <strong>
+          Error:
+          {JSON.stringify(error)}
+        </strong>
+        )}
         {loading && <span>Collection: Loading...</span>}
         {agendaItem && (
           <>

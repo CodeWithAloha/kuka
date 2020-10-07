@@ -2,10 +2,10 @@ import React from 'react';
 import { Container, makeStyles } from '@material-ui/core';
 import Page from 'src/components/Page';
 import type { Theme } from 'src/theme';
-import { agendaRef } from "src/services/AgendaItem";
+import { agendaRef } from 'src/services/AgendaItem';
+import type { AgendaItem } from 'src/types/agendaItem';
+import { useCollectionData } from 'react-firebase-hooks/firestore';
 import Header from './Header';
-import type { AgendaItem } from "src/types/agendaItem";
-import { useCollectionData } from "react-firebase-hooks/firestore";
 import Results from './Results';
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -13,8 +13,8 @@ const useStyles = makeStyles((theme: Theme) => ({
     minHeight: '100%',
     marginTop: theme.spacing(3),
     marginBottom: theme.spacing(3),
-    backgroundColor: theme.palette.background.default
-  }
+    backgroundColor: theme.palette.background.default,
+  },
 }));
 
 function AgendaCreateView() {
@@ -23,8 +23,8 @@ function AgendaCreateView() {
     agendaRef,
     {
       idField: 'id',
-      snapshotListenOptions: { includeMetadataChanges: true }
-    }
+      snapshotListenOptions: { includeMetadataChanges: true },
+    },
   );
 
   return (
@@ -34,7 +34,12 @@ function AgendaCreateView() {
     >
       <Container maxWidth="lg">
         <Header />
-        {error && <strong>Error: {JSON.stringify(error)}</strong>}
+        {error && (
+        <strong>
+          Error:
+          {JSON.stringify(error)}
+        </strong>
+        )}
         {loading && <span>Collection: Loading...</span>}
         {agendaItems && (
           <Results agendaItems={agendaItems} />
