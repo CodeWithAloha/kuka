@@ -188,7 +188,7 @@ export async function getEventItems(eventId: number): Promise<any[]> {
   // console.log(url)
   const resp = await axios.get(url, {
     params: {
-      $filter: 'EventItemMatterId ne null',
+      $filter: 'EventItemMatterId ne null and EventItemMatterStatus eq \'Agenda Ready\'',
     },
   });
 
