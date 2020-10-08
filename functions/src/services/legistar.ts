@@ -1,15 +1,15 @@
 import axios from 'axios';
-import { first, max, orderBy, trim } from 'lodash';
+import {
+  first, max, orderBy, trim,
+} from 'lodash';
 import { format } from 'date-fns';
-import { AgendaAttachment, AgendaItem } from "../../../web/src/types/agendaItem";
-import parseLegistarDateToUtc from "../utils/parseLegistarDateToUtc";
 import { firestore } from 'firebase-admin';
 import { compareTwoStrings } from 'string-similarity';
-import { removeEmptyPages } from "../utils/textUtils";
+import { AgendaAttachment, AgendaItem } from '../../../web/src/types/agendaItem';
+import parseLegistarDateToUtc from '../utils/parseLegistarDateToUtc';
+import { removeEmptyPages } from '../utils/textUtils';
 
 const LEGISTAR_ROOT = 'https://webapi.legistar.com/v1/mauicounty';
-
-
 
 /**
  *
@@ -30,23 +30,24 @@ const LEGISTAR_ROOT = 'https://webapi.legistar.com/v1/mauicounty';
     "EventAgendaStatusName": "Final",
     "EventMinutesStatusId": 10,
     "EventMinutesStatusName": "Final",
-    "EventLocation": "Online Only\r\nPhone testimony: 408-915-6290, meeting code 798 867 277\r\nVideo testimony: https://bluejeans.com/798867277\r\nView live: Akaku, Channel 53 or mauicounty.us/agendas\r\n*Subject to change without notice. Visit mauicounty.us for more\r\ninformation.",
-    "EventAgendaFile": "https://mauicounty.legistar1.com/mauicounty/meetings/2020/9/2854_A_Affordable_Housing_Committee_20-09-23_Committee_Agenda.pdf",
+    "EventLocation": "Online Only\r\nPhone testimony: 408-915-6290, meeting code 798 867 277...",
+    "EventAgendaFile": "https://mauicounty.legistar1.com/mauicounty/meetings/2020/9/2854_A_...pdf",
     "EventMinutesFile": null,
     "EventAgendaLastPublishedUTC": "2020-09-17T00:16:51.183",
     "EventMinutesLastPublishedUTC": null,
     "EventComment": "Recessed to 09/29/20 at 1:30 p.m.",
     "EventVideoPath": null,
-    "EventInSiteURL": "https://mauicounty.legistar.com/MeetingDetail.aspx?LEGID=2854&GID=632&G=E71DEF67-B5BD-48E0-B187-94BEDF37B05F",
+    "EventInSiteURL": "https://mauicounty.legistar.com/MeetingDetail.aspx?LEGID=2854&GID=632&G=E7...",
     "EventItems": []
    }
  */
 export async function getEvents(newerThan: Date): Promise<any[]> {
-  console.debug("Retrieving events")
+  console.debug('Retrieving events');
   const resp = await axios.get(`${LEGISTAR_ROOT}/Events`, {
     params: {
-      '$filter': `EventLastModifiedUtc ge datetime\'${format(newerThan, 'yyyy-MM-dd')}\' and EventAgendaStatusName eq 'Final'`
-    }
+      $filter: `EventLastModifiedUtc ge datetime'${format(newerThan, 'yyyy-MM-dd')}' `
+      + 'and EventAgendaStatusName eq \'Final\'',
+    },
   });
 
   return resp.data;
@@ -64,7 +65,7 @@ export async function getEvents(newerThan: Date): Promise<any[]> {
     "MatterRowVersion": "AAAAAABgTyk=",
     "MatterFile": "CC 20-464",
     "MatterName": null,
-    "MatterTitle": "PROSECUTING ATTORNEY, transmitting a copy of Administrative Directive No. 19-01 and Executive Memorandum No. 20-05 from the State of Hawaii, Department of Budget and Finance, authorizing the County of Maui to be reimbursed for allowable expenses incurred by the witnesses and defendants in criminal proceedings in the amount of $25,000.",
+    "MatterTitle": "PROSECUTING ATTORNEY, ....really long title"
     "MatterTypeId": 63,
     "MatterTypeName": "County Communication",
     "MatterStatusId": 80,
@@ -99,8 +100,8 @@ export async function getMatterAttachments(matterId: number): Promise<AgendaAtta
   console.log(`Getting matter attachments: ${matterId}`);
   const resp = await axios.get(`${LEGISTAR_ROOT}/Matters/${matterId}/Attachments`, {
     params: {
-      'orderby': 'MatterAttachmentSort'
-    }
+      orderby: 'MatterAttachmentSort',
+    },
   });
 
   return resp.data.map((attachment: any) => ({
@@ -108,10 +109,9 @@ export async function getMatterAttachments(matterId: number): Promise<AgendaAtta
     fileName: attachment.MatterAttachmentName,
     link: attachment.MatterAttachmentHyperlink,
     sortKey: attachment.MatterAttachmentSort,
-    _sourceMatterAttachmentId: attachment.MatterAttachmentId
-  }))
+    _sourceMatterAttachmentId: attachment.MatterAttachmentId,
+  }));
 }
-
 
 /**
  *
@@ -133,8 +133,8 @@ async function getMatterText(matterId: number): Promise<any> {
   console.log(`Getting MatterText: ${matterId}`);
   const versions = await axios.get(`${LEGISTAR_ROOT}/Matters/${matterId}/Versions`);
   const highestVersion = first(
-    orderBy(versions.data, ['Value'], ['desc'])
-  )
+    orderBy(versions.data, ['Value'], ['desc']),
+  );
 
   const matterText = await axios.get(`${LEGISTAR_ROOT}/Matters/${matterId}/Texts/${highestVersion.Key}`);
   return matterText.data;
@@ -165,7 +165,7 @@ async function getMatterText(matterId: number): Promise<any> {
       "EventItemPassedFlagName": null,
       "EventItemRollCallFlag": 0,
       "EventItemFlagExtra": 0,
-      "EventItemTitle": "PROSECUTING ATTORNEY, transmitting a copy of Administrative Directive No. 19-01 and Executive Memorandum No. 20-05 from the State of Hawaii, Department of Budget and Finance, authorizing the County of Maui to be reimbursed for allowable expenses incurred by the witnesses and defendants in criminal proceedings in the amount of $25,000.",
+      "EventItemTitle": "PROSECUTING ATTORNEY, transmitting a copy of ...",
       "EventItemTally": null,
       "EventItemAccelaRecordId": null,
       "EventItemConsent": 0,
@@ -184,18 +184,18 @@ async function getMatterText(matterId: number): Promise<any> {
  */
 // @ts-ignore
 export async function getEventItems(eventId: number): Promise<any[]> {
-  const url = `${LEGISTAR_ROOT}/Events/${eventId}/EventItems`
+  const url = `${LEGISTAR_ROOT}/Events/${eventId}/EventItems`;
   // console.log(url)
   const resp = await axios.get(url, {
     params: {
-      '$filter': 'EventItemMatterId ne null'
-    }
-  })
+      $filter: 'EventItemMatterId ne null',
+    },
+  });
 
   return resp.data;
 }
 
-export async function eventItemToAgenda(event: any, eventItem: any): Promise<AgendaItem> {
+export async function eventItemToAgenda(event: any, eventItem: any): Promise<AgendaItem | null> {
   const eventTime = parseLegistarDateToUtc(event.EventDate, event.EventTime);
   const matter = await getMatter(eventItem.EventItemMatterId);
   const matterText = await getMatterText(eventItem.EventItemMatterId);
@@ -205,7 +205,8 @@ export async function eventItemToAgenda(event: any, eventItem: any): Promise<Age
 
   // Maui County event titles are often cut+pasted into the description
   // Check for string similarity, if title and matter text are similar, set description to an empty string.
-  let description = matterText.MatterTextPlain;
+  // MatterTextPlain is sometimes null
+  let description = matterText.MatterTextPlain || '';
   if (compareTwoStrings(title, description) > 0.8) {
     description = '';
   }
@@ -214,19 +215,19 @@ export async function eventItemToAgenda(event: any, eventItem: any): Promise<Age
   // skip all testimony attachments
   attachments = attachments.filter((attachment) => {
     const words = attachment.fileName.toLowerCase().split(' ');
-    const numbers = words.map((word) => compareTwoStrings(word, 'testimony'))
+    const numbers = words.map((word) => compareTwoStrings(word, 'testimony'));
 
     // filter out all filenames with the word "Testimony", handles typos which occasionally happen.
     // @ts-ignore
-    return !(max(numbers) > 0.52)
-  })
+    return !(max(numbers) > 0.52);
+  });
 
   return {
     id: eventItem.EventItemId.toString(),
     title,
     agendaType: eventItem.EventItemMatterType,
     agendaFile: event.EventAgendaFile,
-    location: event.EventLocation,
+    location: event.EventLocation ? event.EventLocation.trim() : '',
 
     description,
     billCode: matter.MatterFile,
@@ -239,6 +240,6 @@ export async function eventItemToAgenda(event: any, eventItem: any): Promise<Age
     _sourceEventId: event.EventId,
     _sourceEventItemId: eventItem.EventItemId,
     _sourceMatterId: eventItem.EventItemMatterId,
-    _sourceMatterTextId: matterText.MatterTextId
-  }
+    _sourceMatterTextId: matterText.MatterTextId,
+  };
 }

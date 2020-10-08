@@ -34,7 +34,7 @@ function AgendaPanel({ agendaItem }: AgendaPanelProps) {
       </Typography>
 
       <pre className={classes.preformatted}>
-        {agendaItem.description.trim()}
+        {agendaItem.description}
       </pre>
 
       <Typography variant="h3" className={classes.header}>Location</Typography>

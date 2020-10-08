@@ -10,10 +10,10 @@ import { zonedTimeToUtc } from 'date-fns-tz';
  */
 const parseLegistarDateToUtc = (dateComponent: string, timeComponent: string): Date => {
   // console.log(`Parsing\n  dateComponent: ${dateComponent}\n  timeComponent: ${timeComponent}`)
-  const parsedDate = parse(dateComponent.split('T')[0],'yyyy-MM-dd', new Date())
-  const combined = parse(timeComponent, 'h:mm aa', parsedDate)
+  const parsedDate = parse(dateComponent.split('T')[0], 'yyyy-MM-dd', new Date());
+  const combined = parse(timeComponent, 'h:mm aa', parsedDate);
 
-  return zonedTimeToUtc(combined, 'Pacific/Honolulu')
-}
+  return zonedTimeToUtc(combined, 'Pacific/Honolulu');
+};
 
 export default parseLegistarDateToUtc;
