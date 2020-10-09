@@ -3,12 +3,14 @@ import clsx from 'clsx';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 import { useSnackbar } from 'notistack';
-import { Box, Button, Card, CardContent, CardHeader, Divider, Grid, makeStyles, TextField } from '@material-ui/core';
+import {
+  Box, Button, Card, CardContent, CardHeader, Divider, Grid, makeStyles, TextField,
+} from '@material-ui/core';
 import type { User } from 'src/types/user';
-import { Profile } from "src/types/profile";
-import { useDocumentData } from "react-firebase-hooks/firestore";
-import { profileRef, updateProfile } from "../../../../services/Profile";
-import LoadingIndicator from "../../../../components/LoadingIndicator";
+import { Profile } from 'src/types/profile';
+import { useDocumentData } from 'react-firebase-hooks/firestore';
+import { profileRef, updateProfile } from '../../../../services/Profile';
+import LoadingIndicator from '../../../../components/LoadingIndicator';
 
 interface GeneralSettingsProps {
   className?: string;
@@ -16,7 +18,7 @@ interface GeneralSettingsProps {
 }
 
 const useStyles = makeStyles(() => ({
-  root: {}
+  root: {},
 }));
 
 function GeneralSettings({ className, user, ...rest }: GeneralSettingsProps) {
@@ -39,19 +41,19 @@ function GeneralSettings({ className, user, ...rest }: GeneralSettingsProps) {
         lobbyGroup: Yup.string().max(255),
       })}
       onSubmit={async (values, {
-        setSubmitting
+        setSubmitting,
       }) => {
         setSubmitting(true);
         await updateProfile(user.id, values)
           .then(() => {
             enqueueSnackbar('Profile updated', {
-              variant: 'success'
+              variant: 'success',
             });
           })
-          .catch(() => {})
+          .catch((err) => { console.error(err); })
           .finally(() => {
             setSubmitting(false);
-          })
+          });
       }}
     >
       {({
@@ -61,7 +63,7 @@ function GeneralSettings({ className, user, ...rest }: GeneralSettingsProps) {
         handleSubmit,
         isSubmitting,
         touched,
-        values
+        values,
       }) => (
         <form onSubmit={handleSubmit}>
           <Card
@@ -115,7 +117,10 @@ function GeneralSettings({ className, user, ...rest }: GeneralSettingsProps) {
                     onChange={handleChange}
                     variant="outlined"
                     error={Boolean(touched.zipCode && errors.zipCode)}
-                    helperText={touched.zipCode && errors.zipCode ? errors.zipCode : 'Your zipcode will be used for testimony submission.'}
+                    helperText={
+                      touched.zipCode && errors.zipCode
+                        ? errors.zipCode : 'Your zipcode will be used for testimony submission.'
+                    }
                   />
                 </Grid>
                 <Grid
@@ -131,7 +136,11 @@ function GeneralSettings({ className, user, ...rest }: GeneralSettingsProps) {
                     variant="outlined"
                     value={values.lobbyGroup}
                     error={Boolean(touched.lobbyGroup && errors.lobbyGroup)}
-                    helperText={touched.lobbyGroup && errors.lobbyGroup ? errors.lobbyGroup : "Fill this in if you're submitting testimony on behalf of a lobbying group."}
+                    helperText={
+                      touched.lobbyGroup && errors.lobbyGroup
+                        ? errors.lobbyGroup : 'Fill this in if you\'re submitting testimony on behalf of a '
+                        + 'lobbying group.'
+                    }
                   />
                 </Grid>
               </Grid>

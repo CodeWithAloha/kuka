@@ -1,10 +1,11 @@
 import React from 'react';
 import clsx from 'clsx';
-import { Avatar, Box, Card, CardContent, makeStyles, Typography, Chip } from '@material-ui/core';
+import {
+  Avatar, Box, Card, CardContent, makeStyles, Typography, Chip,
+} from '@material-ui/core';
 import { Face as FaceIcon } from '@material-ui/icons';
 import type { Theme } from 'src/theme';
 import type { User } from 'src/types/user';
-
 
 interface ProfileDetailsProps {
   className?: string;
@@ -14,17 +15,17 @@ interface ProfileDetailsProps {
 const useStyles = makeStyles((theme: Theme) => ({
   root: {},
   name: {
-    marginTop: theme.spacing(1)
+    marginTop: theme.spacing(1),
   },
   avatar: {
     height: 100,
-    width: 100
+    width: 100,
   },
   userId: {
     fontSize: '10px',
     color: theme.palette.text.hint,
-    marginTop: theme.spacing(2)
-  }
+    marginTop: theme.spacing(2),
+  },
 }));
 
 function ProfileCard({ className, user, ...rest }: ProfileDetailsProps) {

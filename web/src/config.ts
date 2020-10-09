@@ -5,6 +5,6 @@ export const firebaseConfig = {
   databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
   messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
   projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET
-  //TODO: google analytics
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  // TODO: google analytics
 };

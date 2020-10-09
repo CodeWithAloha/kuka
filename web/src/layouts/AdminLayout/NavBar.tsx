@@ -21,18 +21,17 @@ interface NavBarProps {
   openMobile: boolean;
 }
 
-
 const useStyles = makeStyles((theme) => ({
   mobileDrawer: {
-    width: 256
+    width: 256,
   },
   desktopDrawer: {
     width: 256,
     top: 64,
-    height: 'calc(100% - 64px)'
+    height: 'calc(100% - 64px)',
   },
   nested: {
-    paddingLeft: theme.spacing(5)
+    paddingLeft: theme.spacing(5),
   },
 }));
 
@@ -87,6 +86,27 @@ function NavBar({ onMobileClose, openMobile }: NavBarProps) {
             <ListItemText primary="Create Agenda Item" />
           </ListItem>
         </List>
+
+        <ListItem button component={NavLink} to="/admin/testimony-list">
+          <ListItemIcon><CalendarIcon /></ListItemIcon>
+          <ListItemText primary="Agenda Items" />
+        </ListItem>
+
+        <List
+          component="div"
+          dense
+          disablePadding
+        >
+          <ListItem
+            button
+            className={classes.nested}
+            component={NavLink}
+            to="/admin/agenda-create"
+          >
+            <ListItemIcon><PlusIcon /></ListItemIcon>
+            <ListItemText primary="Create Agenda Item" />
+          </ListItem>
+        </List>
       </List>
       <Divider />
     </Box>
@@ -117,6 +137,6 @@ function NavBar({ onMobileClose, openMobile }: NavBarProps) {
       </Hidden>
     </>
   );
-};
+}
 
 export default NavBar;

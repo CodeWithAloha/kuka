@@ -1,6 +1,8 @@
 import type { ChangeEvent } from 'react';
 import React, { useState } from 'react';
-import { Box, Container, Divider, makeStyles, Tab, Tabs } from '@material-ui/core';
+import {
+  Box, Container, Divider, makeStyles, Tab, Tabs,
+} from '@material-ui/core';
 import Page from 'src/components/Page';
 import type { Theme } from 'src/theme';
 import Header from './Header';
@@ -10,8 +12,8 @@ const useStyles = makeStyles((theme: Theme) => ({
   root: {
     minHeight: '100%',
     paddingTop: theme.spacing(3),
-    paddingBottom: theme.spacing(3)
-  }
+    paddingBottom: theme.spacing(3),
+  },
 }));
 
 function AccountView() {

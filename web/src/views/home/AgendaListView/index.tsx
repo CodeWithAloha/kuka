@@ -1,38 +1,58 @@
-import React, { ChangeEvent, useState } from 'react';
-import { Box, Container, Grid, makeStyles, Tab, Tabs } from '@material-ui/core';
+import React, { ChangeEvent, useEffect, useState } from 'react';
+import {
+  Box, Container, makeStyles, Tab, Tabs,
+} from '@material-ui/core';
+import { useHistory, useParams } from 'react-router-dom';
 import Page from 'src/components/Page';
-import { useCollectionData } from "react-firebase-hooks/firestore";
-import { Agenda } from "../../../types/agenda";
-import { agendaRef } from "../../../services/AgendaItem";
-import AgendaCard from "../../../components/AgendaCard";
-
+import { useCollectionData } from 'react-firebase-hooks/firestore';
+import { AgendaItem } from '../../../types/agendaItem';
+import { agendaRef } from '../../../services/AgendaItem';
+import AgendaRows from './AgendaRows';
 
 const useStyles = makeStyles(() => ({
-  root: {}
+  root: {},
 }));
 
 function HomeView() {
+  const history = useHistory();
   const classes = useStyles();
-  const [currentTab, setCurrentTab] = useState<string>('upcoming');
-
+  let { currentTab } = useParams();
+  const [query, setQuery] = useState(
+    agendaRef.where('isActive', '==', true),
+  );
+  currentTab = currentTab || 'upcoming';
   const tabs = [
     { value: 'upcoming', label: 'Upcoming' },
-    { value: 'past', label: 'History' },
+    { value: 'history', label: 'History' },
   ];
 
+  useEffect(() => {
+    let q;
 
-  const [agendaItems, loading, error] = useCollectionData<Agenda>(
-    agendaRef
-      .where('isActive', '==', true),
+    if (currentTab === 'history') {
+      // TODO: items need to be submitted a few business days prior to session time.
+      q = agendaRef
+        .where('sessionTime', '<', new Date())
+        .orderBy('sessionTime', 'desc');
+    } else {
+      q = agendaRef
+        .where('sessionTime', '>', new Date())
+        .orderBy('sessionTime', 'asc');
+    }
+
+    setQuery(q);
+  }, [currentTab]);
+
+  const [agendaItems, loading, error] = useCollectionData<AgendaItem>(
+    query,
     {
       idField: 'id',
       snapshotListenOptions: { includeMetadataChanges: true },
-    }
+    },
   );
 
-
   const handleTabsChange = (event: ChangeEvent<{}>, value: string): void => {
-    setCurrentTab(value);
+    history.push(`/${value}`);
   };
 
   return (
@@ -60,18 +80,14 @@ function HomeView() {
         </Box>
 
         <Box mt={3}>
-          <Grid
-            container
-            spacing={3}
-          >
-            {error && <p>Error retrieving data.</p>}
-            {loading && <p>Loading</p>}
-            {agendaItems && agendaItems.map((agendaItem) => (
-              <Grid item xs={4} key={agendaItem.id}>
-                <AgendaCard agendaItem={agendaItem} />
-              </Grid>
-            ))}
-          </Grid>
+          {error && (
+          <strong>
+            Error:
+            {JSON.stringify(error)}
+          </strong>
+          )}
+          {loading && <p>Loading</p>}
+          {agendaItems && <AgendaRows agendaItems={agendaItems} />}
         </Box>
       </Container>
     </Page>

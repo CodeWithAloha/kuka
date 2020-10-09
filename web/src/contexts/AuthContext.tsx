@@ -1,29 +1,27 @@
 import type { ReactNode } from 'react';
-import React, { createContext, useEffect, useState, } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 import SplashScreen from 'src/components/SplashScreen';
 import firebase, { auth } from 'src/firebase';
-import { User } from "../types/user";
+import { User } from '../types/user';
 
 interface AuthProviderProps {
   children: ReactNode;
 }
 
-const createUserWithEmailAndPassword = async (email: string, password: string): Promise<any> => {
-  return auth.createUserWithEmailAndPassword(email, password);
-};
+const createUserWithEmailAndPassword = async (email: string, password: string): Promise<any> => (
+  auth.createUserWithEmailAndPassword(email, password)
+);
 
-const signInWithEmailAndPassword = (email: string, password: string): Promise<any> => {
-  return auth.signInWithEmailAndPassword(email, password);
-};
+const signInWithEmailAndPassword = (email: string, password: string): Promise<any> => (
+  auth.signInWithEmailAndPassword(email, password)
+);
 
 const signInWithGoogle = (): Promise<any> => {
   const provider = new firebase.auth.GoogleAuthProvider();
   return auth.signInWithPopup(provider);
 };
 
-const logout = (): Promise<void> => {
-  return auth.signOut();
-};
+const logout = (): Promise<void> => auth.signOut();
 
 interface AuthState {
   isInitialized: boolean;
@@ -51,36 +49,43 @@ export const AuthContext = createContext<AuthState>({
 
 export function AuthProvider({ children }: AuthProviderProps) {
   const [user, setUser] = useState<User>(null);
-  const [isInitialized, setInitialized] = useState(false)
-  const [isAuthenticated, setAuthenticated] = useState(false)
+  const [isInitialized, setInitialized] = useState(false);
+  const [isAuthenticated, setAuthenticated] = useState(false);
 
   useEffect(() => {
-    auth.onAuthStateChanged((user) => {
+    if (auth.currentUser) {
+      auth.currentUser.getIdTokenResult()
+        .then((result) => {
+          setUser((prev) => ({
+            ...prev,
+            isAdmin: Boolean(result.claims.isAdmin),
+          }));
+        })
+        .catch((err) => {
+          throw new Error(err);
+        });
+    }
+  }, []);
+
+  useEffect(() => {
+    auth.onAuthStateChanged((userData) => {
       if (user) {
         setUser({
-          id: user.uid,
-          avatar: user.photoURL,
-          email: user.email,
-          name: user.displayName || user.email,
+          id: userData.uid,
+          avatar: userData.photoURL,
+          email: userData.email,
+          name: userData.displayName || userData.email,
           isAdmin: false,
         });
 
-        user.getIdTokenResult().then((result) => {
-          setUser((prev) => ({
-            ...prev,
-            isAdmin: Boolean(result.claims.isAdmin)
-          }))
-        })
-
-        setAuthenticated(true)
-
+        setAuthenticated(true);
       } else {
-        setAuthenticated(false)
-        setUser(null)
+        setAuthenticated(false);
+        setUser(null);
       }
-      setInitialized(true)
+      setInitialized(true);
     });
-  }, []);
+  }, [user]);
 
   if (!isInitialized) {
     return <SplashScreen />;
@@ -104,4 +109,3 @@ export function AuthProvider({ children }: AuthProviderProps) {
     </AuthContext.Provider>
   );
 }
-

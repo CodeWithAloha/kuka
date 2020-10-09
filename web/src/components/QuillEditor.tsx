@@ -22,9 +22,9 @@ const useStyles = makeStyles((theme: Theme) => ({
       '& .ql-editor': {
         fontFamily: theme.typography.fontFamily,
         fontSize: 16,
-      }
-    }
-  }
+      },
+    },
+  },
 }));
 
 function QuillEditor({ className, ...rest }: QuillEditorProps) {

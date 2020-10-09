@@ -1,14 +1,16 @@
 import React from 'react';
-import { Grid, Card, CardActionArea, CardContent, CardMedia, Link, makeStyles, Typography } from '@material-ui/core';
-import { Testimony } from "../types/testimony";
+import {
+  Card, CardActionArea, CardContent, CardMedia, Link, makeStyles, Typography,
+} from '@material-ui/core';
 import { Link as RouterLink } from 'react-router-dom';
-import type { Theme } from 'src/theme';
+import { Testimony } from '../types/testimony';
 
 interface TestimonyCardProps {
   testimony: Testimony;
 }
 
-const useStyles = makeStyles((theme: Theme) => ({
+// eslint-disable-next-line no-unused-vars
+const useStyles = makeStyles(() => ({
   root: {},
   media: {
     height: 0,
@@ -16,12 +18,11 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-
 function TestimonyCard({ testimony }: TestimonyCardProps) {
   const classes = useStyles();
 
   return (
-    <Grid item xs={3} component={Card} className={classes.root}>
+    <Card className={classes.root}>
       <CardActionArea>
         <Link
           component={RouterLink}
@@ -43,12 +44,14 @@ function TestimonyCard({ testimony }: TestimonyCardProps) {
               variant="body2"
               color="textSecondary"
             >
-              Submitted from {testimony.zipCode}
+              Submitted from
+              {' '}
+              {testimony.zipCode}
             </Typography>
           </CardContent>
         </Link>
       </CardActionArea>
-    </Grid>
+    </Card>
   );
 }
 

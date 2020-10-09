@@ -1,10 +1,9 @@
-import { createMuiTheme, } from '@material-ui/core';
+import { createMuiTheme } from '@material-ui/core';
 import type { Theme as MuiTheme } from '@material-ui/core/styles/createMuiTheme';
 import type {
   Palette as MuiPalette,
-  TypeBackground as MuiTypeBackground
+  TypeBackground as MuiTypeBackground,
 } from '@material-ui/core/styles/createPalette';
-
 
 interface Palette extends MuiPalette {
   background: MuiTypeBackground;
@@ -57,33 +56,31 @@ const themesOptions: ThemeOptions = {
         },
         body: {
           height: '100%',
-          width: '100%'
+          width: '100%',
         },
         '#root': {
           height: '100%',
-          width: '100%'
-        }
+          width: '100%',
+        },
       },
     },
     MuiLinearProgress: {
       root: {
-        overflow: 'hidden'
-      }
+        overflow: 'hidden',
+      },
     },
   },
   palette: {
     primary: {
-      main: '#5D1B45'
+      main: '#5D1B45',
     },
     secondary: {
-      main: '#0089A8'
+      main: '#0089A8',
     },
 
   },
 };
 
-export const createTheme = () => {
-  return createMuiTheme(
-    themesOptions
-  );
-}
+export const createTheme = () => createMuiTheme(
+  themesOptions,
+);

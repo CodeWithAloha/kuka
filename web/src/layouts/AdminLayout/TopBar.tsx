@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import clsx from 'clsx';
-import { AppBar, Box, Hidden, IconButton, makeStyles, SvgIcon, Toolbar } from '@material-ui/core';
+import {
+  AppBar, Box, Hidden, IconButton, makeStyles, SvgIcon, Toolbar,
+} from '@material-ui/core';
 import { Menu as MenuIcon } from 'react-feather';
 import Logo from 'src/components/Logo';
 import type { Theme } from 'src/theme';
@@ -18,10 +20,10 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   toolbar: {
     height: 64,
-  }
+  },
 }));
 
-function TopBar({ className, onSideNavOpen, ...rest }: TopBarProps){
+function TopBar({ className, onSideNavOpen, ...rest }: TopBarProps) {
   const classes = useStyles();
 
   return (

@@ -8,9 +8,9 @@ interface AuthGuardProps {
 }
 
 function AuthGuard({ children }: AuthGuardProps) {
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, user } = useAuth();
 
-  if (!isAuthenticated) {
+  if (!isAuthenticated || !user.isAdmin) {
     return <Redirect to="/login" />;
   }
 

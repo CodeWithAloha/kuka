@@ -1,10 +1,12 @@
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import clsx from 'clsx';
-import { AppBar, Box, Link, makeStyles, Toolbar, Button } from '@material-ui/core';
+import {
+  AppBar, Box, Link, makeStyles, Toolbar, Button,
+} from '@material-ui/core';
 import Logo from 'src/components/Logo';
-import useAuth from "../../hooks/useAuth";
-import AccountInfo from "../AccountInfo";
+import useAuth from '../../hooks/useAuth';
+import AccountInfo from '../AccountInfo';
 
 interface TopBarProps {
   className?: string;
@@ -14,16 +16,16 @@ const useStyles = makeStyles((theme) => ({
   root: {
   },
   toolbar: {
-    height: 64
+    height: 64,
   },
   logo: {
-    marginRight: theme.spacing(2)
+    marginRight: theme.spacing(2),
   },
   link: {
     fontWeight: theme.typography.fontWeightMedium,
     '& + &': {
-      marginLeft: theme.spacing(2)
-    }
+      marginLeft: theme.spacing(2),
+    },
   },
 }));
 
@@ -70,6 +72,5 @@ function TopBar({ className, ...rest }: TopBarProps) {
     </AppBar>
   );
 }
-
 
 export default TopBar;

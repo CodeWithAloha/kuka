@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import clsx from 'clsx';
-import { Breadcrumbs, Grid, Link, makeStyles, Typography } from '@material-ui/core';
+import {
+  Breadcrumbs, Grid, Link, makeStyles, Typography,
+} from '@material-ui/core';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 
 interface HeaderProps {
@@ -9,7 +11,7 @@ interface HeaderProps {
 }
 
 const useStyles = makeStyles(() => ({
-  root: {}
+  root: {},
 }));
 
 function Header({ className, ...rest }: HeaderProps) {
