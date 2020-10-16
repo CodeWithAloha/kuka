@@ -53,31 +53,17 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const [isAuthenticated, setAuthenticated] = useState(false);
 
   useEffect(() => {
-    if (auth.currentUser) {
-      auth.currentUser.getIdTokenResult()
-        .then((result) => {
-          setUser((prev) => ({
-            ...prev,
-            isAdmin: Boolean(result.claims.isAdmin),
-          }));
-        })
-        .catch((err) => {
-          throw new Error(err);
-        });
-    }
-  }, []);
+    auth.onAuthStateChanged(async (userData) => {
+      if (userData) {
+        const idTokenResult = await userData.getIdTokenResult();
 
-  useEffect(() => {
-    auth.onAuthStateChanged((userData) => {
-      if (user) {
         setUser({
           id: userData.uid,
           avatar: userData.photoURL,
           email: userData.email,
           name: userData.displayName || userData.email,
-          isAdmin: false,
+          isAdmin: Boolean(idTokenResult.claims.isAdmin),
         });
-
         setAuthenticated(true);
       } else {
         setAuthenticated(false);
@@ -85,7 +71,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
       }
       setInitialized(true);
     });
-  }, [user]);
+  }, []);
 
   if (!isInitialized) {
     return <SplashScreen />;
