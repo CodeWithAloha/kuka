@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { useHistory } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 import clsx from 'clsx';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 import { useSnackbar } from 'notistack';
-import { format, parse } from 'date-fns';
+import { pick } from 'lodash';
 import {
   Box,
   Button,
@@ -14,20 +14,17 @@ import {
   CardHeader,
   CardMedia,
   Divider,
-  FormHelperText,
   Grid,
+  Link,
   makeStyles,
-  Paper,
   Switch,
   TextField,
   Typography,
 } from '@material-ui/core';
-import QuillEditor from 'src/components/QuillEditor';
-import { createAgendaItem, updateAgendaItem } from 'src/services/AgendaItem';
+import { updateAgendaItem } from 'src/services/AgendaItem';
 import firebase, { storage } from 'src/firebase';
 import type { AgendaItem } from 'src/types/agendaItem';
 import SingleFileDropzone from 'src/components/SingleFileDropzone';
-import { DATE_FMT_FORM } from 'src/constants';
 import getSafeFilename from '../../../utils/getSafeFilename';
 
 interface AgendaCreateFormProps {
@@ -49,9 +46,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function AgendaCreateForm({ className, agendaItem, ...rest }: AgendaCreateFormProps) {
+function AgendaForm({ className, agendaItem, ...rest }: AgendaCreateFormProps) {
   const classes = useStyles();
-  const history = useHistory();
   const { enqueueSnackbar } = useSnackbar();
 
   const updateRecord = async (values, setStatus, setSubmitting) => {
@@ -66,21 +62,6 @@ function AgendaCreateForm({ className, agendaItem, ...rest }: AgendaCreateFormPr
       enqueueSnackbar('There was an error updating the record', {
         variant: 'error',
       });
-      setStatus({ success: false });
-      setSubmitting(false);
-    });
-  };
-
-  const createRecord = async (values, setStatus, setSubmitting) => {
-    createAgendaItem(values).then((docRef) => {
-      setStatus({ success: true });
-      setSubmitting(true);
-      enqueueSnackbar('Agenda Item Created', {
-        variant: 'success',
-      });
-      history.push(`/admin/agenda-detail/${docRef.id}/edit`);
-    }).catch((err) => {
-      console.error(err);
       setStatus({ success: false });
       setSubmitting(false);
     });
@@ -112,59 +93,36 @@ function AgendaCreateForm({ className, agendaItem, ...rest }: AgendaCreateFormPr
     });
   };
 
-  let initialValues = {
-    title: '',
-    subtitle: '',
-    description: '',
-    billCode: '',
-    sessionTime: format(new Date(), DATE_FMT_FORM),
-    heroImage: '',
-    isActive: false,
-  };
-  if (agendaItem) {
-    initialValues = {
-      ...initialValues,
-      ...agendaItem,
-      sessionTime: format(agendaItem.sessionTime.toDate(), DATE_FMT_FORM),
-    };
-  }
-
   return (
     <Formik
-      initialValues={initialValues}
-      validationSchema={Yup.object().shape({
-        title: Yup.string().max(128).required(),
-        subtitle: Yup.string().max(255).required(),
-        description: Yup.string().max(10240),
-        billCode: Yup.string().max(32).required('Bill Code is required.'),
-        heroImage: Yup.string(),
-        sessionTime: Yup.date(),
-        isActive: Yup.bool(),
-      })}
+      initialValues={{
+        ...pick(
+          agendaItem,
+          [
+            'isActive',
+            'heroImage',
+          ],
+        ),
+      }}
+      validationSchema={
+        Yup.object().shape({
+          heroImage: Yup.string(),
+          isActive: Yup.bool(),
+        })
+      }
       onSubmit={async (values, {
         setStatus,
         setSubmitting,
       }) => {
-        const newData = {
-          ...values,
-          sessionTime: firebase.firestore.Timestamp.fromDate(parse(values.sessionTime, DATE_FMT_FORM, new Date())),
-        };
-        if (agendaItem) {
-          await updateRecord(newData, setStatus, setSubmitting);
-        } else {
-          await createRecord(newData, setStatus, setSubmitting);
-        }
+        await updateRecord(values, setStatus, setSubmitting);
       }}
     >
       {({
-        errors,
-        handleBlur,
         handleChange,
         handleSubmit,
         isSubmitting,
         isValid,
         setFieldValue,
-        touched,
         values,
       }) => (
         <form
@@ -184,32 +142,12 @@ function AgendaCreateForm({ className, agendaItem, ...rest }: AgendaCreateFormPr
               <Card>
                 <CardContent>
                   <TextField
-                    error={Boolean(touched.title && errors.title)}
                     fullWidth
-                    helperText={touched.title && errors.title}
                     label="Agenda Title"
-                    name="title"
-                    onBlur={handleBlur}
-                    onChange={handleChange}
-                    value={values.title}
+                    value={agendaItem.title}
                     variant="outlined"
+                    disabled
                   />
-                  <Box mt={3}>
-                    <TextField
-                      error={Boolean(touched.subtitle && errors.subtitle)}
-                      fullWidth
-                      helperText={
-                        touched.subtitle && errors.subtitle
-                          ? errors.subtitle : 'Short description shown on the Agenda item card'
-                      }
-                      label="Subtitle"
-                      name="subtitle"
-                      onBlur={handleBlur}
-                      onChange={handleChange}
-                      value={values.subtitle}
-                      variant="outlined"
-                    />
-                  </Box>
                   <Box
                     mt={3}
                     mb={1}
@@ -217,60 +155,15 @@ function AgendaCreateForm({ className, agendaItem, ...rest }: AgendaCreateFormPr
                     <Grid container spacing={3}>
                       <Grid item xs={6}>
                         <TextField
-                          error={Boolean(touched.billCode && errors.billCode)}
-                          helperText={touched.billCode && errors.billCode}
                           label="Bill Code"
                           fullWidth
-                          name="billCode"
-                          onBlur={handleBlur}
-                          onChange={handleChange}
-                          value={values.billCode}
+                          value={agendaItem.billCode}
                           variant="outlined"
-                        />
-                      </Grid>
-                      <Grid item xs={6}>
-                        <TextField
-                          variant="outlined"
-                          fullWidth
-                          label="Hearing Date and Time"
-                          type="datetime-local"
-                          name="sessionTime"
-                          InputLabelProps={{
-                            shrink: true,
-                          }}
-                          onChange={handleChange}
-                          value={values.sessionTime}
-                          error={Boolean(touched.sessionTime && errors.sessionTime)}
-                          helperText={touched.sessionTime && errors.sessionTime}
+                          disabled
                         />
                       </Grid>
                     </Grid>
                   </Box>
-                  <Box
-                    mt={3}
-                    mb={1}
-                  >
-                    <Typography
-                      variant="subtitle2"
-                      color="textSecondary"
-                    >
-                      Description
-                    </Typography>
-                  </Box>
-                  <Paper variant="outlined">
-                    <QuillEditor
-                      className={classes.editor}
-                      value={values.description}
-                      onChange={(value: string) => setFieldValue('description', value)}
-                    />
-                  </Paper>
-                  {(touched.description && errors.description) && (
-                    <Box mt={2}>
-                      <FormHelperText error>
-                        {errors.description}
-                      </FormHelperText>
-                    </Box>
-                  )}
                 </CardContent>
               </Card>
               <Box mt={3}>
@@ -288,7 +181,9 @@ function AgendaCreateForm({ className, agendaItem, ...rest }: AgendaCreateFormPr
                     />
                   ) : null}
                   <CardContent>
-                    <SingleFileDropzone onFileDrop={(files) => handleFileUpload(files, setFieldValue)} />
+                    <SingleFileDropzone
+                      onFileDrop={(files) => handleFileUpload(files, setFieldValue)}
+                    />
                   </CardContent>
                 </Card>
               </Box>
@@ -302,6 +197,16 @@ function AgendaCreateForm({ className, agendaItem, ...rest }: AgendaCreateFormPr
                 <CardHeader title="Publish Details" />
                 <Divider />
                 <CardContent>
+                  <Box mb={2}>
+                    <Link
+                      variant="body1"
+                      component={RouterLink}
+                      to={`/agenda/${agendaItem.id}`}
+                    >
+                      Scoreboard Link
+                    </Link>
+                  </Box>
+
                   <Typography
                     variant="h5"
                     color="textPrimary"
@@ -347,4 +252,4 @@ function AgendaCreateForm({ className, agendaItem, ...rest }: AgendaCreateFormPr
   );
 }
 
-export default AgendaCreateForm;
+export default AgendaForm;

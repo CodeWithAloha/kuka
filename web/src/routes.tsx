@@ -101,11 +101,6 @@ const routes: Routes = [
       },
       {
         exact: true,
-        path: '/admin/agenda-create',
-        component: lazy(() => import('./views/admin/AdminAgendaCreateView')),
-      },
-      {
-        exact: true,
         path: '/admin',
         // By default, go to agenda list.
         // eslint-disable-next-line react/display-name

@@ -25,12 +25,12 @@ function App() {
           autoHideDuration={3000}
           anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
         >
-          <Router history={history}>
-            <AuthProvider>
+          <AuthProvider>
+            <Router history={history}>
               <ScrollReset />
               {renderRoutes(routes)}
-            </AuthProvider>
-          </Router>
+            </Router>
+          </AuthProvider>
         </SnackbarProvider>
       </MuiPickersUtilsProvider>
     </ThemeProvider>
