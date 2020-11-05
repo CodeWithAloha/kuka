@@ -6,6 +6,7 @@ import HomeView from './views/home/AgendaListView';
 import LoadingScreen from './components/LoadingScreen';
 import AuthGuard from './components/AuthGuard';
 import GuestGuard from './components/GuestGuard';
+import AdminGuard from './components/AdminGuard';
 
 type Routes = {
   exact?: boolean;
@@ -82,10 +83,10 @@ const routes: Routes = [
     ],
   },
 
-  // Admin Section, TODO: requires admin privileges
+  // Admin Section
   {
     path: '/admin',
-    guard: AuthGuard, // TODO: make AdminGuard
+    guard: AdminGuard,
     layout: AdminLayout,
     routes: [
 
@@ -98,11 +99,6 @@ const routes: Routes = [
         exact: true,
         path: '/admin/agenda-detail/:id/edit',
         component: lazy(() => import('./views/admin/AdminAgendaEditView')),
-      },
-      {
-        exact: true,
-        path: '/admin/agenda-create',
-        component: lazy(() => import('./views/admin/AdminAgendaCreateView')),
       },
       {
         exact: true,

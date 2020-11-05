@@ -87,7 +87,15 @@ function HomeView() {
           </strong>
           )}
           {loading && <p>Loading</p>}
-          {agendaItems && <AgendaRows agendaItems={agendaItems} />}
+
+          {/* FIXME: isActive needs to be refactored into something */}
+          {/* else due to firestore being unable to filter by multiple */}
+          {/* fields and conditions */}
+          {agendaItems && (
+            <AgendaRows
+              agendaItems={agendaItems.filter((item) => item.isActive)}
+            />
+          )}
         </Box>
       </Container>
     </Page>

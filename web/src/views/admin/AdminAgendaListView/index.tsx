@@ -20,7 +20,8 @@ const useStyles = makeStyles((theme: Theme) => ({
 function AgendaCreateView() {
   const classes = useStyles();
   const [agendaItems, loading, error] = useCollectionData<AgendaItem>(
-    agendaRef,
+    agendaRef
+      .orderBy('sessionTime', 'desc'),
     {
       idField: 'id',
       snapshotListenOptions: { includeMetadataChanges: true },

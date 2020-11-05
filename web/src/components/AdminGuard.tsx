@@ -3,14 +3,14 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
 
-interface AuthGuardProps {
+interface AdminGuardProps {
   children?: ReactNode;
 }
 
-function AuthGuard({ children }: AuthGuardProps) {
-  const { isAuthenticated } = useAuth();
+function AdminGuard({ children }: AdminGuardProps) {
+  const { isAuthenticated, user } = useAuth();
 
-  if (!isAuthenticated) {
+  if (!isAuthenticated || !user.isAdmin) {
     return <Redirect to="/login" />;
   }
 
@@ -21,4 +21,4 @@ function AuthGuard({ children }: AuthGuardProps) {
   );
 }
 
-export default AuthGuard;
+export default AdminGuard;
