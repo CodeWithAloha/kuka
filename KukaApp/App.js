@@ -27,6 +27,7 @@ import { LoginScreen } from './screens/LoginScreen';
 import { EmailScreen } from './screens/EmailScreen';
 import { AgendaItemsScreen } from './screens/AgendaItemsScreen';
 import { AgendaScreen } from './screens/AgendaScreen';
+import { CameraScreen } from './screens/CameraScreen';
 
 GoogleSignin.configure({
   webClientId:
@@ -64,6 +65,7 @@ export default () => {
                       component={AgendaItemsScreen}
                     ></Screen>
                     <Screen name="Agenda" component={AgendaScreen}></Screen>
+                    <Screen name="Camera" component={CameraScreen}></Screen>
                   </>
                 ) : (
                   <>

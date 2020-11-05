@@ -21,6 +21,10 @@ export const AgendaScreen = ({ navigation, route }) => {
     sessionDays = differenceInCalendarDays(now, sessionDate);
   }
 
+  const record = () => {
+    navigation.navigate('Camera');
+  };
+
   const signOut = async () => {
     try {
       await auth().signOut();
@@ -49,7 +53,7 @@ export const AgendaScreen = ({ navigation, route }) => {
           'MMMM d, yyyy'
         )} (${sessionDays}d ${deadlineDays ? 'from now' : 'ago'})\n`}</Text>
         <Text>{route.params.description}</Text>
-        <Button>Record Testimony</Button>
+        <Button onPress={record}>Record Testimony</Button>
         {/* sign out button is temporary for testing purposes*/}
         <Button onPress={signOut}>Sign Out</Button>
       </ScrollView>
