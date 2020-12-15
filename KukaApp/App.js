@@ -25,8 +25,7 @@ import auth from '@react-native-firebase/auth';
 import { GoogleSignin } from '@react-native-community/google-signin';
 import { LoginScreen } from './screens/LoginScreen';
 import { EmailScreen } from './screens/EmailScreen';
-import { AgendaItemsScreen } from './screens/AgendaItemsScreen';
-import { AgendaScreen } from './screens/AgendaScreen';
+import { AuthNavigator } from './navigation/AuthNavigator';
 
 GoogleSignin.configure({
   webClientId:
@@ -56,22 +55,14 @@ export default () => {
             }}
           >
             <NavigationContainer>
-              <Navigator headerMode="none">
-                {authUser ? (
-                  <>
-                    <Screen
-                      name="Agenda Items"
-                      component={AgendaItemsScreen}
-                    ></Screen>
-                    <Screen name="Agenda" component={AgendaScreen}></Screen>
-                  </>
-                ) : (
-                  <>
-                    <Screen name="Login" component={LoginScreen} />
-                    <Screen name="Email" component={EmailScreen} />
-                  </>
-                )}
-              </Navigator>
+              {authUser ? (
+                <AuthNavigator />
+              ) : (
+                <Navigator headerMode="none">
+                  <Screen name="Login" component={LoginScreen} />
+                  <Screen name="Email" component={EmailScreen} />
+                </Navigator>
+              )}
             </NavigationContainer>
           </SafeAreaView>
         </SafeAreaProvider>
