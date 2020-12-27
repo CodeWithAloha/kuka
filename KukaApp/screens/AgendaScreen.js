@@ -1,14 +1,30 @@
 import React from 'react';
 import { ScrollView } from 'react-native';
-import { Layout, Text, Button } from '@ui-kitten/components';
-import auth from '@react-native-firebase/auth';
+import {
+  Button,
+  Layout,
+  StyleService,
+  Text,
+  useStyleSheet,
+} from '@ui-kitten/components';
 import { differenceInCalendarDays, format } from 'date-fns';
 import { TopNav } from '../components/TopNav';
 import { IconText } from '../components/IconText';
+import { HeaderText } from '../components/HeaderText';
+
+const themedStyles = StyleService.create({
+  headerIcon: {
+    paddingLeft: 16,
+    paddingBottom: 16,
+    backgroundColor: 'color-primary-default',
+  },
+});
 
 export const AgendaScreen = ({ navigation, route }) => {
+  const styles = useStyleSheet(themedStyles);
   const { deadlineTime, sessionTime } = route.params;
-  const deadlineDate = new Date(deadlineTime.toDate());
+  // TODO: deadline should be a couple business days before session
+  const deadlineDate = new Date(sessionTime.toDate());
   const sessionDate = new Date(sessionTime.toDate());
 
   const now = new Date();
@@ -21,24 +37,16 @@ export const AgendaScreen = ({ navigation, route }) => {
     sessionDays = differenceInCalendarDays(now, sessionDate);
   }
 
-  const signOut = async () => {
-    try {
-      await auth().signOut();
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
   return (
     <Layout level="2" style={{ flex: 1 }}>
       <TopNav title={route.params.title} {...{ navigation, route }} />
-      <Layout style={{ padding: 16 }}>
-        <Text>{route.params.title}</Text>
-        <IconText name="book-outline" style={{ marginTop: 16 }}>
+      <Layout>
+        <HeaderText text={route.params.title} />
+        <IconText name="book-outline" style={styles.headerIcon}>
           {route.params.billCode}
         </IconText>
         {!!deadlineDays && (
-          <IconText name="clock-outline" style={{ marginTop: 16 }}>
+          <IconText name="clock-outline" style={styles.headerIcon}>
             {deadlineDays + ' days left to submit testimony'}
           </IconText>
         )}
@@ -51,7 +59,6 @@ export const AgendaScreen = ({ navigation, route }) => {
         <Text>{route.params.description}</Text>
         <Button>Record Testimony</Button>
         {/* sign out button is temporary for testing purposes*/}
-        <Button onPress={signOut}>Sign Out</Button>
       </ScrollView>
     </Layout>
   );

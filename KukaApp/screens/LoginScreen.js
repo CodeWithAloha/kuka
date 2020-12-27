@@ -1,7 +1,14 @@
 import React, { useState } from 'react';
-import { Alert } from 'react-native';
+import { Alert, View } from 'react-native';
 import auth from '@react-native-firebase/auth';
-import { Layout, Text, Input, Button } from '@ui-kitten/components';
+import {
+  Layout,
+  Text,
+  Input,
+  Button,
+  useStyleSheet,
+  StyleService,
+} from '@ui-kitten/components';
 import {
   GoogleSignin,
   GoogleSigninButton,
@@ -12,8 +19,10 @@ import {
   GraphRequest,
   GraphRequestManager,
 } from 'react-native-fbsdk';
+import KukaLogo from '../assets/images/kuka_logo_no_text.svg';
 
 export const LoginScreen = ({ navigation }) => {
+  const styles = useStyleSheet(themedStyles);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [inProgress, setInProgress] = useState(false);
@@ -137,36 +146,79 @@ export const LoginScreen = ({ navigation }) => {
   };
 
   return (
-    <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Input
-        value={email}
-        label="EMAIL"
-        placeholder="Email"
-        onChangeText={nextValue => setEmail(nextValue)}
-      />
-      <Input
-        value={password}
-        label="PASSWORD"
-        placeholder="Password"
-        onChangeText={nextValue => setPassword(nextValue)}
-      />
-      <Button onPress={onEmailSignIn} disabled={inProgress}>
-        Sign In
-      </Button>
-      <GoogleSigninButton
-        onPress={() => onGoogleSignIn()}
-        disabled={inProgress}
-      />
-      <Button onPress={() => onFacebookSignIn()} disabled={inProgress}>
-        Facebook
-      </Button>
-      <Text>
-        Don't have an account?{' '}
-        <Text status="primary" onPress={() => navigation.navigate('Email')}>
-          Sign Up
+    <Layout style={styles.container}>
+      <View style={styles.headerContainer}>
+        <KukaLogo width={103} height={81} />
+        <Text category="h1" status="control" style={styles.title}>
+          Sign In
         </Text>
-      </Text>
-      {message && <Text>{message}</Text>}
+        <Text style={styles.signInLabel} category="s1" status="control">
+          Please enter your credentials to proceed
+        </Text>
+      </View>
+      <View style={styles.bodyContainer}>
+        <Input
+          value={email}
+          label="EMAIL"
+          placeholder="Email"
+          onChangeText={nextValue => setEmail(nextValue)}
+          style={styles.formField}
+        />
+        <Input
+          value={password}
+          label="PASSWORD"
+          placeholder="Password"
+          onChangeText={nextValue => setPassword(nextValue)}
+          style={styles.formField}
+        />
+        <Button onPress={onEmailSignIn} disabled={inProgress}>
+          SIGN IN
+        </Button>
+        <GoogleSigninButton
+          onPress={() => onGoogleSignIn()}
+          disabled={inProgress}
+        />
+        <Button onPress={() => onFacebookSignIn()} disabled={inProgress}>
+          Facebook
+        </Button>
+        <Text>
+          Don't have an account?{' '}
+          <Text status="primary" onPress={() => navigation.navigate('Email')}>
+            Sign Up
+          </Text>
+        </Text>
+        {message && <Text>{message}</Text>}
+      </View>
     </Layout>
   );
 };
+
+const themedStyles = StyleService.create({
+  container: {
+    backgroundColor: 'background-basic-color-1',
+  },
+  headerContainer: {
+    padding: 24,
+    minHeight: 234,
+    backgroundColor: 'color-primary-default',
+  },
+  title: {
+    marginTop: 16,
+    fontWeight: '700',
+    fontFamily: 'OpenSans-Bold',
+    fontSize: 30,
+  },
+  signInLabel: {
+    marginTop: 3,
+    fontFamily: 'OpenSans-Regular',
+    fontSize: 15,
+    fontWeight: '400',
+  },
+  formField: {
+    marginTop: 10,
+  },
+  signInButton: {},
+  bodyContainer: {
+    padding: 24,
+  },
+});

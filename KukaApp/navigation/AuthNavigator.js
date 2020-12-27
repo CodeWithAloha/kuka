@@ -6,6 +6,9 @@ import {
 } from '@ui-kitten/components';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { AgendaNavigator } from './AgendaNavigator';
+import { TestimonyNavigator } from './TestimonyNavigator';
+import { MyAccountNavigator } from './MyAccountNavigator';
+import { HelpNavigator } from './HelpNavigator';
 
 const BottomTabBar = ({ navigation, state }) => (
   <BottomNavigation
@@ -36,6 +39,9 @@ export const AuthNavigator = () => {
   return (
     <Navigator tabBar={props => <BottomTabBar {...props} />}>
       <Screen name="Agenda" component={AgendaNavigator} />
+      <Screen name="Testimonies" component={TestimonyNavigator} />
+      <Screen name="My Account" component={MyAccountNavigator} />
+      <Screen name="Help" component={HelpNavigator} />
     </Navigator>
   );
 };

@@ -9,13 +9,10 @@
  *
  * @format
  */
+import { StatusBar } from 'react-native';
 import 'react-native-gesture-handler';
-import React, { useState, useEffect } from 'react';
-import {
-  ApplicationProvider,
-  IconRegistry,
-  useTheme,
-} from '@ui-kitten/components';
+import React, { useEffect, useState } from 'react';
+import { ApplicationProvider, IconRegistry } from '@ui-kitten/components';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import * as eva from '@eva-design/eva';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
@@ -26,6 +23,8 @@ import { GoogleSignin } from '@react-native-community/google-signin';
 import { LoginScreen } from './screens/LoginScreen';
 import { EmailScreen } from './screens/EmailScreen';
 import { AuthNavigator } from './navigation/AuthNavigator';
+import { default as theme } from './app-theme.json';
+import { default as mapping } from './app-mapping.json';
 
 GoogleSignin.configure({
   webClientId:
@@ -34,7 +33,7 @@ GoogleSignin.configure({
 
 export default () => {
   const { Navigator, Screen } = createStackNavigator();
-  const theme = useTheme();
+  // const theme = useTheme();
   const [authUser, setAuthUser] = useState(null);
 
   useEffect(() => {
@@ -46,7 +45,11 @@ export default () => {
   return (
     <>
       <IconRegistry icons={EvaIconsPack} />
-      <ApplicationProvider {...eva} theme={eva.dark}>
+      <ApplicationProvider
+        {...eva}
+        theme={{ ...eva.light, ...theme }}
+        customMapping={mapping}
+      >
         <SafeAreaProvider>
           <SafeAreaView
             style={{
@@ -54,6 +57,7 @@ export default () => {
               backgroundColor: theme['background-basic-color-2'],
             }}
           >
+            <StatusBar />
             <NavigationContainer>
               {authUser ? (
                 <AuthNavigator />

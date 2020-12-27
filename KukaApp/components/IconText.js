@@ -9,8 +9,8 @@ export const IconText = ({ name, children, style, ...rest }) => {
     <View style={[{ flexDirection: 'row', alignItems: 'center' }, style]}>
       <Icon
         name={name}
-        width={24}
-        height={24}
+        width={22}
+        height={22}
         fill={theme['text-hint-color']}
         style={{ marginRight: 8 }}
       />
