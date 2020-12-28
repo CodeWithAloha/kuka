@@ -20,6 +20,7 @@ import {
   GraphRequestManager,
 } from 'react-native-fbsdk';
 import KukaLogo from '../assets/images/kuka_logo_no_text.svg';
+import { AuthHeader } from '../components/AuthHeader';
 
 export const LoginScreen = ({ navigation }) => {
   const styles = useStyleSheet(themedStyles);
@@ -147,47 +148,57 @@ export const LoginScreen = ({ navigation }) => {
 
   return (
     <Layout style={styles.container}>
-      <View style={styles.headerContainer}>
-        <KukaLogo width={103} height={81} />
-        <Text category="h1" status="control" style={styles.title}>
-          Sign In
-        </Text>
-        <Text style={styles.signInLabel} category="s1" status="control">
-          Please enter your credentials to proceed
-        </Text>
-      </View>
+      <AuthHeader
+        titleText="Sign In"
+        leadText="Please enter your credentials to proceed"
+      />
       <View style={styles.bodyContainer}>
-        <Input
-          value={email}
-          label="EMAIL"
-          placeholder="Email"
-          onChangeText={nextValue => setEmail(nextValue)}
-          style={styles.formField}
-        />
-        <Input
-          value={password}
-          label="PASSWORD"
-          placeholder="Password"
-          onChangeText={nextValue => setPassword(nextValue)}
-          style={styles.formField}
-        />
-        <Button onPress={onEmailSignIn} disabled={inProgress}>
-          SIGN IN
-        </Button>
-        <GoogleSigninButton
-          onPress={() => onGoogleSignIn()}
-          disabled={inProgress}
-        />
-        <Button onPress={() => onFacebookSignIn()} disabled={inProgress}>
-          Facebook
-        </Button>
-        <Text>
-          Don't have an account?{' '}
-          <Text status="primary" onPress={() => navigation.navigate('Email')}>
-            Sign Up
+        <View>
+          <Input
+            value={email}
+            label="EMAIL"
+            placeholder="Email"
+            onChangeText={nextValue => setEmail(nextValue)}
+            style={styles.formField}
+          />
+          <Input
+            value={password}
+            label="PASSWORD"
+            placeholder="Password"
+            onChangeText={nextValue => setPassword(nextValue)}
+            style={styles.formField}
+          />
+
+          <Text
+            status="primary"
+            style={styles.forgotPasswordText}
+            onPress={() => {
+              navigation.navigate('Forgot Password');
+            }}
+          >
+            Forgot Password?
           </Text>
-        </Text>
-        {message && <Text>{message}</Text>}
+        </View>
+
+        <View>
+          <Button onPress={onEmailSignIn} disabled={inProgress}>
+            SIGN IN
+          </Button>
+          <GoogleSigninButton
+            onPress={() => onGoogleSignIn()}
+            disabled={inProgress}
+          />
+          <Button onPress={() => onFacebookSignIn()} disabled={inProgress}>
+            Facebook
+          </Button>
+          <Text appearance="hint" style={{ textAlign: 'center' }}>
+            Don't have an account?{' '}
+            <Text status="primary" onPress={() => navigation.navigate('Email')}>
+              Sign Up
+            </Text>
+          </Text>
+          {message && <Text>{message}</Text>}
+        </View>
       </View>
     </Layout>
   );
@@ -196,29 +207,22 @@ export const LoginScreen = ({ navigation }) => {
 const themedStyles = StyleService.create({
   container: {
     backgroundColor: 'background-basic-color-1',
+    flex: 1,
   },
-  headerContainer: {
+  bodyContainer: {
     padding: 24,
-    minHeight: 234,
-    backgroundColor: 'color-primary-default',
+    flex: 1,
+    justifyContent: 'space-between',
   },
-  title: {
-    marginTop: 16,
-    fontWeight: '700',
-    fontFamily: 'OpenSans-Bold',
-    fontSize: 30,
-  },
-  signInLabel: {
-    marginTop: 3,
-    fontFamily: 'OpenSans-Regular',
-    fontSize: 15,
-    fontWeight: '400',
+  forgotPasswordText: {
+    // fontFamily: 'OpenSans-Bold',
+    fontSize: 13,
+    fontWeight: '600',
+    textAlign: 'center',
+    marginTop: 24,
   },
   formField: {
     marginTop: 10,
   },
   signInButton: {},
-  bodyContainer: {
-    padding: 24,
-  },
 });

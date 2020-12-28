@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import {
   Button,
   Layout,
@@ -38,27 +38,41 @@ export const AgendaScreen = ({ navigation, route }) => {
   }
 
   return (
-    <Layout level="2" style={{ flex: 1 }}>
+    <Layout level="1" style={{ flex: 1 }}>
       <TopNav title={route.params.title} {...{ navigation, route }} />
-      <Layout>
-        <HeaderText text={route.params.title} />
-        <IconText name="book-outline" style={styles.headerIcon}>
-          {route.params.billCode}
-        </IconText>
-        {!!deadlineDays && (
-          <IconText name="clock-outline" style={styles.headerIcon}>
-            {deadlineDays + ' days left to submit testimony'}
+      <ScrollView>
+        <Layout>
+          <HeaderText text={route.params.title} />
+          <IconText
+            name="book-outline"
+            style={styles.headerIcon}
+            iconFill="color-white"
+            textAppearance="alternative"
+          >
+            {route.params.billCode}
           </IconText>
-        )}
-      </Layout>
-      <ScrollView contentContainerStyle={{ padding: 16 }}>
-        <Text>{`Hearing on ${format(
-          sessionDate,
-          'MMMM d, yyyy'
-        )} (${sessionDays}d ${deadlineDays ? 'from now' : 'ago'})\n`}</Text>
-        <Text>{route.params.description}</Text>
-        <Button>Record Testimony</Button>
-        {/* sign out button is temporary for testing purposes*/}
+          {!!deadlineDays && (
+            <IconText
+              name="clock-outline"
+              style={styles.headerIcon}
+              iconFill="color-white"
+              textAppearance="alternative"
+            >
+              {deadlineDays + ' days left to submit testimony'}
+            </IconText>
+          )}
+        </Layout>
+        <View style={{ padding: 16 }}>
+          <Button>RECORD TESTIMONY</Button>
+          <Text style={{ fontWeight: '500', marginTop: 16 }} appearance="hint">
+            {`Hearing on ${format(
+              sessionDate,
+              'MMMM d, yyyy'
+            )} (${sessionDays}d ${deadlineDays ? 'from now' : 'ago'})\n`}
+          </Text>
+          <Text>{route.params.description}</Text>
+          <Button>RECORD TESTIMONY</Button>
+        </View>
       </ScrollView>
     </Layout>
   );

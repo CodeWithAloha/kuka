@@ -2,7 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 import { Text, Icon, useTheme } from '@ui-kitten/components';
 
-export const IconText = ({ name, children, style, ...rest }) => {
+export const IconText = ({ name, children, style, textAppearance = 'hint', iconFill = 'text-hint-color', ...rest }) => {
   const theme = useTheme();
 
   return (
@@ -11,10 +11,10 @@ export const IconText = ({ name, children, style, ...rest }) => {
         name={name}
         width={22}
         height={22}
-        fill={theme['text-hint-color']}
+        fill={theme[iconFill]}
         style={{ marginRight: 8 }}
       />
-      <Text appearance="hint">{children}</Text>
+      <Text appearance={textAppearance}>{children}</Text>
     </View>
   );
 };

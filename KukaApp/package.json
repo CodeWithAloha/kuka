@@ -24,6 +24,7 @@
     "date-fns": "^2.16.1",
     "formik": "^2.2.6",
     "react": "16.11.0",
+    "react-firebase-hooks": "^2.2.0",
     "react-native": "0.62.2",
     "react-native-fbsdk": "^2.0.0",
     "react-native-gesture-handler": "^1.7.0",
