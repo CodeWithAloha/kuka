@@ -9,7 +9,6 @@
  *
  * @format
  */
-import { StatusBar } from 'react-native';
 import 'react-native-gesture-handler';
 import React, { useEffect, useState } from 'react';
 import { ApplicationProvider, IconRegistry } from '@ui-kitten/components';
@@ -21,11 +20,9 @@ import { createStackNavigator } from '@react-navigation/stack';
 import auth from '@react-native-firebase/auth';
 import { GoogleSignin } from '@react-native-community/google-signin';
 import { LoginScreen } from './screens/LoginScreen';
-import { EmailScreen } from './screens/EmailScreen';
+import { SignupScreen } from './screens/SignupScreen';
 import { ForgotPasswordScreen } from './screens/ForgotPasswordScreen';
-import { EnterTheCodeScreen } from './screens/EnterTheCodeScreen';
 import { AuthNavigator } from './navigation/AuthNavigator';
-import { NewPasswordScreen } from './screens/NewPasswordScreen';
 import { default as theme } from './app-theme.json';
 import { default as mapping } from './app-mapping.json';
 
@@ -60,23 +57,17 @@ export default () => {
               backgroundColor: theme['background-basic-color-2'],
             }}
           >
-            <StatusBar />
             <NavigationContainer>
               {authUser ? (
                 <AuthNavigator />
               ) : (
                 <Navigator headerMode="none">
                   <Screen name="Login" component={LoginScreen} />
-                  <Screen name="Email" component={EmailScreen} />
+                  <Screen name="Signup" component={SignupScreen} />
                   <Screen
                     name="Forgot Password"
                     component={ForgotPasswordScreen}
                   />
-                  <Screen
-                    name="Enter the code"
-                    component={EnterTheCodeScreen}
-                  />
-                  <Screen name="New Password" component={NewPasswordScreen} />
                 </Navigator>
               )}
             </NavigationContainer>
