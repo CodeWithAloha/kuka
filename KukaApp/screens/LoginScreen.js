@@ -193,7 +193,7 @@ export const LoginScreen = ({ navigation }) => {
           </Button>
           <Text appearance="hint" style={{ textAlign: 'center' }}>
             Don't have an account?{' '}
-            <Text status="primary" onPress={() => navigation.navigate('Email')}>
+            <Text status="primary" onPress={() => navigation.navigate('Signup')}>
               Sign Up
             </Text>
           </Text>
