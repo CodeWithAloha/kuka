@@ -1,14 +1,30 @@
 import React from 'react';
-import { ScrollView } from 'react-native';
-import { Layout, Text, Button } from '@ui-kitten/components';
-import auth from '@react-native-firebase/auth';
+import { ScrollView, View } from 'react-native';
+import {
+  Button,
+  Layout,
+  StyleService,
+  Text,
+  useStyleSheet,
+} from '@ui-kitten/components';
 import { differenceInCalendarDays, format } from 'date-fns';
 import { TopNav } from '../components/TopNav';
 import { IconText } from '../components/IconText';
+import { HeaderText } from '../components/HeaderText';
+
+const themedStyles = StyleService.create({
+  headerIcon: {
+    paddingLeft: 16,
+    paddingBottom: 16,
+    backgroundColor: 'color-primary-default',
+  },
+});
 
 export const AgendaScreen = ({ navigation, route }) => {
+  const styles = useStyleSheet(themedStyles);
   const { deadlineTime, sessionTime } = route.params;
-  const deadlineDate = new Date(deadlineTime.toDate());
+  // TODO: deadline should be a couple business days before session
+  const deadlineDate = new Date(sessionTime.toDate());
   const sessionDate = new Date(sessionTime.toDate());
 
   const now = new Date();
@@ -21,41 +37,42 @@ export const AgendaScreen = ({ navigation, route }) => {
     sessionDays = differenceInCalendarDays(now, sessionDate);
   }
 
-  const record = () => {
-    navigation.navigate('Camera');
-  };
-
-  const signOut = async () => {
-    try {
-      await auth().signOut();
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
   return (
-    <Layout level="2" style={{ flex: 1 }}>
+    <Layout level="1" style={{ flex: 1 }}>
       <TopNav title={route.params.title} {...{ navigation, route }} />
-      <Layout style={{ padding: 16 }}>
-        <Text>{route.params.title}</Text>
-        <IconText name="book-outline" style={{ marginTop: 16 }}>
-          {route.params.billCode}
-        </IconText>
-        {!!deadlineDays && (
-          <IconText name="clock-outline" style={{ marginTop: 16 }}>
-            {deadlineDays + ' days left to submit testimony'}
+      <ScrollView>
+        <Layout>
+          <HeaderText text={route.params.title} />
+          <IconText
+            name="book-outline"
+            style={styles.headerIcon}
+            iconFill="color-white"
+            textAppearance="alternative"
+          >
+            {route.params.billCode}
           </IconText>
-        )}
-      </Layout>
-      <ScrollView contentContainerStyle={{ padding: 16 }}>
-        <Text>{`Hearing on ${format(
-          sessionDate,
-          'MMMM d, yyyy'
-        )} (${sessionDays}d ${deadlineDays ? 'from now' : 'ago'})\n`}</Text>
-        <Text>{route.params.description}</Text>
-        <Button onPress={record}>Record Testimony</Button>
-        {/* sign out button is temporary for testing purposes*/}
-        <Button onPress={signOut}>Sign Out</Button>
+          {!!deadlineDays && (
+            <IconText
+              name="clock-outline"
+              style={styles.headerIcon}
+              iconFill="color-white"
+              textAppearance="alternative"
+            >
+              {deadlineDays + ' days left to submit testimony'}
+            </IconText>
+          )}
+        </Layout>
+        <View style={{ padding: 16 }}>
+          <Button>RECORD TESTIMONY</Button>
+          <Text style={{ fontWeight: '500', marginTop: 16 }} appearance="hint">
+            {`Hearing on ${format(
+              sessionDate,
+              'MMMM d, yyyy'
+            )} (${sessionDays}d ${deadlineDays ? 'from now' : 'ago'})\n`}
+          </Text>
+          <Text>{route.params.description}</Text>
+          <Button>RECORD TESTIMONY</Button>
+        </View>
       </ScrollView>
     </Layout>
   );

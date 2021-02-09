@@ -1,19 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import { View, TouchableOpacity } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { TouchableOpacity, View } from 'react-native';
 import {
-  Layout,
-  TabView,
-  Tab,
-  List,
-  Text,
   Divider,
+  Layout,
+  List,
+  Tab,
+  TabView,
+  Text,
+  useTheme,
 } from '@ui-kitten/components';
 import firestore from '@react-native-firebase/firestore';
 import { differenceInCalendarDays } from 'date-fns';
-import { TopNav } from '../components/TopNav';
 import { IconText } from '../components/IconText';
+import { HeaderText } from '../components/HeaderText';
 
 const UpcomingList = ({ navigation }) => {
+  const theme = useTheme();
   const [agendas, setAgendas] = useState();
   const [now, setNow] = useState(new Date());
 
@@ -22,7 +24,7 @@ const UpcomingList = ({ navigation }) => {
       try {
         return firestore()
           .collection('agendaItems')
-          .where('deadlineTime', '>', now)
+          .where('sessionTime', '>', now)
           .onSnapshot(
             querySnapshot => {
               // TODO investigate changing now date on live updates
@@ -45,19 +47,18 @@ const UpcomingList = ({ navigation }) => {
   };
 
   const renderItem = ({ item, index }) => {
-    const days = differenceInCalendarDays(
-      new Date(item.deadlineTime.toDate()),
-      now
-    );
+    const days = differenceInCalendarDays(item.sessionTime.toDate(), now);
 
     return (
       <TouchableOpacity onPress={() => handlePress(item)}>
-        <View style={{ padding: 16 }}>
-          <Text>{item.title}</Text>
-          <IconText name="book-outline" style={{ marginTop: 16 }}>
+        <View
+          style={{ padding: 16, backgroundColor: theme['color-basic-100'] }}
+        >
+          <Text category="h6">{item.title}</Text>
+          <IconText name="book-outline" style={{ marginTop: 10 }}>
             {item.billCode}
           </IconText>
-          <IconText name="clock-outline" style={{ marginTop: 16 }}>
+          <IconText name="clock-outline" style={{ marginTop: 4 }}>
             {days + ' days left to submit testimony'}
           </IconText>
         </View>
@@ -139,9 +140,10 @@ export const AgendaItemsScreen = ({ navigation, route }) => {
 
   return (
     <Layout style={{ flex: 1 }}>
-      <TopNav noBackButton {...{ navigation, route }} />
+      {/*<TopNav noBackButton {...{ navigation, route }} />*/}
+      <HeaderText text="Agenda Items" />
       <TabView
-        style={{ flex: 1 }}
+        style={{ flex: 1, paddingTop: 8 }}
         selectedIndex={selectedIndex}
         onSelect={index => setSelectedIndex(index)}
         shouldLoadComponent={index => index === selectedIndex}

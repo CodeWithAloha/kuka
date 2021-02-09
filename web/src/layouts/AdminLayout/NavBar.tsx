@@ -13,7 +13,7 @@ import {
   ListItemText,
   makeStyles,
 } from '@material-ui/core';
-import { Calendar as CalendarIcon, Plus as PlusIcon } from 'react-feather';
+import { Calendar as CalendarIcon } from 'react-feather';
 import Logo from 'src/components/Logo';
 
 interface NavBarProps {
@@ -70,43 +70,10 @@ function NavBar({ onMobileClose, openMobile }: NavBarProps) {
           <ListItemIcon><CalendarIcon /></ListItemIcon>
           <ListItemText primary="Agenda Items" />
         </ListItem>
-
-        <List
-          component="div"
-          dense
-          disablePadding
-        >
-          <ListItem
-            button
-            className={classes.nested}
-            component={NavLink}
-            to="/admin/agenda-create"
-          >
-            <ListItemIcon><PlusIcon /></ListItemIcon>
-            <ListItemText primary="Create Agenda Item" />
-          </ListItem>
-        </List>
-
         <ListItem button component={NavLink} to="/admin/testimony-list">
           <ListItemIcon><CalendarIcon /></ListItemIcon>
-          <ListItemText primary="Agenda Items" />
+          <ListItemText primary="Testimonies" />
         </ListItem>
-
-        <List
-          component="div"
-          dense
-          disablePadding
-        >
-          <ListItem
-            button
-            className={classes.nested}
-            component={NavLink}
-            to="/admin/agenda-create"
-          >
-            <ListItemIcon><PlusIcon /></ListItemIcon>
-            <ListItemText primary="Create Agenda Item" />
-          </ListItem>
-        </List>
       </List>
       <Divider />
     </Box>

@@ -10,12 +10,8 @@
  * @format
  */
 import 'react-native-gesture-handler';
-import React, { useState, useEffect } from 'react';
-import {
-  ApplicationProvider,
-  IconRegistry,
-  useTheme,
-} from '@ui-kitten/components';
+import React, { useEffect, useState } from 'react';
+import { ApplicationProvider, IconRegistry } from '@ui-kitten/components';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import * as eva from '@eva-design/eva';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
@@ -24,10 +20,11 @@ import { createStackNavigator } from '@react-navigation/stack';
 import auth from '@react-native-firebase/auth';
 import { GoogleSignin } from '@react-native-community/google-signin';
 import { LoginScreen } from './screens/LoginScreen';
-import { EmailScreen } from './screens/EmailScreen';
-import { AgendaItemsScreen } from './screens/AgendaItemsScreen';
-import { AgendaScreen } from './screens/AgendaScreen';
-import { CameraScreen } from './screens/CameraScreen';
+import { SignupScreen } from './screens/SignupScreen';
+import { ForgotPasswordScreen } from './screens/ForgotPasswordScreen';
+import { AuthNavigator } from './navigation/AuthNavigator';
+import { default as theme } from './app-theme.json';
+import { default as mapping } from './app-mapping.json';
 
 GoogleSignin.configure({
   webClientId:
@@ -36,7 +33,7 @@ GoogleSignin.configure({
 
 export default () => {
   const { Navigator, Screen } = createStackNavigator();
-  const theme = useTheme();
+  // const theme = useTheme();
   const [authUser, setAuthUser] = useState(null);
 
   useEffect(() => {
@@ -48,7 +45,11 @@ export default () => {
   return (
     <>
       <IconRegistry icons={EvaIconsPack} />
-      <ApplicationProvider {...eva} theme={eva.dark}>
+      <ApplicationProvider
+        {...eva}
+        theme={{ ...eva.light, ...theme }}
+        customMapping={mapping}
+      >
         <SafeAreaProvider>
           <SafeAreaView
             style={{
@@ -57,23 +58,18 @@ export default () => {
             }}
           >
             <NavigationContainer>
-              <Navigator headerMode="none">
-                {authUser ? (
-                  <>
-                    <Screen
-                      name="Agenda Items"
-                      component={AgendaItemsScreen}
-                    ></Screen>
-                    <Screen name="Agenda" component={AgendaScreen}></Screen>
-                    <Screen name="Camera" component={CameraScreen}></Screen>
-                  </>
-                ) : (
-                  <>
-                    <Screen name="Login" component={LoginScreen} />
-                    <Screen name="Email" component={EmailScreen} />
-                  </>
-                )}
-              </Navigator>
+              {authUser ? (
+                <AuthNavigator />
+              ) : (
+                <Navigator headerMode="none">
+                  <Screen name="Login" component={LoginScreen} />
+                  <Screen name="Signup" component={SignupScreen} />
+                  <Screen
+                    name="Forgot Password"
+                    component={ForgotPasswordScreen}
+                  />
+                </Navigator>
+              )}
             </NavigationContainer>
           </SafeAreaView>
         </SafeAreaProvider>

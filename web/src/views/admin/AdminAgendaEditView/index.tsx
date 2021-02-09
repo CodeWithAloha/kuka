@@ -7,7 +7,7 @@ import type { AgendaItem } from 'src/types/agendaItem';
 import { useDocumentDataOnce } from 'react-firebase-hooks/firestore';
 import { useParams } from 'react-router-dom';
 import Header from './Header';
-import AgendaCreateForm from '../AdminAgendaCreateView/AgendaCreateForm';
+import AgendaForm from './AgendaForm';
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -40,7 +40,7 @@ function AgendaCreateView() {
         </strong>
         )}
         {loading && <span>Collection: Loading...</span>}
-        {agendaItem && <AgendaCreateForm agendaItem={agendaItem} />}
+        {agendaItem && <AgendaForm agendaItem={agendaItem} />}
       </Container>
     </Page>
   );
