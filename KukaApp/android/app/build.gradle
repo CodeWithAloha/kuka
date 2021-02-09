@@ -129,7 +129,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.kukaapp"
+        applicationId "org.codeforhawaii.kuka"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

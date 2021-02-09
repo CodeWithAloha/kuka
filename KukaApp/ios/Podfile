@@ -21,8 +21,8 @@ def flipper_post_install(installer)
   end
 end
 
-target 'KukaApp' do
-  # Pods for KukaApp
+target 'Kuka' do
+  # Pods for Kuka
   pod 'FBLazyVector', :path => "../node_modules/react-native/Libraries/FBLazyVector"
   pod 'FBReactNativeSpec', :path => "../node_modules/react-native/Libraries/FBReactNativeSpec"
   pod 'RCTRequired', :path => "../node_modules/react-native/Libraries/RCTRequired"
@@ -54,7 +54,7 @@ target 'KukaApp' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
-  target 'KukaAppTests' do
+  target 'KukaTests' do
     inherit! :complete
     # Pods for testing
   end
@@ -71,10 +71,10 @@ target 'KukaApp' do
   end
 end
 
-target 'KukaApp-tvOS' do
-  # Pods for KukaApp-tvOS
+target 'Kuka-tvOS' do
+  # Pods for Kuka-tvOS
 
-  target 'KukaApp-tvOSTests' do
+  target 'Kuka-tvOSTests' do
     inherit! :search_paths
     # Pods for testing
   end

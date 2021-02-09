@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-               BuildableName = "KukaApp-tvOS.app"
-               BlueprintName = "KukaApp-tvOS"
-               ReferencedContainer = "container:KukaApp.xcodeproj">
+               BuildableName = "Kuka-tvOS.app"
+               BlueprintName = "Kuka-tvOS"
+               ReferencedContainer = "container:Kuka.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E48F1E0B4A5D006451C7"
-               BuildableName = "KukaApp-tvOSTests.xctest"
-               BlueprintName = "KukaApp-tvOSTests"
-               ReferencedContainer = "container:KukaApp.xcodeproj">
+               BuildableName = "Kuka-tvOSTests.xctest"
+               BlueprintName = "Kuka-tvOSTests"
+               ReferencedContainer = "container:Kuka.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "KukaApp-tvOS.app"
-            BlueprintName = "KukaApp-tvOS"
-            ReferencedContainer = "container:KukaApp.xcodeproj">
+            BuildableName = "Kuka-tvOS.app"
+            BlueprintName = "Kuka-tvOS"
+            ReferencedContainer = "container:Kuka.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "KukaApp-tvOS.app"
-            BlueprintName = "KukaApp-tvOS"
-            ReferencedContainer = "container:KukaApp.xcodeproj">
+            BuildableName = "Kuka-tvOS.app"
+            BlueprintName = "Kuka-tvOS"
+            ReferencedContainer = "container:Kuka.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
