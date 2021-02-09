@@ -37,6 +37,10 @@ export const AgendaScreen = ({ navigation, route }) => {
     sessionDays = differenceInCalendarDays(now, sessionDate);
   }
 
+  const record = () => {
+    navigation.navigate('Camera');
+  };
+
   return (
     <Layout level="1" style={{ flex: 1 }}>
       <TopNav title={route.params.title} {...{ navigation, route }} />
@@ -63,7 +67,7 @@ export const AgendaScreen = ({ navigation, route }) => {
           )}
         </Layout>
         <View style={{ padding: 16 }}>
-          <Button>RECORD TESTIMONY</Button>
+          <Button onPress={record}>RECORD TESTIMONY</Button>
           <Text style={{ fontWeight: '500', marginTop: 16 }} appearance="hint">
             {`Hearing on ${format(
               sessionDate,
@@ -71,7 +75,7 @@ export const AgendaScreen = ({ navigation, route }) => {
             )} (${sessionDays}d ${deadlineDays ? 'from now' : 'ago'})\n`}
           </Text>
           <Text>{route.params.description}</Text>
-          <Button>RECORD TESTIMONY</Button>
+          <Button onPress={record}>RECORD TESTIMONY</Button>
         </View>
       </ScrollView>
     </Layout>
