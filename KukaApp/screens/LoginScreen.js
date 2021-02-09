@@ -1,7 +1,14 @@
 import React, { useState } from 'react';
-import { Alert } from 'react-native';
+import { Alert, View } from 'react-native';
 import auth from '@react-native-firebase/auth';
-import { Layout, Text, Input, Button } from '@ui-kitten/components';
+import {
+  Layout,
+  Text,
+  Input,
+  Button,
+  useStyleSheet,
+  StyleService,
+} from '@ui-kitten/components';
 import {
   GoogleSignin,
   GoogleSigninButton,
@@ -12,8 +19,11 @@ import {
   GraphRequest,
   GraphRequestManager,
 } from 'react-native-fbsdk';
+import KukaLogo from '../assets/images/kuka_logo_no_text.svg';
+import { AuthHeader } from '../components/AuthHeader';
 
 export const LoginScreen = ({ navigation }) => {
+  const styles = useStyleSheet(themedStyles);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [inProgress, setInProgress] = useState(false);
@@ -137,36 +147,82 @@ export const LoginScreen = ({ navigation }) => {
   };
 
   return (
-    <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Input
-        value={email}
-        label="EMAIL"
-        placeholder="Email"
-        onChangeText={nextValue => setEmail(nextValue)}
+    <Layout style={styles.container}>
+      <AuthHeader
+        titleText="Sign In"
+        leadText="Please enter your credentials to proceed"
       />
-      <Input
-        value={password}
-        label="PASSWORD"
-        placeholder="Password"
-        onChangeText={nextValue => setPassword(nextValue)}
-      />
-      <Button onPress={onEmailSignIn} disabled={inProgress}>
-        Sign In
-      </Button>
-      <GoogleSigninButton
-        onPress={() => onGoogleSignIn()}
-        disabled={inProgress}
-      />
-      <Button onPress={() => onFacebookSignIn()} disabled={inProgress}>
-        Facebook
-      </Button>
-      <Text>
-        Don't have an account?{' '}
-        <Text status="primary" onPress={() => navigation.navigate('Email')}>
-          Sign Up
-        </Text>
-      </Text>
-      {message && <Text>{message}</Text>}
+      <View style={styles.bodyContainer}>
+        <View>
+          <Input
+            value={email}
+            label="EMAIL"
+            placeholder="Email"
+            onChangeText={nextValue => setEmail(nextValue)}
+            style={styles.formField}
+          />
+          <Input
+            value={password}
+            label="PASSWORD"
+            placeholder="Password"
+            onChangeText={nextValue => setPassword(nextValue)}
+            style={styles.formField}
+          />
+
+          <Text
+            status="primary"
+            style={styles.forgotPasswordText}
+            onPress={() => {
+              navigation.navigate('Forgot Password');
+            }}
+          >
+            Forgot Password?
+          </Text>
+        </View>
+
+        <View>
+          <Button onPress={onEmailSignIn} disabled={inProgress}>
+            SIGN IN
+          </Button>
+          <GoogleSigninButton
+            onPress={() => onGoogleSignIn()}
+            disabled={inProgress}
+          />
+          <Button onPress={() => onFacebookSignIn()} disabled={inProgress}>
+            Facebook
+          </Button>
+          <Text appearance="hint" style={{ textAlign: 'center' }}>
+            Don't have an account?{' '}
+            <Text status="primary" onPress={() => navigation.navigate('Signup')}>
+              Sign Up
+            </Text>
+          </Text>
+          {message && <Text>{message}</Text>}
+        </View>
+      </View>
     </Layout>
   );
 };
+
+const themedStyles = StyleService.create({
+  container: {
+    backgroundColor: 'background-basic-color-1',
+    flex: 1,
+  },
+  bodyContainer: {
+    padding: 24,
+    flex: 1,
+    justifyContent: 'space-between',
+  },
+  forgotPasswordText: {
+    // fontFamily: 'OpenSans-Bold',
+    fontSize: 13,
+    fontWeight: '600',
+    textAlign: 'center',
+    marginTop: 24,
+  },
+  formField: {
+    marginTop: 10,
+  },
+  signInButton: {},
+});

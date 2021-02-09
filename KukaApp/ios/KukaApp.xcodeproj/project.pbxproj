@@ -16,11 +16,22 @@
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* KukaAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* KukaAppTests.m */; };
+		638F79E6255A21220023757A /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638F79E5255A21220023757A /* File.swift */; };
 		7D71FF034D11FD743611894C /* libPods-KukaApp-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 545864DBBECB004AB847A997 /* libPods-KukaApp-tvOS.a */; };
 		BA07E8E33357BA571B8D19C6 /* libPods-KukaApp-KukaAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15283CD60974C5CDB28C5F39 /* libPods-KukaApp-KukaAppTests.a */; };
 		C1D2246A2F66367B6BED6FCB /* libPods-KukaApp-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E9ECE5AA370C9BDB1ABB5FFF /* libPods-KukaApp-tvOSTests.a */; };
 		EEE1F66624DBD00000CC40CE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EEE1F66524DBD00000CC40CE /* GoogleService-Info.plist */; };
 		F6385F492383295F3D1788D4 /* libPods-KukaApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FA68C49CB5A83B3F5440370 /* libPods-KukaApp.a */; };
+		9429115A91F24EC9AEBC2ADB /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 915E239BD08F4A42A076DA62 /* OpenSans-Bold.ttf */; };
+		B26E5261547743FA81F747AF /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26747330F8A64FDEBA2F40E3 /* OpenSans-BoldItalic.ttf */; };
+		74F7F972AC0B4C1C91DBE1EF /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5E3606201B6D478EAD20ADA4 /* OpenSans-ExtraBold.ttf */; };
+		EABB61274F7A49D09252C076 /* OpenSans-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 52F74FC7992A4344BC3CD518 /* OpenSans-ExtraBoldItalic.ttf */; };
+		3C7DAFF537A14E68A3C2E69E /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0026AC656127496F8ED51214 /* OpenSans-Italic.ttf */; };
+		9ACC717AE5084E9F85F983EA /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DB941C5BD35E423C875D7C26 /* OpenSans-Light.ttf */; };
+		BD7628F9278D4EC7A23BB0CD /* OpenSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 098CA4B949F84A69BBB04A09 /* OpenSans-LightItalic.ttf */; };
+		2498A2EB11CD41FEA256845C /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56E21CF23ADE4572A4176F08 /* OpenSans-Regular.ttf */; };
+		7718358487BD4E768CC8D7BB /* OpenSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6024C906B48D405291B40A5C /* OpenSans-SemiBold.ttf */; };
+		7501DFFD49F04A708969D7AB /* OpenSans-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C0212689D9124FB9A8D8FD9B /* OpenSans-SemiBoldItalic.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +70,8 @@
 		2D02E47B1E0B4A5D006451C7 /* KukaApp-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KukaApp-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* KukaApp-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "KukaApp-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		545864DBBECB004AB847A997 /* libPods-KukaApp-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KukaApp-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		638F79E4255A21220023757A /* KukaApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KukaApp-Bridging-Header.h"; sourceTree = "<group>"; };
+		638F79E5255A21220023757A /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		9FA68C49CB5A83B3F5440370 /* libPods-KukaApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KukaApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABD2C8BEC95E8002D5384F68 /* Pods-KukaApp-KukaAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KukaApp-KukaAppTests.release.xcconfig"; path = "Target Support Files/Pods-KukaApp-KukaAppTests/Pods-KukaApp-KukaAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		C154CA1D64135C3FEAB46F95 /* Pods-KukaApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KukaApp.release.xcconfig"; path = "Target Support Files/Pods-KukaApp/Pods-KukaApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -69,6 +82,16 @@
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		EEE1F66524DBD00000CC40CE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		915E239BD08F4A42A076DA62 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; name = "OpenSans-Bold.ttf"; path = "../assets/fonts/OpenSans-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		26747330F8A64FDEBA2F40E3 /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; name = "OpenSans-BoldItalic.ttf"; path = "../assets/fonts/OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		5E3606201B6D478EAD20ADA4 /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; name = "OpenSans-ExtraBold.ttf"; path = "../assets/fonts/OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		52F74FC7992A4344BC3CD518 /* OpenSans-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; name = "OpenSans-ExtraBoldItalic.ttf"; path = "../assets/fonts/OpenSans-ExtraBoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		0026AC656127496F8ED51214 /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; name = "OpenSans-Italic.ttf"; path = "../assets/fonts/OpenSans-Italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		DB941C5BD35E423C875D7C26 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; name = "OpenSans-Light.ttf"; path = "../assets/fonts/OpenSans-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		098CA4B949F84A69BBB04A09 /* OpenSans-LightItalic.ttf */ = {isa = PBXFileReference; name = "OpenSans-LightItalic.ttf"; path = "../assets/fonts/OpenSans-LightItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		56E21CF23ADE4572A4176F08 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; name = "OpenSans-Regular.ttf"; path = "../assets/fonts/OpenSans-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		6024C906B48D405291B40A5C /* OpenSans-SemiBold.ttf */ = {isa = PBXFileReference; name = "OpenSans-SemiBold.ttf"; path = "../assets/fonts/OpenSans-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		C0212689D9124FB9A8D8FD9B /* OpenSans-SemiBoldItalic.ttf */ = {isa = PBXFileReference; name = "OpenSans-SemiBoldItalic.ttf"; path = "../assets/fonts/OpenSans-SemiBoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +184,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				638F79E5255A21220023757A /* File.swift */,
 				EEE1F66524DBD00000CC40CE /* GoogleService-Info.plist */,
 				13B07FAE1A68108700A75B9A /* KukaApp */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
@@ -168,6 +192,8 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				95252A25771CA0A096E86E0C /* Pods */,
+				638F79E4255A21220023757A /* KukaApp-Bridging-Header.h */,
+				28DA321EACC44A31945B6F24 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -199,6 +225,24 @@
 			);
 			path = Pods;
 			sourceTree = "<group>";
+		};
+		28DA321EACC44A31945B6F24 /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				915E239BD08F4A42A076DA62 /* OpenSans-Bold.ttf */,
+				26747330F8A64FDEBA2F40E3 /* OpenSans-BoldItalic.ttf */,
+				5E3606201B6D478EAD20ADA4 /* OpenSans-ExtraBold.ttf */,
+				52F74FC7992A4344BC3CD518 /* OpenSans-ExtraBoldItalic.ttf */,
+				0026AC656127496F8ED51214 /* OpenSans-Italic.ttf */,
+				DB941C5BD35E423C875D7C26 /* OpenSans-Light.ttf */,
+				098CA4B949F84A69BBB04A09 /* OpenSans-LightItalic.ttf */,
+				56E21CF23ADE4572A4176F08 /* OpenSans-Regular.ttf */,
+				6024C906B48D405291B40A5C /* OpenSans-SemiBold.ttf */,
+				C0212689D9124FB9A8D8FD9B /* OpenSans-SemiBoldItalic.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -297,7 +341,8 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						LastSwiftMigration = 1120;
+						DevelopmentTeam = A68P3WT8X2;
+						LastSwiftMigration = 1210;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -346,6 +391,16 @@
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				EEE1F66624DBD00000CC40CE /* GoogleService-Info.plist in Resources */,
+				9429115A91F24EC9AEBC2ADB /* OpenSans-Bold.ttf in Resources */,
+				B26E5261547743FA81F747AF /* OpenSans-BoldItalic.ttf in Resources */,
+				74F7F972AC0B4C1C91DBE1EF /* OpenSans-ExtraBold.ttf in Resources */,
+				EABB61274F7A49D09252C076 /* OpenSans-ExtraBoldItalic.ttf in Resources */,
+				3C7DAFF537A14E68A3C2E69E /* OpenSans-Italic.ttf in Resources */,
+				9ACC717AE5084E9F85F983EA /* OpenSans-Light.ttf in Resources */,
+				BD7628F9278D4EC7A23BB0CD /* OpenSans-LightItalic.ttf in Resources */,
+				2498A2EB11CD41FEA256845C /* OpenSans-Regular.ttf in Resources */,
+				7718358487BD4E768CC8D7BB /* OpenSans-SemiBold.ttf in Resources */,
+				7501DFFD49F04A708969D7AB /* OpenSans-SemiBoldItalic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -591,6 +646,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
+				638F79E6255A21220023757A /* File.swift in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -644,6 +700,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D4DF68158F4C3108C517863A /* Pods-KukaApp-KukaAppTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -667,6 +724,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = ABD2C8BEC95E8002D5384F68 /* Pods-KukaApp-KukaAppTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = KukaAppTests/Info.plist;
@@ -690,6 +748,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = A68P3WT8X2;
 				ENABLE_BITCODE = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
@@ -697,13 +756,15 @@
 				);
 				INFOPLIST_FILE = KukaApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.cfh.KukaApp;
 				PRODUCT_NAME = KukaApp;
+				SWIFT_OBJC_BRIDGING_HEADER = "KukaApp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -717,15 +778,19 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = A68P3WT8X2;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = KukaApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.cfh.KukaApp;
 				PRODUCT_NAME = KukaApp;
+				SWIFT_OBJC_BRIDGING_HEADER = "KukaApp-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
