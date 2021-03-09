@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00E356F31AD99517003FC87E /* KukaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* KukaTests.m */; };
+		00E356F31AD99517003FC87E /* KukaNowTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* KukaNowTests.m */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
@@ -16,22 +16,22 @@
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		2DCD954D1E0B4F2C00145EB5 /* KukaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* KukaTests.m */; };
+		2DCD954D1E0B4F2C00145EB5 /* KukaNowTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* KukaNowTests.m */; };
 		3C7DAFF537A14E68A3C2E69E /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0026AC656127496F8ED51214 /* OpenSans-Italic.ttf */; };
 		638F79E6255A21220023757A /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638F79E5255A21220023757A /* File.swift */; };
 		74F7F972AC0B4C1C91DBE1EF /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5E3606201B6D478EAD20ADA4 /* OpenSans-ExtraBold.ttf */; };
 		7501DFFD49F04A708969D7AB /* OpenSans-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C0212689D9124FB9A8D8FD9B /* OpenSans-SemiBoldItalic.ttf */; };
 		7718358487BD4E768CC8D7BB /* OpenSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6024C906B48D405291B40A5C /* OpenSans-SemiBold.ttf */; };
-		7D71FF034D11FD743611894C /* libPods-Kuka-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 545864DBBECB004AB847A997 /* libPods-Kuka-tvOS.a */; };
+		7D71FF034D11FD743611894C /* libPods-KukaNow-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 545864DBBECB004AB847A997 /* libPods-KukaNow-tvOS.a */; };
 		9429115A91F24EC9AEBC2ADB /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 915E239BD08F4A42A076DA62 /* OpenSans-Bold.ttf */; };
 		9ACC717AE5084E9F85F983EA /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DB941C5BD35E423C875D7C26 /* OpenSans-Light.ttf */; };
 		B26E5261547743FA81F747AF /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26747330F8A64FDEBA2F40E3 /* OpenSans-BoldItalic.ttf */; };
-		BA07E8E33357BA571B8D19C6 /* libPods-Kuka-KukaTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15283CD60974C5CDB28C5F39 /* libPods-Kuka-KukaTests.a */; };
+		BA07E8E33357BA571B8D19C6 /* libPods-KukaNow-KukaNowTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15283CD60974C5CDB28C5F39 /* libPods-KukaNow-KukaNowTests.a */; };
 		BD7628F9278D4EC7A23BB0CD /* OpenSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 098CA4B949F84A69BBB04A09 /* OpenSans-LightItalic.ttf */; };
-		C1D2246A2F66367B6BED6FCB /* libPods-Kuka-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E9ECE5AA370C9BDB1ABB5FFF /* libPods-Kuka-tvOSTests.a */; };
+		C1D2246A2F66367B6BED6FCB /* libPods-KukaNow-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E9ECE5AA370C9BDB1ABB5FFF /* libPods-KukaNow-tvOSTests.a */; };
 		EABB61274F7A49D09252C076 /* OpenSans-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 52F74FC7992A4344BC3CD518 /* OpenSans-ExtraBoldItalic.ttf */; };
 		EEE1F66624DBD00000CC40CE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EEE1F66524DBD00000CC40CE /* GoogleService-Info.plist */; };
-		F6385F492383295F3D1788D4 /* libPods-Kuka.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FA68C49CB5A83B3F5440370 /* libPods-Kuka.a */; };
+		F6385F492383295F3D1788D4 /* libPods-KukaNow.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FA68C49CB5A83B3F5440370 /* libPods-KukaNow.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,55 +40,55 @@
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
-			remoteInfo = Kuka;
+			remoteInfo = KukaNow;
 		};
 		2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 2D02E47A1E0B4A5D006451C7;
-			remoteInfo = "Kuka-tvOS";
+			remoteInfo = "KukaNow-tvOS";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		0026AC656127496F8ED51214 /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-Italic.ttf"; path = "../assets/fonts/OpenSans-Italic.ttf"; sourceTree = "<group>"; };
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
-		00E356EE1AD99517003FC87E /* KukaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KukaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356EE1AD99517003FC87E /* KukaNowTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KukaNowTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		00E356F21AD99517003FC87E /* KukaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KukaTests.m; sourceTree = "<group>"; };
-		0921CA7BBD8AD7D79456257C /* Pods-Kuka-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kuka-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-Kuka-tvOSTests/Pods-Kuka-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		00E356F21AD99517003FC87E /* KukaNowTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KukaNowTests.m; sourceTree = "<group>"; };
+		0921CA7BBD8AD7D79456257C /* Pods-KukaNow-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KukaNow-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-KukaNow-tvOSTests/Pods-KukaNow-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		098CA4B949F84A69BBB04A09 /* OpenSans-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-LightItalic.ttf"; path = "../assets/fonts/OpenSans-LightItalic.ttf"; sourceTree = "<group>"; };
-		1268645AAA09871035891562 /* Pods-Kuka-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kuka-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-Kuka-tvOSTests/Pods-Kuka-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* Kuka.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kuka.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Kuka/AppDelegate.h; sourceTree = "<group>"; };
-		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Kuka/AppDelegate.m; sourceTree = "<group>"; };
+		1268645AAA09871035891562 /* Pods-KukaNow-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KukaNow-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-KukaNow-tvOSTests/Pods-KukaNow-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* KukaNow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KukaNow.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = KukaNow/AppDelegate.h; sourceTree = "<group>"; };
+		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = KukaNow/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB21A68108700A75B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Kuka/Images.xcassets; sourceTree = "<group>"; };
-		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Kuka/Info.plist; sourceTree = "<group>"; };
-		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Kuka/main.m; sourceTree = "<group>"; };
-		15283CD60974C5CDB28C5F39 /* libPods-Kuka-KukaTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Kuka-KukaTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = KukaNow/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = KukaNow/Info.plist; sourceTree = "<group>"; };
+		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = KukaNow/main.m; sourceTree = "<group>"; };
+		15283CD60974C5CDB28C5F39 /* libPods-KukaNow-KukaNowTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KukaNow-KukaNowTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		26747330F8A64FDEBA2F40E3 /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-BoldItalic.ttf"; path = "../assets/fonts/OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
-		2793BC04E01A87F32A2A6336 /* Pods-Kuka-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kuka-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-Kuka-tvOS/Pods-Kuka-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
-		2D02E47B1E0B4A5D006451C7 /* Kuka-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Kuka-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2D02E4901E0B4A5D006451C7 /* Kuka-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Kuka-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2793BC04E01A87F32A2A6336 /* Pods-KukaNow-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KukaNow-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-KukaNow-tvOS/Pods-KukaNow-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		2D02E47B1E0B4A5D006451C7 /* KukaNow-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KukaNow-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D02E4901E0B4A5D006451C7 /* KukaNow-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "KukaNow-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		52F74FC7992A4344BC3CD518 /* OpenSans-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-ExtraBoldItalic.ttf"; path = "../assets/fonts/OpenSans-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
-		545864DBBECB004AB847A997 /* libPods-Kuka-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Kuka-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		545864DBBECB004AB847A997 /* libPods-KukaNow-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KukaNow-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		56E21CF23ADE4572A4176F08 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-Regular.ttf"; path = "../assets/fonts/OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		5E3606201B6D478EAD20ADA4 /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-ExtraBold.ttf"; path = "../assets/fonts/OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
 		6024C906B48D405291B40A5C /* OpenSans-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-SemiBold.ttf"; path = "../assets/fonts/OpenSans-SemiBold.ttf"; sourceTree = "<group>"; };
-		638F79E4255A21220023757A /* Kuka-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Kuka-Bridging-Header.h"; sourceTree = "<group>"; };
+		638F79E4255A21220023757A /* KukaNow-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KukaNow-Bridging-Header.h"; sourceTree = "<group>"; };
 		638F79E5255A21220023757A /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		915E239BD08F4A42A076DA62 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-Bold.ttf"; path = "../assets/fonts/OpenSans-Bold.ttf"; sourceTree = "<group>"; };
-		9FA68C49CB5A83B3F5440370 /* libPods-Kuka.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Kuka.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		ABD2C8BEC95E8002D5384F68 /* Pods-Kuka-KukaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kuka-KukaTests.release.xcconfig"; path = "Target Support Files/Pods-Kuka-KukaTests/Pods-Kuka-KukaTests.release.xcconfig"; sourceTree = "<group>"; };
+		9FA68C49CB5A83B3F5440370 /* libPods-KukaNow.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KukaNow.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		ABD2C8BEC95E8002D5384F68 /* Pods-KukaNow-KukaNowTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KukaNow-KukaNowTests.release.xcconfig"; path = "Target Support Files/Pods-KukaNow-KukaNowTests/Pods-KukaNow-KukaNowTests.release.xcconfig"; sourceTree = "<group>"; };
 		C0212689D9124FB9A8D8FD9B /* OpenSans-SemiBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-SemiBoldItalic.ttf"; path = "../assets/fonts/OpenSans-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
-		C154CA1D64135C3FEAB46F95 /* Pods-Kuka.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kuka.release.xcconfig"; path = "Target Support Files/Pods-Kuka/Pods-Kuka.release.xcconfig"; sourceTree = "<group>"; };
-		D387860B46389B9BA8CA6865 /* Pods-Kuka-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kuka-tvOS.release.xcconfig"; path = "Target Support Files/Pods-Kuka-tvOS/Pods-Kuka-tvOS.release.xcconfig"; sourceTree = "<group>"; };
-		D4DF68158F4C3108C517863A /* Pods-Kuka-KukaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kuka-KukaTests.debug.xcconfig"; path = "Target Support Files/Pods-Kuka-KukaTests/Pods-Kuka-KukaTests.debug.xcconfig"; sourceTree = "<group>"; };
+		C154CA1D64135C3FEAB46F95 /* Pods-KukaNow.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KukaNow.release.xcconfig"; path = "Target Support Files/Pods-KukaNow/Pods-KukaNow.release.xcconfig"; sourceTree = "<group>"; };
+		D387860B46389B9BA8CA6865 /* Pods-KukaNow-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KukaNow-tvOS.release.xcconfig"; path = "Target Support Files/Pods-KukaNow-tvOS/Pods-KukaNow-tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		D4DF68158F4C3108C517863A /* Pods-KukaNow-KukaNowTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KukaNow-KukaNowTests.debug.xcconfig"; path = "Target Support Files/Pods-KukaNow-KukaNowTests/Pods-KukaNow-KukaNowTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DB941C5BD35E423C875D7C26 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-Light.ttf"; path = "../assets/fonts/OpenSans-Light.ttf"; sourceTree = "<group>"; };
-		E05F0C8FA8DF57FCE3179621 /* Pods-Kuka.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kuka.debug.xcconfig"; path = "Target Support Files/Pods-Kuka/Pods-Kuka.debug.xcconfig"; sourceTree = "<group>"; };
-		E9ECE5AA370C9BDB1ABB5FFF /* libPods-Kuka-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Kuka-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E05F0C8FA8DF57FCE3179621 /* Pods-KukaNow.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KukaNow.debug.xcconfig"; path = "Target Support Files/Pods-KukaNow/Pods-KukaNow.debug.xcconfig"; sourceTree = "<group>"; };
+		E9ECE5AA370C9BDB1ABB5FFF /* libPods-KukaNow-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KukaNow-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		EEE1F66524DBD00000CC40CE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -99,7 +99,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA07E8E33357BA571B8D19C6 /* libPods-Kuka-KukaTests.a in Frameworks */,
+				BA07E8E33357BA571B8D19C6 /* libPods-KukaNow-KukaNowTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,7 +107,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F6385F492383295F3D1788D4 /* libPods-Kuka.a in Frameworks */,
+				F6385F492383295F3D1788D4 /* libPods-KukaNow.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,7 +115,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7D71FF034D11FD743611894C /* libPods-Kuka-tvOS.a in Frameworks */,
+				7D71FF034D11FD743611894C /* libPods-KukaNow-tvOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,20 +123,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C1D2246A2F66367B6BED6FCB /* libPods-Kuka-tvOSTests.a in Frameworks */,
+				C1D2246A2F66367B6BED6FCB /* libPods-KukaNow-tvOSTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		00E356EF1AD99517003FC87E /* KukaTests */ = {
+		00E356EF1AD99517003FC87E /* KukaNowTests */ = {
 			isa = PBXGroup;
 			children = (
-				00E356F21AD99517003FC87E /* KukaTests.m */,
+				00E356F21AD99517003FC87E /* KukaNowTests.m */,
 				00E356F01AD99517003FC87E /* Supporting Files */,
 			);
-			path = KukaTests;
+			path = KukaNowTests;
 			sourceTree = "<group>";
 		};
 		00E356F01AD99517003FC87E /* Supporting Files */ = {
@@ -147,7 +147,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		13B07FAE1A68108700A75B9A /* Kuka */ = {
+		13B07FAE1A68108700A75B9A /* KukaNow */ = {
 			isa = PBXGroup;
 			children = (
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
@@ -158,7 +158,7 @@
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
-			name = Kuka;
+			name = KukaNow;
 			sourceTree = "<group>";
 		};
 		28DA321EACC44A31945B6F24 /* Resources */ = {
@@ -183,10 +183,10 @@
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
-				9FA68C49CB5A83B3F5440370 /* libPods-Kuka.a */,
-				15283CD60974C5CDB28C5F39 /* libPods-Kuka-KukaTests.a */,
-				545864DBBECB004AB847A997 /* libPods-Kuka-tvOS.a */,
-				E9ECE5AA370C9BDB1ABB5FFF /* libPods-Kuka-tvOSTests.a */,
+				9FA68C49CB5A83B3F5440370 /* libPods-KukaNow.a */,
+				15283CD60974C5CDB28C5F39 /* libPods-KukaNow-KukaNowTests.a */,
+				545864DBBECB004AB847A997 /* libPods-KukaNow-tvOS.a */,
+				E9ECE5AA370C9BDB1ABB5FFF /* libPods-KukaNow-tvOSTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -203,13 +203,13 @@
 			children = (
 				638F79E5255A21220023757A /* File.swift */,
 				EEE1F66524DBD00000CC40CE /* GoogleService-Info.plist */,
-				13B07FAE1A68108700A75B9A /* Kuka */,
+				13B07FAE1A68108700A75B9A /* KukaNow */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
-				00E356EF1AD99517003FC87E /* KukaTests */,
+				00E356EF1AD99517003FC87E /* KukaNowTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				95252A25771CA0A096E86E0C /* Pods */,
-				638F79E4255A21220023757A /* Kuka-Bridging-Header.h */,
+				638F79E4255A21220023757A /* KukaNow-Bridging-Header.h */,
 				28DA321EACC44A31945B6F24 /* Resources */,
 			);
 			indentWidth = 2;
@@ -220,10 +220,10 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* Kuka.app */,
-				00E356EE1AD99517003FC87E /* KukaTests.xctest */,
-				2D02E47B1E0B4A5D006451C7 /* Kuka-tvOS.app */,
-				2D02E4901E0B4A5D006451C7 /* Kuka-tvOSTests.xctest */,
+				13B07F961A680F5B00A75B9A /* KukaNow.app */,
+				00E356EE1AD99517003FC87E /* KukaNowTests.xctest */,
+				2D02E47B1E0B4A5D006451C7 /* KukaNow-tvOS.app */,
+				2D02E4901E0B4A5D006451C7 /* KukaNow-tvOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -231,14 +231,14 @@
 		95252A25771CA0A096E86E0C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				E05F0C8FA8DF57FCE3179621 /* Pods-Kuka.debug.xcconfig */,
-				C154CA1D64135C3FEAB46F95 /* Pods-Kuka.release.xcconfig */,
-				D4DF68158F4C3108C517863A /* Pods-Kuka-KukaTests.debug.xcconfig */,
-				ABD2C8BEC95E8002D5384F68 /* Pods-Kuka-KukaTests.release.xcconfig */,
-				2793BC04E01A87F32A2A6336 /* Pods-Kuka-tvOS.debug.xcconfig */,
-				D387860B46389B9BA8CA6865 /* Pods-Kuka-tvOS.release.xcconfig */,
-				0921CA7BBD8AD7D79456257C /* Pods-Kuka-tvOSTests.debug.xcconfig */,
-				1268645AAA09871035891562 /* Pods-Kuka-tvOSTests.release.xcconfig */,
+				E05F0C8FA8DF57FCE3179621 /* Pods-KukaNow.debug.xcconfig */,
+				C154CA1D64135C3FEAB46F95 /* Pods-KukaNow.release.xcconfig */,
+				D4DF68158F4C3108C517863A /* Pods-KukaNow-KukaNowTests.debug.xcconfig */,
+				ABD2C8BEC95E8002D5384F68 /* Pods-KukaNow-KukaNowTests.release.xcconfig */,
+				2793BC04E01A87F32A2A6336 /* Pods-KukaNow-tvOS.debug.xcconfig */,
+				D387860B46389B9BA8CA6865 /* Pods-KukaNow-tvOS.release.xcconfig */,
+				0921CA7BBD8AD7D79456257C /* Pods-KukaNow-tvOSTests.debug.xcconfig */,
+				1268645AAA09871035891562 /* Pods-KukaNow-tvOSTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -246,9 +246,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		00E356ED1AD99517003FC87E /* KukaTests */ = {
+		00E356ED1AD99517003FC87E /* KukaNowTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "KukaTests" */;
+			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "KukaNowTests" */;
 			buildPhases = (
 				486DF95BEF182491FE435290 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
@@ -261,14 +261,14 @@
 			dependencies = (
 				00E356F51AD99517003FC87E /* PBXTargetDependency */,
 			);
-			name = KukaTests;
-			productName = KukaTests;
-			productReference = 00E356EE1AD99517003FC87E /* KukaTests.xctest */;
+			name = KukaNowTests;
+			productName = KukaNowTests;
+			productReference = 00E356EE1AD99517003FC87E /* KukaNowTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		13B07F861A680F5B00A75B9A /* Kuka */ = {
+		13B07F861A680F5B00A75B9A /* KukaNow */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Kuka" */;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "KukaNow" */;
 			buildPhases = (
 				BC7D0D24FEA8FBA7B155E62E /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
@@ -283,14 +283,14 @@
 			);
 			dependencies = (
 			);
-			name = Kuka;
-			productName = Kuka;
-			productReference = 13B07F961A680F5B00A75B9A /* Kuka.app */;
+			name = KukaNow;
+			productName = KukaNow;
+			productReference = 13B07F961A680F5B00A75B9A /* KukaNow.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2D02E47A1E0B4A5D006451C7 /* Kuka-tvOS */ = {
+		2D02E47A1E0B4A5D006451C7 /* KukaNow-tvOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "Kuka-tvOS" */;
+			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "KukaNow-tvOS" */;
 			buildPhases = (
 				2F6C105ACACF21386A1D44BF /* [CP] Check Pods Manifest.lock */,
 				FD10A7F122414F3F0027D42C /* Start Packager */,
@@ -303,14 +303,14 @@
 			);
 			dependencies = (
 			);
-			name = "Kuka-tvOS";
-			productName = "Kuka-tvOS";
-			productReference = 2D02E47B1E0B4A5D006451C7 /* Kuka-tvOS.app */;
+			name = "KukaNow-tvOS";
+			productName = "KukaNow-tvOS";
+			productReference = 2D02E47B1E0B4A5D006451C7 /* KukaNow-tvOS.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2D02E48F1E0B4A5D006451C7 /* Kuka-tvOSTests */ = {
+		2D02E48F1E0B4A5D006451C7 /* KukaNow-tvOSTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "Kuka-tvOSTests" */;
+			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "KukaNow-tvOSTests" */;
 			buildPhases = (
 				7022EA91CCE90BEB568145A7 /* [CP] Check Pods Manifest.lock */,
 				2D02E48C1E0B4A5D006451C7 /* Sources */,
@@ -322,9 +322,9 @@
 			dependencies = (
 				2D02E4921E0B4A5D006451C7 /* PBXTargetDependency */,
 			);
-			name = "Kuka-tvOSTests";
-			productName = "Kuka-tvOSTests";
-			productReference = 2D02E4901E0B4A5D006451C7 /* Kuka-tvOSTests.xctest */;
+			name = "KukaNow-tvOSTests";
+			productName = "KukaNow-tvOSTests";
+			productReference = 2D02E4901E0B4A5D006451C7 /* KukaNow-tvOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -342,6 +342,7 @@
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = X4FT9G99NH;
 						LastSwiftMigration = 1210;
+						ProvisioningStyle = Automatic;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -354,7 +355,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "Kuka" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "KukaNow" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -367,10 +368,10 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				13B07F861A680F5B00A75B9A /* Kuka */,
-				00E356ED1AD99517003FC87E /* KukaTests */,
-				2D02E47A1E0B4A5D006451C7 /* Kuka-tvOS */,
-				2D02E48F1E0B4A5D006451C7 /* Kuka-tvOSTests */,
+				13B07F861A680F5B00A75B9A /* KukaNow */,
+				00E356ED1AD99517003FC87E /* KukaNowTests */,
+				2D02E47A1E0B4A5D006451C7 /* KukaNow-tvOS */,
+				2D02E48F1E0B4A5D006451C7 /* KukaNow-tvOSTests */,
 			);
 		};
 /* End PBXProject section */
@@ -474,7 +475,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Kuka-tvOS-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-KukaNow-tvOS-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -487,7 +488,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Kuka/Pods-Kuka-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-KukaNow/Pods-KukaNow-resources.sh",
 				"${PODS_ROOT}/FBSDKCoreKit/FacebookSDKStrings.bundle",
 				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/gRPC-C++/gRPCCertificates-Cpp.bundle",
@@ -500,7 +501,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Kuka/Pods-Kuka-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-KukaNow/Pods-KukaNow-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		486DF95BEF182491FE435290 /* [CP] Check Pods Manifest.lock */ = {
@@ -518,7 +519,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Kuka-KukaTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-KukaNow-KukaNowTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -540,7 +541,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Kuka-tvOSTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-KukaNow-tvOSTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -553,7 +554,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Kuka-KukaTests/Pods-Kuka-KukaTests-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-KukaNow-KukaNowTests/Pods-KukaNow-KukaNowTests-resources.sh",
 				"${PODS_ROOT}/FBSDKCoreKit/FacebookSDKStrings.bundle",
 				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/gRPC-C++/gRPCCertificates-Cpp.bundle",
@@ -566,7 +567,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Kuka-KukaTests/Pods-Kuka-KukaTests-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-KukaNow-KukaNowTests/Pods-KukaNow-KukaNowTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		BC7D0D24FEA8FBA7B155E62E /* [CP] Check Pods Manifest.lock */ = {
@@ -584,7 +585,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Kuka-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-KukaNow-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -636,7 +637,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00E356F31AD99517003FC87E /* KukaTests.m in Sources */,
+				00E356F31AD99517003FC87E /* KukaNowTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -663,7 +664,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DCD954D1E0B4F2C00145EB5 /* KukaTests.m in Sources */,
+				2DCD954D1E0B4F2C00145EB5 /* KukaNowTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -672,12 +673,12 @@
 /* Begin PBXTargetDependency section */
 		00E356F51AD99517003FC87E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 13B07F861A680F5B00A75B9A /* Kuka */;
+			target = 13B07F861A680F5B00A75B9A /* KukaNow */;
 			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
 		};
 		2D02E4921E0B4A5D006451C7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2D02E47A1E0B4A5D006451C7 /* Kuka-tvOS */;
+			target = 2D02E47A1E0B4A5D006451C7 /* KukaNow-tvOS */;
 			targetProxy = 2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -689,7 +690,7 @@
 				13B07FB21A68108700A75B9A /* Base */,
 			);
 			name = LaunchScreen.xib;
-			path = Kuka;
+			path = KukaNow;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -697,7 +698,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D4DF68158F4C3108C517863A /* Pods-Kuka-KukaTests.debug.xcconfig */;
+			baseConfigurationReference = D4DF68158F4C3108C517863A /* Pods-KukaNow-KukaNowTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -705,7 +706,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = KukaTests/Info.plist;
+				INFOPLIST_FILE = KukaNowTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -715,18 +716,18 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Kuka.app/Kuka";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KukaNow.app/KukaNow";
 			};
 			name = Debug;
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ABD2C8BEC95E8002D5384F68 /* Pods-Kuka-KukaTests.release.xcconfig */;
+			baseConfigurationReference = ABD2C8BEC95E8002D5384F68 /* Pods-KukaNow-KukaNowTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
-				INFOPLIST_FILE = KukaTests/Info.plist;
+				INFOPLIST_FILE = KukaNowTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -736,16 +737,18 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Kuka.app/Kuka";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KukaNow.app/KukaNow";
 			};
 			name = Release;
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E05F0C8FA8DF57FCE3179621 /* Pods-Kuka.debug.xcconfig */;
+			baseConfigurationReference = E05F0C8FA8DF57FCE3179621 /* Pods-KukaNow.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = X4FT9G99NH;
 				ENABLE_BITCODE = NO;
@@ -753,7 +756,7 @@
 					"$(inherited)",
 					"FB_SONARKIT_ENABLED=1",
 				);
-				INFOPLIST_FILE = Kuka/Info.plist;
+				INFOPLIST_FILE = KukaNow/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
@@ -762,8 +765,9 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.codeforhawaii.kuka;
-				PRODUCT_NAME = Kuka;
-				SWIFT_OBJC_BRIDGING_HEADER = "Kuka-Bridging-Header.h";
+				PRODUCT_NAME = KukaNow;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "KukaNow-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -772,14 +776,15 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C154CA1D64135C3FEAB46F95 /* Pods-Kuka.release.xcconfig */;
+			baseConfigurationReference = C154CA1D64135C3FEAB46F95 /* Pods-KukaNow.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = A68P3WT8X2;
+				DEVELOPMENT_TEAM = X4FT9G99NH;
 				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = Kuka/Info.plist;
+				INFOPLIST_FILE = KukaNow/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
@@ -788,8 +793,8 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.codeforhawaii.kuka;
-				PRODUCT_NAME = Kuka;
-				SWIFT_OBJC_BRIDGING_HEADER = "Kuka-Bridging-Header.h";
+				PRODUCT_NAME = KukaNow;
+				SWIFT_OBJC_BRIDGING_HEADER = "KukaNow-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -797,7 +802,7 @@
 		};
 		2D02E4971E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2793BC04E01A87F32A2A6336 /* Pods-Kuka-tvOS.debug.xcconfig */;
+			baseConfigurationReference = 2793BC04E01A87F32A2A6336 /* Pods-KukaNow-tvOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -808,14 +813,14 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Kuka-tvOS/Info.plist";
+				INFOPLIST_FILE = "KukaNow-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.Kuka-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.KukaNow-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -825,7 +830,7 @@
 		};
 		2D02E4981E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D387860B46389B9BA8CA6865 /* Pods-Kuka-tvOS.release.xcconfig */;
+			baseConfigurationReference = D387860B46389B9BA8CA6865 /* Pods-KukaNow-tvOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -836,14 +841,14 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Kuka-tvOS/Info.plist";
+				INFOPLIST_FILE = "KukaNow-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.Kuka-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.KukaNow-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -853,7 +858,7 @@
 		};
 		2D02E4991E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0921CA7BBD8AD7D79456257C /* Pods-Kuka-tvOSTests.debug.xcconfig */;
+			baseConfigurationReference = 0921CA7BBD8AD7D79456257C /* Pods-KukaNow-tvOSTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -863,24 +868,24 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Kuka-tvOSTests/Info.plist";
+				INFOPLIST_FILE = "KukaNow-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.Kuka-tvOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.KukaNow-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Kuka-tvOS.app/Kuka-tvOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KukaNow-tvOS.app/KukaNow-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 			};
 			name = Debug;
 		};
 		2D02E49A1E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1268645AAA09871035891562 /* Pods-Kuka-tvOSTests.release.xcconfig */;
+			baseConfigurationReference = 1268645AAA09871035891562 /* Pods-KukaNow-tvOSTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -890,17 +895,17 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Kuka-tvOSTests/Info.plist";
+				INFOPLIST_FILE = "KukaNow-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.Kuka-tvOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.KukaNow-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Kuka-tvOS.app/Kuka-tvOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KukaNow-tvOS.app/KukaNow-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 			};
 			name = Release;
@@ -1021,7 +1026,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "KukaTests" */ = {
+		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "KukaNowTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				00E356F61AD99517003FC87E /* Debug */,
@@ -1030,7 +1035,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Kuka" */ = {
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "KukaNow" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
@@ -1039,7 +1044,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "Kuka-tvOS" */ = {
+		2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "KukaNow-tvOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D02E4971E0B4A5E006451C7 /* Debug */,
@@ -1048,7 +1053,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "Kuka-tvOSTests" */ = {
+		2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "KukaNow-tvOSTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D02E4991E0B4A5E006451C7 /* Debug */,
@@ -1057,7 +1062,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "Kuka" */ = {
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "KukaNow" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,
