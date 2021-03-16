@@ -2,12 +2,14 @@ import React from 'react';
 import KukaLogo from '../assets/images/kuka_logo_no_text.svg';
 import { StyleService, Text, useStyleSheet } from '@ui-kitten/components';
 import { View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export const AuthHeader = ({ titleText, leadText }) => {
+  const insets = useSafeAreaInsets();
   const styles = useStyleSheet(themedStyles);
 
   return (
-    <View style={styles.headerContainer}>
+    <View style={{ ...styles.headerContainer, paddingTop: insets.top }}>
       <KukaLogo width={103} height={81} />
       <Text category="h1" status="control" style={styles.titleText}>
         {titleText}
