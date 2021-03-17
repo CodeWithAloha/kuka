@@ -21,8 +21,8 @@ const BackAction = navigation => {
 export const TopNav = ({ navigation, title }) => {
   const insets = useSafeAreaInsets();
   const theme = useTheme();
-  // taking this approach because the verticalPadding in TopNavigation cannot be overriden by topPadding
 
+  // taking this approach because the verticalPadding in TopNavigation cannot be overriden by topPadding
   return (
     <View
       style={{

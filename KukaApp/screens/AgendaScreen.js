@@ -41,38 +41,40 @@ export const AgendaScreen = ({ navigation, route }) => {
   };
 
   return (
-    <ScrollView>
+    <View style={{ flex: 1 }}>
       <TopNav {...{ navigation, route }} />
-      <HeaderText text={route.params.title} />
-      <IconText
-        name="book-outline"
-        style={styles.headerIcon}
-        iconFill="color-white"
-        textAppearance="alternative"
-      >
-        {route.params.billCode}
-      </IconText>
-      {!!deadlineDays && (
+      <ScrollView>
+        <HeaderText text={route.params.title} />
         <IconText
-          name="clock-outline"
+          name="book-outline"
           style={styles.headerIcon}
           iconFill="color-white"
           textAppearance="alternative"
         >
-          {deadlineDays + ' days left to submit testimony'}
+          {route.params.billCode}
         </IconText>
-      )}
-      <View style={{ padding: 16 }}>
-        <Button onPress={record}>RECORD TESTIMONY</Button>
-        <Text style={{ fontWeight: '500', marginTop: 16 }} appearance="hint">
-          {`Hearing on ${format(
-            sessionDate,
-            'MMMM d, yyyy'
-          )} (${sessionDays}d ${deadlineDays ? 'from now' : 'ago'})\n`}
-        </Text>
-        <Text>{route.params.description}</Text>
-        <Button onPress={record}>RECORD TESTIMONY</Button>
-      </View>
-    </ScrollView>
+        {!!deadlineDays && (
+          <IconText
+            name="clock-outline"
+            style={styles.headerIcon}
+            iconFill="color-white"
+            textAppearance="alternative"
+          >
+            {deadlineDays + ' days left to submit testimony'}
+          </IconText>
+        )}
+        <View style={{ padding: 16 }}>
+          <Button onPress={record}>RECORD TESTIMONY</Button>
+          <Text style={{ fontWeight: '500', marginTop: 16 }} appearance="hint">
+            {`Hearing on ${format(
+              sessionDate,
+              'MMMM d, yyyy'
+            )} (${sessionDays}d ${deadlineDays ? 'from now' : 'ago'})\n`}
+          </Text>
+          <Text>{route.params.description}</Text>
+          <Button onPress={record}>RECORD TESTIMONY</Button>
+        </View>
+      </ScrollView>
+    </View>
   );
 };
