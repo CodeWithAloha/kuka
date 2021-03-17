@@ -42,7 +42,7 @@ export const AgendaScreen = ({ navigation, route }) => {
 
   return (
     <ScrollView>
-      <TopNav title={route.params.title} {...{ navigation, route }} />
+      <TopNav {...{ navigation, route }} />
       <HeaderText text={route.params.title} />
       <IconText
         name="book-outline"

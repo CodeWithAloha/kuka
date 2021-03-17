@@ -9,7 +9,7 @@ import {
   useStyleSheet,
 } from '@ui-kitten/components';
 
-import { HeaderText } from '../components/HeaderText';
+import { Header } from '../components/Header';
 import firestore from '@react-native-firebase/firestore';
 import auth from '@react-native-firebase/auth';
 import { useDocumentDataOnce } from 'react-firebase-hooks/firestore';
@@ -37,7 +37,7 @@ export const MyAccountScreen = ({ navigation, route }) => {
 
   return (
     <Layout styles={styles.container}>
-      <HeaderText text="My Account" />
+      <Header text="My Account" />
       <Formik
         initialValues={{ ...profile }}
         onSubmit={async values => {
