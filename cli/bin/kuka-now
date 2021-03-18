@@ -1,0 +1,8 @@
+#!/usr/bin/env node --harmony
+
+// normal source directory
+var sourceDir = __dirname + "/../src"
+// run the CLI with the current process arguments
+require(sourceDir+'/cli').run(process.argv)
+
+
