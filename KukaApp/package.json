@@ -4,6 +4,8 @@
   "private": true,
   "scripts": {
     "android": "react-native run-android",
+    "setup": "../cli/bin/kuka-now mobile setup",
+    "make:screen": "../cli/bin/kuka-now mobile screen",
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
