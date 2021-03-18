@@ -22,6 +22,11 @@ $ cd KukaApp
 $ yarn setup
 ```
 
+#### Using Storybook
+Open `.env` and modify `STORYBOOK=true`. The default is false.
+
+Then `$ yarn cache:clear` before running either `$ yarn ios` or `$ yarn android`
+
 
 ## Running Usage
 Once the application is running, please signup as there is no "development mode" or "test mode" for Authentication.
