@@ -2,7 +2,6 @@ import React from 'react';
 import { ScrollView, View } from 'react-native';
 import {
   Button,
-  Layout,
   StyleService,
   Text,
   useStyleSheet,
@@ -42,30 +41,28 @@ export const AgendaScreen = ({ navigation, route }) => {
   };
 
   return (
-    <Layout level="1" style={{ flex: 1 }}>
-      <TopNav title={route.params.title} {...{ navigation, route }} />
+    <View style={{ flex: 1 }}>
+      <TopNav {...{ navigation, route }} />
       <ScrollView>
-        <Layout>
-          <HeaderText text={route.params.title} />
+        <HeaderText text={route.params.title} />
+        <IconText
+          name="book-outline"
+          style={styles.headerIcon}
+          iconFill="color-white"
+          textAppearance="alternative"
+        >
+          {route.params.billCode}
+        </IconText>
+        {!!deadlineDays && (
           <IconText
-            name="book-outline"
+            name="clock-outline"
             style={styles.headerIcon}
             iconFill="color-white"
             textAppearance="alternative"
           >
-            {route.params.billCode}
+            {deadlineDays + ' days left to submit testimony'}
           </IconText>
-          {!!deadlineDays && (
-            <IconText
-              name="clock-outline"
-              style={styles.headerIcon}
-              iconFill="color-white"
-              textAppearance="alternative"
-            >
-              {deadlineDays + ' days left to submit testimony'}
-            </IconText>
-          )}
-        </Layout>
+        )}
         <View style={{ padding: 16 }}>
           <Button onPress={record}>RECORD TESTIMONY</Button>
           <Text style={{ fontWeight: '500', marginTop: 16 }} appearance="hint">
@@ -78,6 +75,6 @@ export const AgendaScreen = ({ navigation, route }) => {
           <Button onPress={record}>RECORD TESTIMONY</Button>
         </View>
       </ScrollView>
-    </Layout>
+    </View>
   );
 };

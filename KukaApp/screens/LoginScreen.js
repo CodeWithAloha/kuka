@@ -19,7 +19,6 @@ import {
   GraphRequest,
   GraphRequestManager,
 } from 'react-native-fbsdk';
-import KukaLogo from '../assets/images/kuka_logo_no_text.svg';
 import { AuthHeader } from '../components/AuthHeader';
 
 export const LoginScreen = ({ navigation }) => {

@@ -12,7 +12,7 @@ import {
 import firestore from '@react-native-firebase/firestore';
 import { differenceInCalendarDays } from 'date-fns';
 import { IconText } from '../components/IconText';
-import { HeaderText } from '../components/HeaderText';
+import { Header } from '../components/Header';
 
 const UpcomingList = ({ navigation }) => {
   const theme = useTheme();
@@ -140,8 +140,7 @@ export const AgendaItemsScreen = ({ navigation, route }) => {
 
   return (
     <Layout style={{ flex: 1 }}>
-      {/*<TopNav noBackButton {...{ navigation, route }} />*/}
-      <HeaderText text="Agenda Items" />
+      <Header text="Agenda Items" />
       <TabView
         style={{ flex: 1, paddingTop: 8 }}
         selectedIndex={selectedIndex}
