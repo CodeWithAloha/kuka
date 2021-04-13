@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header Render text as child (does not render) 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <RNCSafeAreaProvider
+    onInsetsChange={[Function]}
+    style={
+      Array [
+        Object {
+          "flex": 1,
+        },
+        undefined,
+      ]
+    }
+  >
+    <Text
+      appearance="alternative"
+      category="h2"
+      style={
+        Array [
+          Object {
+            "color": "#FFFFFF",
+            "fontFamily": "OpenSans-Regular",
+            "fontSize": 32,
+            "fontWeight": "800",
+          },
+          Object {
+            "backgroundColor": "#5D1B45",
+            "fontFamily": "OpenSans-Bold",
+            "fontSize": 26,
+            "fontWeight": "700",
+            "paddingBottom": 10,
+            "paddingLeft": 18,
+            "paddingTop": 1,
+          },
+        ]
+      }
+    />
+  </RNCSafeAreaProvider>
+</View>
+`;
+
+exports[`Header Render text as property 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <RNCSafeAreaProvider
+    onInsetsChange={[Function]}
+    style={
+      Array [
+        Object {
+          "flex": 1,
+        },
+        undefined,
+      ]
+    }
+  >
+    <Text
+      appearance="alternative"
+      category="h2"
+      style={
+        Array [
+          Object {
+            "color": "#FFFFFF",
+            "fontFamily": "OpenSans-Regular",
+            "fontSize": 32,
+            "fontWeight": "800",
+          },
+          Object {
+            "backgroundColor": "#5D1B45",
+            "fontFamily": "OpenSans-Bold",
+            "fontSize": 26,
+            "fontWeight": "700",
+            "paddingBottom": 10,
+            "paddingLeft": 18,
+            "paddingTop": 1,
+          },
+        ]
+      }
+    >
+      A tag line
+    </Text>
+  </RNCSafeAreaProvider>
+</View>
+`;
