@@ -1,0 +1,23 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+if [ -d "./KukaApp/node_modules" ]
+then
+  echo "Developing KukaApp so running Code Style Checks"
+  pushd ./KukaApp && yarn lint --quiet
+  popd
+fi
+
+if [ -d "./functions/node_modules" ]
+then
+  echo "Developing functions so running Code Style Checks"
+  pushd ./functions && npm run lint --quiet
+  popd
+fi
+
+if [ -d "./web/node_modules" ]
+then
+  echo "Developing web so running Code Style Checks"
+  pushd ./web && npm run lint --quiet
+  popd
+fi

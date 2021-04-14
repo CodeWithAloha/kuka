@@ -1,0 +1,15 @@
+{
+  "name": "kuka",
+  "version": "0.1.0",
+  "description": "KukaNow Web, Services (Functions), and Mobile App",
+  "main": "index.js",
+  "repository": "https://github.com/CodeforHawaii/kuka.git",
+  "license": "MIT",
+  "private": false,
+  "devDependencies": {
+    "husky": "^6.0.0"
+  },
+  "scripts": {
+    "prepare": "husky install"
+  }
+}
