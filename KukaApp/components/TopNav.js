@@ -32,7 +32,7 @@ export const TopNav = ({ navigation, title }) => {
     >
       <TopNavigation
         style={{
-          backgroundColor: theme['color-primary-default']
+          backgroundColor: theme['color-primary-default'],
         }}
         accessoryLeft={() => BackAction(navigation)}
         title={title ? <Text appearance="alternative">{title}</Text> : null}

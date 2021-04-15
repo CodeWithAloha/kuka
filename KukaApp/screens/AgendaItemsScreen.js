@@ -40,7 +40,7 @@ const UpcomingList = ({ navigation }) => {
         console.error(error);
       }
     })();
-  }, []);
+  });
 
   const handlePress = item => {
     navigation.navigate('Agenda', item);
