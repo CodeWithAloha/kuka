@@ -1,0 +1,86 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AuthHeader Render has title and subtitle 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <RNCSafeAreaProvider
+    onInsetsChange={[Function]}
+    style={
+      Array [
+        Object {
+          "flex": 1,
+        },
+        undefined,
+      ]
+    }
+  >
+    <View
+      style={
+        Object {
+          "backgroundColor": "#5D1B45",
+          "minHeight": 234,
+          "padding": 24,
+          "paddingTop": 1,
+        }
+      }
+    >
+      <svg
+        data-file-name="SvgKuka_logo_no_text"
+        height={81}
+        width={103}
+      />
+      <Text
+        appearance="default"
+        category="h1"
+        status="control"
+        style={
+          Array [
+            Object {
+              "color": "#FFFFFF",
+              "fontFamily": "OpenSans-Regular",
+              "fontSize": 36,
+              "fontWeight": "800",
+            },
+            Object {
+              "fontFamily": "OpenSans-Bold",
+              "fontSize": 30,
+              "fontWeight": "700",
+              "marginTop": 16,
+            },
+          ]
+        }
+      >
+        KukaNow
+      </Text>
+      <Text
+        appearance="default"
+        category="s1"
+        status="control"
+        style={
+          Array [
+            Object {
+              "color": "#FFFFFF",
+              "fontFamily": "OpenSans-Regular",
+              "fontSize": 15,
+              "fontWeight": "600",
+            },
+            Object {
+              "fontFamily": "OpenSans-Regular",
+              "fontSize": 15,
+              "fontWeight": "400",
+              "marginTop": 3,
+            },
+          ]
+        }
+      >
+        My subtitle
+      </Text>
+    </View>
+  </RNCSafeAreaProvider>
+</View>
+`;

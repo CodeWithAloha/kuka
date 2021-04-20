@@ -1,0 +1,119 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`IconText Render text as child and name required 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <RNCSafeAreaProvider
+    onInsetsChange={[Function]}
+    style={
+      Array [
+        Object {
+          "flex": 1,
+        },
+        undefined,
+      ]
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+          },
+          undefined,
+        ]
+      }
+    >
+      <View
+        style={
+          Object {
+            "transform": Array [
+              Object {
+                "scale": 1,
+              },
+            ],
+          }
+        }
+      >
+        <RNSVGSvgView
+          align="xMidYMid"
+          bbHeight={22}
+          bbWidth={22}
+          fill="#8F9BB3"
+          focusable={false}
+          height={22}
+          meetOrSlice={0}
+          minX={0}
+          minY={0}
+          style={
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+                "borderWidth": 0,
+              },
+              Object {
+                "marginRight": 8,
+              },
+              Object {
+                "flex": 0,
+                "height": 22,
+                "width": 22,
+              },
+            ]
+          }
+          vbHeight={24}
+          vbWidth={24}
+          width={22}
+        >
+          <RNSVGGroup
+            fill={4287601587}
+            propList={
+              Array [
+                "fill",
+              ]
+            }
+          >
+            <RNSVGGroup>
+              <RNSVGGroup>
+                <RNSVGRect
+                  height="24"
+                  opacity={0}
+                  width="24"
+                  x={0}
+                  y={0}
+                />
+                <RNSVGPath
+                  d="M19 3H7a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h12a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zM7 5h11v10H7a3 3 0 0 0-1 .18V6a1 1 0 0 1 1-1zm0 14a1 1 0 0 1 0-2h11v2z"
+                />
+              </RNSVGGroup>
+            </RNSVGGroup>
+          </RNSVGGroup>
+        </RNSVGSvgView>
+      </View>
+      <Text
+        appearance="hint"
+        category="p1"
+        style={
+          Array [
+            Object {
+              "color": "#8F9BB3",
+              "fontFamily": "OpenSans-Regular",
+              "fontSize": 15,
+              "fontWeight": "400",
+            },
+            undefined,
+          ]
+        }
+      >
+        Next
+      </Text>
+    </View>
+  </RNCSafeAreaProvider>
+</View>
+`;
