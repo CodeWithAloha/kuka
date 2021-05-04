@@ -2,7 +2,13 @@ import React from 'react';
 import { View } from 'react-native';
 import { Text, Icon, useTheme } from '@ui-kitten/components';
 
-export const IconText = ({ name, children, style, textAppearance = 'hint', iconFill = 'text-hint-color', ...rest }) => {
+export const IconText = ({
+  name,
+  children,
+  style,
+  textAppearance = 'hint',
+  iconFill = 'text-hint-color',
+}) => {
   const theme = useTheme();
 
   return (

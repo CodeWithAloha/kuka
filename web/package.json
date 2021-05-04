@@ -77,5 +77,10 @@
     "eslint-plugin-react": "^7.21.2",
     "eslint-plugin-react-hooks": "^1.7.0",
     "typescript": "^3.9.7"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "npm run lint --quiet --fix"
+    ]
   }
 }

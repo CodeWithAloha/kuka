@@ -8,7 +8,7 @@ export const CameraScreen = ({ navigation, route }) => {
   return (
     <Layout style={{ flex: 1 }}>
       <TopNav {...{ navigation, route }} />
-      <RNCamera style={{flex: 1}} />
+      <RNCamera style={{ flex: 1 }} />
     </Layout>
   );
 };

@@ -17,7 +17,7 @@ import { Header } from '../components/Header';
 const UpcomingList = ({ navigation }) => {
   const theme = useTheme();
   const [agendas, setAgendas] = useState();
-  const [now, setNow] = useState(new Date());
+  const [now] = useState(new Date());
 
   useEffect(() => {
     (async () => {
@@ -40,7 +40,7 @@ const UpcomingList = ({ navigation }) => {
         console.error(error);
       }
     })();
-  }, []);
+  }, [now]);
 
   const handlePress = item => {
     navigation.navigate('Agenda', item);
