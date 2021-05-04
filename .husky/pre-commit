@@ -5,7 +5,7 @@ if [ -d "./KukaApp/node_modules" ]
 then
   echo "Developing KukaApp so running Code Style Checks"
   pushd ./KukaApp
-  yarn lint --quiet
+  npx lint-staged
   popd
 fi
 

@@ -49,5 +49,10 @@
     "metro-react-native-babel-preset": "^0.58.0",
     "prettier": "^2.0.2",
     "react-test-renderer": "16.11.0"
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "yarn lint --quiet --fix"
+    ]
   }
 }
