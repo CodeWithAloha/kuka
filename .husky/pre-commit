@@ -13,7 +13,7 @@ if [ -d "./functions/node_modules" ]
 then
   echo "Developing functions so running Code Style Checks"
   pushd ./functions
-  npm run lint --quiet
+  npx lint-staged
   popd
 fi
 
@@ -21,6 +21,6 @@ if [ -d "./web/node_modules" ]
 then
   echo "Developing web so running Code Style Checks"
   pushd ./web
-  npm run lint --quiet
+  npx lint-staged
   popd
 fi
