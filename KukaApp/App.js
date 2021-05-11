@@ -25,6 +25,7 @@ import { ForgotPasswordScreen } from './screens/ForgotPasswordScreen';
 import { AuthNavigator } from './navigation/AuthNavigator';
 import { default as theme } from './app-theme.json';
 import { default as mapping } from './app-mapping.json';
+import { FeatherIconsPack } from './icons/Feather';
 
 GoogleSignin.configure({
   webClientId:
@@ -44,7 +45,7 @@ export default () => {
 
   return (
     <>
-      <IconRegistry icons={EvaIconsPack} />
+      <IconRegistry icons={[EvaIconsPack, FeatherIconsPack]} />
       <ApplicationProvider
         {...eva}
         theme={{ ...eva.light, ...theme }}
