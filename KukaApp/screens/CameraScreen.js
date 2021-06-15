@@ -7,7 +7,13 @@ import {
   Dimensions,
   Image,
 } from 'react-native';
-import { Layout, Text, StyleService } from '@ui-kitten/components';
+import {
+  Layout,
+  Text,
+  StyleService,
+  Button,
+  Icon,
+} from '@ui-kitten/components';
 import { RNCamera } from 'react-native-camera';
 import { TopNav } from '../components/TopNav';
 
@@ -51,43 +57,41 @@ export const CameraScreen = ({ navigation, route }) => {
           horizontal={true}
           style={[styles.bottomToolbar, styles.galleryContainer]}
         >
-          {console.log(captures)}
+          <Text>Gallery</Text>
           {captures.map(({ uri }) => (
             <View style={styles.galleryImageContainer} key={uri}>
-              <Image source={{ uri }} style={styles.galleryImage} />
+              <Text>Image</Text>
+              {console.log(uri)}
+              <Image
+                source={{ uri }}
+                style={styles.galleryImage}
+              />
             </View>
           ))}
         </ScrollView>
       )}
-      <View style={styles.bottomToolbar}>
-        <TouchableOpacity
-          onPress={isRecording ? stopRecord : record}
-          style={styles.capture}
-        >
-          <Text style={{ fontSize: 14 }}>
-            {isRecording ? 'Stop' : 'Record'}
-          </Text>
-        </TouchableOpacity>
-      </View>
+      <Button
+        style={styles.bottomToolbar}
+        size="giant"
+        appearance="ghost"
+        onPress={isRecording ? stopRecord : record}
+        accessoryLeft={props => (
+          <Icon
+            {...props}
+            name={isRecording ? 'video-off-outline' : 'video-outline'}
+          />
+        )}
+      />
     </Layout>
   );
 };
 
 const styles = StyleService.create({
-  capture: {
-    flex: 0,
-    backgroundColor: 'color-primary-default',
-    borderRadius: 5,
-    padding: 15,
-    paddingHorizontal: 20,
-    alignSelf: 'center',
-    margin: 20,
-  },
   bottomToolbar: {
-    width: winWidth,
     position: 'absolute',
     height: 100,
     bottom: 0,
+    alignSelf: 'center',
   },
   galleryContainer: {
     bottom: 100,
