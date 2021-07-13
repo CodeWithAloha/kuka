@@ -1,23 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react';
-import {
-  View,
-  TouchableOpacity,
-  StyleSheet,
-  ScrollView,
-  Dimensions,
-  Image,
-} from 'react-native';
-import {
-  Layout,
-  Text,
-  StyleService,
-  Button,
-  Icon,
-} from '@ui-kitten/components';
+import React, { useState, useRef } from 'react';
+import { View, ScrollView, Image } from 'react-native';
+import { Layout, StyleService, Button, Icon } from '@ui-kitten/components';
 import { RNCamera } from 'react-native-camera';
 import { TopNav } from '../components/TopNav';
-
-const { width: winWidth, height: winHeight } = Dimensions.get('window');
 
 export const CameraScreen = ({ navigation, route }) => {
   const camera = useRef();
@@ -57,15 +42,12 @@ export const CameraScreen = ({ navigation, route }) => {
           horizontal={true}
           style={[styles.bottomToolbar, styles.galleryContainer]}
         >
-          <Text>Gallery</Text>
           {captures.map(({ uri }) => (
             <View style={styles.galleryImageContainer} key={uri}>
-              <Text>Image</Text>
-              {console.log(uri)}
-              <Image
-                source={{ uri }}
-                style={styles.galleryImage}
-              />
+              <Button onPress={() => navigation.navigate('Video', { uri })}>
+                Play
+              </Button>
+              <Image source={{ uri }} style={styles.galleryImage} />
             </View>
           ))}
         </ScrollView>
@@ -73,7 +55,7 @@ export const CameraScreen = ({ navigation, route }) => {
       <Button
         style={styles.bottomToolbar}
         size="giant"
-        appearance="ghost"
+        appearance="outline"
         onPress={isRecording ? stopRecord : record}
         accessoryLeft={props => (
           <Icon
