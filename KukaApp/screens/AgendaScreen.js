@@ -5,8 +5,10 @@ import {
   StyleService,
   Text,
   useStyleSheet,
+  Icon,
 } from '@ui-kitten/components';
 import { differenceInCalendarDays, format } from 'date-fns';
+import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
 import { TopNav } from '../components/TopNav';
 import { IconText } from '../components/IconText';
 import { HeaderText } from '../components/HeaderText';
@@ -37,7 +39,19 @@ export const AgendaScreen = ({ navigation, route }) => {
   }
 
   const record = () => {
-    navigation.navigate('Camera');
+    launchCamera(
+      {
+        mediaType: 'video',
+        videoQuality: 'high',
+        durationLimit: 60,
+        saveToPhotos: true
+      },
+      res => console.log(res)
+    );
+  };
+
+  const openLibrary = () => {
+    launchImageLibrary({ mediaType: 'video' }, res => console.log(res));
   };
 
   return (
@@ -64,7 +78,6 @@ export const AgendaScreen = ({ navigation, route }) => {
           </IconText>
         )}
         <View style={{ padding: 16 }}>
-          <Button onPress={record}>RECORD TESTIMONY</Button>
           <Text style={{ fontWeight: '500', marginTop: 16 }} appearance="hint">
             {`Hearing on ${format(
               sessionDate,
@@ -72,9 +85,29 @@ export const AgendaScreen = ({ navigation, route }) => {
             )} (${sessionDays}d ${deadlineDays ? 'from now' : 'ago'})\n`}
           </Text>
           <Text>{route.params.description}</Text>
-          <Button onPress={record}>RECORD TESTIMONY</Button>
         </View>
       </ScrollView>
+      <View
+        style={{
+          padding: 16,
+          flexDirection: 'row',
+          justifyContent: 'space-evenly',
+        }}
+      >
+        <Button
+          onPress={record}
+          accessoryLeft={props => <Icon {...props} name="video-outline" />}
+        >
+          Record
+        </Button>
+        <Button
+          appearance="outline"
+          onPress={openLibrary}
+          accessoryLeft={props => <Icon {...props} name="folder-outline" />}
+        >
+          Library
+        </Button>
+      </View>
     </View>
   );
 };
