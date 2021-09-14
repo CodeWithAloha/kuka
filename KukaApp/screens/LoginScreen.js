@@ -166,6 +166,7 @@ export const LoginScreen = ({ navigation }) => {
             placeholder="Password"
             onChangeText={nextValue => setPassword(nextValue)}
             style={styles.formField}
+            secureTextEntry
           />
 
           <Text
