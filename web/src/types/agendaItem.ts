@@ -1,4 +1,4 @@
-import type { Timestamp } from '@firebase/firestore-types';
+import type { Timestamp } from "@firebase/firestore-types";
 
 /**
  * Notes on Legistar and conversion to the internal model.
@@ -63,6 +63,7 @@ export interface AgendaItem {
   attachments: AgendaAttachment[];
 
   // TODO: maybe use withConverter() so we never have to deal with Timestamps.
+  // Time when the hearing occurs
   sessionTime: Timestamp; // source=EventDate + EventTime localized to HST
   isActive: boolean; // when "EventAgendaStatusId" === 10, "EventAgendaStatusName" === "Final",
 
