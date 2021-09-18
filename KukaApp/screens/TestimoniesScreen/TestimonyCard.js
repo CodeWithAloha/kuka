@@ -67,10 +67,11 @@ export const TestimonyCard = ({
   return (
     <View style={styles.card}>
       <View>
-        {Header({
-          ...agendaItem,
-          position,
-        })}
+        <Header
+          title={agendaItem.title}
+          billCode={agendaItem.billCode}
+          position={position}
+        />
       </View>
       <Divider />
       <View
@@ -108,7 +109,9 @@ export const TestimonyCard = ({
       </View>
       <View>
         <Divider />
-        <View>{Footer()}</View>
+        <View>
+          <Footer />
+        </View>
       </View>
     </View>
   );
