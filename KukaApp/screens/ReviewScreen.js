@@ -3,8 +3,11 @@ import { ScrollView, View, StyleSheet } from 'react-native';
 import Video from 'react-native-video';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
+import storage from '@react-native-firebase/storage';
+import 'react-native-get-random-values';
+import { v1 as uuidv1 } from 'uuid';
 import { useDocumentDataOnce } from 'react-firebase-hooks/firestore';
-import { Input, Button } from '@ui-kitten/components';
+import { Input, Button, Spinner } from '@ui-kitten/components';
 import { TopNav } from '../components/TopNav';
 
 export const ReviewScreen = ({ navigation, route }) => {
@@ -16,8 +19,21 @@ export const ReviewScreen = ({ navigation, route }) => {
   const [email, setEmail] = useState(user.email);
   const [zipCode, setZipCode] = useState(profile?.zipCode);
   const [lobbyGroup, setLobbyGroup] = useState(profile?.lobbyGroup);
+  const [uploading, setUploading] = useState(false);
 
-  const submit = () => {};
+  const submit = async () => {
+    try {
+      setUploading(true);
+      const ref = storage().ref(
+        '/agenda-items/' + route.params.agendaId + '/' + uuidv1() + '.mp4'
+      );
+      await ref.putFile(route.params.uri);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setUploading(false);
+    }
+  };
 
   return (
     <View style={{ flex: 1 }}>
@@ -57,7 +73,18 @@ export const ReviewScreen = ({ navigation, route }) => {
             onChangeText={nextValue => setLobbyGroup(nextValue)}
             style={styles.formField}
           />
-          <Button onPress={submit} style={styles.formField}>
+          <Button
+            onPress={submit}
+            style={styles.formField}
+            accessoryLeft={props =>
+              uploading ? (
+                <View style={props.style}>
+                  <Spinner size="small" />
+                </View>
+              ) : null
+            }
+            disabled={uploading}
+          >
             SUBMIT TESTIMONY
           </Button>
         </View>

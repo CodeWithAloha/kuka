@@ -48,7 +48,10 @@ export const AgendaScreen = ({ navigation, route }) => {
       },
       res => {
         if (!res.didCancel) {
-          navigation.navigate('Review Testimony', { uri: res.assets[0].uri });
+          navigation.navigate('Review Testimony', {
+            agendaId: route.params.id,
+            uri: res.assets[0].uri,
+          });
         }
       }
     );
@@ -57,7 +60,10 @@ export const AgendaScreen = ({ navigation, route }) => {
   const openLibrary = () => {
     launchImageLibrary({ mediaType: 'video' }, res => {
       if (!res.didCancel) {
-        navigation.navigate('Review Testimony', { uri: res.assets[0].uri });
+        navigation.navigate('Review Testimony', {
+          agendaId: route.params.id,
+          uri: res.assets[0].uri,
+        });
       }
     });
   };
