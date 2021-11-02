@@ -38,8 +38,6 @@ export const ForgotPasswordScreen = ({ navigation }) => {
         titleText="Reset Password"
         leadText="Please enter your email address. A code will be sent to your email"
       />
-      {/*TODO: style error message*/}
-      {message && <Text>{message}</Text>}
       <Formik
         initialValues={{
           email: '',
@@ -49,15 +47,18 @@ export const ForgotPasswordScreen = ({ navigation }) => {
         {({ handleChange, handleSubmit, values }) => (
           <>
             <View style={styles.bodyContainer}>
-              <Input
-                value={values.email}
-                autoCompleteType="email"
-                autoCapitalize="none"
-                label="EMAIL"
-                placeholder="Email"
-                onChangeText={handleChange('email')}
-                style={styles.formField}
-              />
+              <View>
+                {message && <Text status="warning">{message}</Text>}
+                <Input
+                  value={values.email}
+                  autoCompleteType="email"
+                  autoCapitalize="none"
+                  label="EMAIL"
+                  placeholder="Email"
+                  onChangeText={handleChange('email')}
+                  style={styles.formField}
+                />
+              </View>
             </View>
 
             <View style={styles.buttonContainer}>
@@ -104,5 +105,8 @@ const themedStyles = StyleService.create({
   },
   buttonContainer: {
     padding: 24,
+  },
+  formField: {
+    marginTop: 10,
   },
 });

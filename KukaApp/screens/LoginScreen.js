@@ -9,10 +9,7 @@ import {
   useStyleSheet,
   StyleService,
 } from '@ui-kitten/components';
-import {
-  GoogleSignin,
-  GoogleSigninButton,
-} from '@react-native-community/google-signin';
+import { GoogleSignin } from '@react-native-community/google-signin';
 import {
   LoginManager,
   AccessToken,
@@ -20,6 +17,8 @@ import {
   GraphRequestManager,
 } from 'react-native-fbsdk';
 import { AuthHeader } from '../components/AuthHeader';
+import GoogleLogo from '../assets/images/google_g_logo.svg';
+import FacebookLogo from '../assets/images/facebook_logo.svg';
 
 export const LoginScreen = ({ navigation }) => {
   const styles = useStyleSheet(themedStyles);
@@ -37,7 +36,7 @@ export const LoginScreen = ({ navigation }) => {
       await auth().signInWithEmailAndPassword(email, password);
     } catch (error) {
       setMessage(error.message);
-      console.error(error);
+      // console.error(error);
       setInProgress(false);
     }
   };
@@ -55,7 +54,7 @@ export const LoginScreen = ({ navigation }) => {
       }
     } catch (error) {
       setMessage(error.message);
-      console.error(error);
+      // console.error(error);
       setInProgress(false);
     }
   };
@@ -153,7 +152,9 @@ export const LoginScreen = ({ navigation }) => {
       />
       <View style={styles.bodyContainer}>
         <View>
+          {message && <Text status="warning">{message}</Text>}
           <Input
+            autoCapitalize="none"
             value={email}
             label="EMAIL"
             placeholder="Email"
@@ -184,23 +185,38 @@ export const LoginScreen = ({ navigation }) => {
           <Button onPress={onEmailSignIn} disabled={inProgress}>
             SIGN IN
           </Button>
-          <GoogleSigninButton
-            onPress={() => onGoogleSignIn()}
-            disabled={inProgress}
-          />
-          <Button onPress={() => onFacebookSignIn()} disabled={inProgress}>
-            Facebook
-          </Button>
+          <View>
+            <Text style={styles.orText} appearance="hint">
+              OR
+            </Text>
+          </View>
+          <View style={styles.authButtonRow}>
+            {/*TODO: This violates branding guidelines for sign-in */}
+            <Button
+              style={styles.providerLoginButton}
+              onPress={() => onGoogleSignIn()}
+              disabled={inProgress}
+              accessoryLeft={() => <GoogleLogo height={18} />}
+            />
+            <Button
+              style={styles.providerLoginButton}
+              onPress={() => onFacebookSignIn()}
+              disabled={inProgress}
+              accessoryLeft={() => (
+                <FacebookLogo fill={'#4267B2'}>Facebook</FacebookLogo>
+              )}
+            />
+          </View>
           <Text appearance="hint" style={{ textAlign: 'center' }}>
             Don't have an account?{' '}
             <Text
               status="primary"
+              category="s1"
               onPress={() => navigation.navigate('Signup')}
             >
               Sign Up
             </Text>
           </Text>
-          {message && <Text>{message}</Text>}
         </View>
       </View>
     </Layout>
@@ -211,6 +227,12 @@ const themedStyles = StyleService.create({
   container: {
     backgroundColor: 'background-basic-color-1',
     flex: 1,
+  },
+  authButtonRow: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    marginBottom: 24,
   },
   bodyContainer: {
     padding: 24,
@@ -228,4 +250,20 @@ const themedStyles = StyleService.create({
     marginTop: 10,
   },
   signInButton: {},
+  orText: {
+    fontSize: 15,
+    color: '#8F9BB3',
+    textAlign: 'center',
+    marginTop: 12,
+    marginBottom: 12,
+  },
+  providerLoginButton: {
+    marginLeft: 7,
+    marginRight: 7,
+    borderColor: '#5D1B45',
+    borderRadius: 100,
+    width: 42,
+    height: 42,
+    backgroundColor: '#fff',
+  },
 });
