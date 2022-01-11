@@ -44,14 +44,28 @@ export const AgendaScreen = ({ navigation, route }) => {
         mediaType: 'video',
         videoQuality: 'high',
         durationLimit: 60,
-        saveToPhotos: true
+        saveToPhotos: true,
       },
-      res => console.log(res)
+      res => {
+        if (!res.didCancel) {
+          navigation.navigate('Review Testimony', {
+            agendaId: route.params.id,
+            uri: res.assets[0].uri,
+          });
+        }
+      }
     );
   };
 
   const openLibrary = () => {
-    launchImageLibrary({ mediaType: 'video' }, res => console.log(res));
+    launchImageLibrary({ mediaType: 'video' }, res => {
+      if (!res.didCancel) {
+        navigation.navigate('Review Testimony', {
+          agendaId: route.params.id,
+          uri: res.assets[0].uri,
+        });
+      }
+    });
   };
 
   return (
@@ -105,7 +119,7 @@ export const AgendaScreen = ({ navigation, route }) => {
           onPress={openLibrary}
           accessoryLeft={props => <Icon {...props} name="folder-outline" />}
         >
-          Library
+          Choose...
         </Button>
       </View>
     </View>
