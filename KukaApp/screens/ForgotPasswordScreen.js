@@ -38,8 +38,6 @@ export const ForgotPasswordScreen = ({ navigation }) => {
         titleText="Reset Password"
         leadText="Please enter your email address. A code will be sent to your email"
       />
-      {/*TODO: style error message*/}
-      {message && <Text>{message}</Text>}
       <Formik
         initialValues={{
           email: '',
@@ -49,15 +47,18 @@ export const ForgotPasswordScreen = ({ navigation }) => {
         {({ handleChange, handleSubmit, values }) => (
           <>
             <View style={styles.bodyContainer}>
-              <Input
-                value={values.email}
-                autoCompleteType="email"
-                autoCapitalize="none"
-                label="EMAIL"
-                placeholder="Email"
-                onChangeText={handleChange('email')}
-                style={styles.formField}
-              />
+              <View>
+                {message && <Text status="warning">{message}</Text>}
+                <Input
+                  value={values.email}
+                  autoCompleteType="email"
+                  autoCapitalize="none"
+                  label="EMAIL"
+                  placeholder="Email"
+                  onChangeText={handleChange('email')}
+                  style={styles.formField}
+                />
+              </View>
             </View>
 
             <View style={styles.buttonContainer}>
@@ -75,16 +76,18 @@ export const ForgotPasswordScreen = ({ navigation }) => {
         style={{ width: '80%' }}
       >
         <Card style={styles.modalStyle} disabled={true}>
-          <SuccessIcon width={150} height={150} />
-          <Text category="h2">Success</Text>
-          <Text>You will receive an email with password instructions</Text>
+          <SuccessIcon style={styles.modalIcon} width={150} height={150} />
+          <Text style={styles.modalHeaderText}>Success</Text>
+          <Text style={styles.modalText} category="p1">
+            You will receive an email with password instructions
+          </Text>
           <Button
             onPress={() => {
               setModalOpen(false);
               navigation.navigate('Login');
             }}
           >
-            GOT IT
+            OK
           </Button>
         </Card>
       </Modal>
@@ -104,5 +107,28 @@ const themedStyles = StyleService.create({
   },
   buttonContainer: {
     padding: 24,
+  },
+  formField: {
+    marginTop: 10,
+  },
+  modalStyle: {
+    textAlign: 'center',
+  },
+  modalIcon: {
+    textAlign: 'center',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+  },
+  modalHeaderText: {
+    textAlign: 'center',
+    fontSize: 22,
+    fontWeight: '700',
+    lineHeight: 32,
+    marginTop: 20,
+    marginBottom: 10,
+  },
+  modalText: {
+    textAlign: 'center',
+    marginBottom: 30,
   },
 });
