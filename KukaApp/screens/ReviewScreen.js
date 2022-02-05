@@ -83,7 +83,6 @@ export const ReviewScreen = ({ navigation, route }) => {
             name,
             email,
             zipCode,
-            position,
             lobbyGroup,
             createdAt: firestore.FieldValue.serverTimestamp(),
             fullPath: snapshot.metadata.fullPath,

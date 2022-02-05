@@ -6,7 +6,7 @@ import type { AgendaItem } from 'src/types/agendaItem';
 import { useDocumentData } from 'react-firebase-hooks/firestore';
 import { useParams } from 'react-router-dom';
 import AgendaPanel from './AgendaPanel';
-import TestimonyPanel from './TestimonyPanel';
+import TestimonyListPanel from './TestimonyListPanel';
 
 const useStyles = makeStyles(() => ({
   root: {},
@@ -39,7 +39,7 @@ function AgendaDetailView() {
         {agendaItem && (
           <>
             <AgendaPanel agendaItem={agendaItem} />
-            <TestimonyPanel agendaItem={agendaItem} />
+            <TestimonyListPanel agendaItem={agendaItem} />
           </>
         )}
       </Container>

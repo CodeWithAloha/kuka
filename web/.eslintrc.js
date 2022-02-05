@@ -16,8 +16,6 @@ module.exports = {
     ],
     "extends": [
         // "react-app",
-        "airbnb-typescript",
-        "airbnb/hooks",
         "eslint:recommended",
         "plugin:react/recommended"
     ],

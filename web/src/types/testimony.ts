@@ -1,18 +1,16 @@
-import type { Timestamp } from "@firebase/firestore-types";
+import type { Timestamp } from '@firebase/firestore-types';
 
 export interface Testimony {
   id?: string;
   userId: string;
-  agendaId: string;
-
-  embedUrl?: string;
-  thumbUrl?: string;
-  position: "APPROVE" | "DISAPPROVE" | "COMMENT";
-  // storagePath?: string;
+  email: string;
+  lobbyGroup: string | null;
+  name: string;
+  fullPath: string;
+  position: 'Approve' | 'Disapprove' | 'Comment';
 
   // takes a snapshot of the data at the time of submission
   zipCode: string;
 
   createdAt?: Timestamp;
-  updatedAt?: Timestamp;
 }

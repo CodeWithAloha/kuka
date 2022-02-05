@@ -1,12 +1,13 @@
 import React from 'react';
-import {
-  Card, CardActionArea, CardContent, CardMedia, Link, makeStyles, Typography,
-} from '@material-ui/core';
+import clsx from 'clsx';
+import { Card, CardActionArea, CardContent, Link, makeStyles, Typography } from '@material-ui/core';
 import { Link as RouterLink } from 'react-router-dom';
 import { Testimony } from '../types/testimony';
 
 interface TestimonyCardProps {
+  agendaId: string;
   testimony: Testimony;
+  className?: string
 }
 
 // eslint-disable-next-line no-unused-vars
@@ -18,21 +19,21 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-function TestimonyCard({ testimony }: TestimonyCardProps) {
+function TestimonyCard({ agendaId, testimony, className }: TestimonyCardProps) {
   const classes = useStyles();
 
   return (
-    <Card className={classes.root}>
+    <Card className={clsx(classes.root, className)}>
       <CardActionArea>
         <Link
           component={RouterLink}
-          to={`/agenda/${testimony.agendaId}/testimony/${testimony.id}`}
+          to={`/agenda/${agendaId}/testimony/${testimony.id}`}
           underline="none"
         >
-          <CardMedia
-            className={classes.media}
-            image={testimony.thumbUrl || '/static/images/undraw_void_3ggu.svg'}
-          />
+          {/*<CardMedia*/}
+          {/*  className={classes.media}*/}
+          {/*  image={testimony.thumbUrl || '/static/images/undraw_void_3ggu.svg'}*/}
+          {/*/>*/}
           <CardContent>
             <Typography
               color="textPrimary"
@@ -47,6 +48,14 @@ function TestimonyCard({ testimony }: TestimonyCardProps) {
               Submitted from
               {' '}
               {testimony.zipCode}
+            </Typography>
+            <Typography
+              variant="body2"
+              color="textSecondary"
+            >
+              Position:
+              {' '}
+              {testimony.position}
             </Typography>
           </CardContent>
         </Link>
