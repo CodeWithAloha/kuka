@@ -32,7 +32,6 @@ export const TestimoniesScreen = ({ navigation, route }) => {
 
   return (
     <View style={styles.container}>
-      <TopNav {...{ navigation, route }} />
       <ScrollView>
         <HeaderText text={'Testimonies'} />
         {/*placeholder cards for approve/disapprove/comment and upload-in-progress*/}

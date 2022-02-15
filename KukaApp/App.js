@@ -55,7 +55,7 @@ export default () => {
             {authUser ? (
               <AuthNavigator />
             ) : (
-              <Navigator headerMode="none">
+              <Navigator screenOptions={{ headerShown: false }}>
                 <Screen name="Login" component={LoginScreen} />
                 <Screen name="Signup" component={SignupScreen} />
                 <Screen

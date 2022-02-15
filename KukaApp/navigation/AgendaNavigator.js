@@ -7,7 +7,7 @@ import { ReviewScreen } from '../screens/ReviewScreen';
 export const AgendaNavigator = () => {
   const { Navigator, Screen } = createStackNavigator();
   return (
-    <Navigator headerMode="none">
+    <Navigator screenOptions={{ headerShown: false }}>
       <Screen name="Agenda Items" component={AgendaItemsScreen} />
       <Screen name="Agenda" component={AgendaScreen} />
       <Screen name="Review Testimony" component={ReviewScreen} />
