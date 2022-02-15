@@ -6,7 +6,6 @@ import firestore from '@react-native-firebase/firestore';
 import storage from '@react-native-firebase/storage';
 import 'react-native-get-random-values';
 import { v1 as uuidv1 } from 'uuid';
-import { useDocumentDataOnce } from 'react-firebase-hooks/firestore';
 import {
   Input,
   Button,
@@ -15,16 +14,13 @@ import {
   Icon,
   Modal,
   Card,
-  useTheme,
 } from '@ui-kitten/components';
 import { TopNav } from '../components/TopNav';
 
 export const ReviewScreen = ({ navigation, route }) => {
-  const theme = useTheme();
   const user = auth().currentUser;
   const profileRef = firestore().collection('users').doc(user.uid);
-  const [profile, isProfileLoading, hasProfileError] =
-    useDocumentDataOnce(profileRef);
+  const [profile, setProfile] = useState();
   const [position, setPosition] = useState();
   const [positionCaption, setPositionCaption] = useState(false);
   const [name, setName] = useState(user.displayName);
@@ -36,6 +32,12 @@ export const ReviewScreen = ({ navigation, route }) => {
   const [lobbyGroup, setLobbyGroup] = useState(profile?.lobbyGroup);
   const [uploading, setUploading] = useState(false);
   const [uploadError, setUploadError] = useState();
+
+  useEffect(() => {
+    (async () => {
+      setProfile(await profileRef.get());
+    })();
+  }, []);
 
   const submit = async () => {
     try {
