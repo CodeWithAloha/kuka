@@ -26,13 +26,13 @@
     "formik": "^2.2.6",
     "react": "^17.0.2",
     "react-firebase-hooks": "^2.2.0",
-    "react-native": "0.64.1",
+    "react-native": "0.67.2",
     "react-native-fbsdk": "^3.0.0",
-    "react-native-gesture-handler": "^1.7.0",
+    "react-native-gesture-handler": "^1.7",
     "react-native-get-random-values": "^1.7.0",
     "react-native-image-picker": "^4.0.6",
     "react-native-progress": "^5.0.0",
-    "react-native-reanimated": "^2.1.0",
+    "react-native-reanimated": "^2.4.1",
     "react-native-safe-area-context": "^3.1.1",
     "react-native-screens": "^3.2.0",
     "react-native-svg": "^12.1.0",
@@ -51,9 +51,9 @@
     "eslint": "^6.5.1",
     "jest": "^24.9.0",
     "jest-svg-transformer": "^1.0.0",
-    "metro-react-native-babel-preset": "^0.58.0",
+    "metro-react-native-babel-preset": "^0.67.0",
     "prettier": "^2.0.2",
-    "react-test-renderer": "16.11.0"
+    "react-test-renderer": "17.0.2"
   },
   "lint-staged": {
     "*.{js,jsx}": [
