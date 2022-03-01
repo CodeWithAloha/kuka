@@ -1,5 +1,5 @@
-import { createMuiTheme } from '@material-ui/core';
-import type { Theme as MuiTheme } from '@material-ui/core/styles/createMuiTheme';
+import { createTheme as createMuiTheme } from '@material-ui/core/styles';
+import type { Theme as MuiTheme } from '@material-ui/core/styles';
 import type {
   Palette as MuiPalette,
   TypeBackground as MuiTypeBackground,

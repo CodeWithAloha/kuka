@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid, makeStyles, Typography } from '@material-ui/core';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 import { AgendaItem } from '../../../types/agendaItem';
-import { testimonyRef } from '../../../services/Testimony';
+import { agendaRef } from '../../../services/AgendaItem';
 import TestimonyCard from '../../../components/TestimonyCard';
 import { Testimony } from '../../../types/testimony';
 
@@ -20,12 +20,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function TestimonyPanel({ agendaItem }: AgendaPanelProps) {
+function TestimonyListPanel({ agendaItem }: AgendaPanelProps) {
   const classes = useStyles();
 
   const [testimonies, loading, error] = useCollectionData<Testimony>(
-    testimonyRef
-      .where('agendaId', '==', agendaItem.id),
+    agendaRef
+      .doc(agendaItem.id)
+      .collection('testimonies'),
     {
       idField: 'id',
       snapshotListenOptions: { includeMetadataChanges: true },
@@ -38,12 +39,12 @@ function TestimonyPanel({ agendaItem }: AgendaPanelProps) {
         Testimonies
       </Typography>
 
-      <Grid container>
+      <Grid container spacing={3}>
         {error && <div>error</div>}
         {loading && <div>loading</div>}
         {testimonies && testimonies.map((testimony) => (
           <Grid item xs={6} md={3} key={testimony.id}>
-            <TestimonyCard testimony={testimony} />
+            <TestimonyCard agendaId={agendaItem.id} testimony={testimony} />
           </Grid>
         ))}
         {testimonies && testimonies.length === 0 && (
@@ -55,4 +56,4 @@ function TestimonyPanel({ agendaItem }: AgendaPanelProps) {
   );
 }
 
-export default TestimonyPanel;
+export default TestimonyListPanel;
