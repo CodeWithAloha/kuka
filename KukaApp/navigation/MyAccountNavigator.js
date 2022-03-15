@@ -5,7 +5,7 @@ import { MyAccountScreen } from '../screens/MyAccountScreen';
 export const MyAccountNavigator = () => {
   const { Navigator, Screen } = createStackNavigator();
   return (
-    <Navigator headerMode="none">
+    <Navigator screenOptions={{ headerShown: false }}>
       <Screen name="My Account" component={MyAccountScreen} />
     </Navigator>
   );

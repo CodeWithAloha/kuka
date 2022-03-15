@@ -37,11 +37,14 @@ const BottomTabBar = ({ navigation, state }) => (
 export const AuthNavigator = () => {
   const { Navigator, Screen } = createBottomTabNavigator();
   return (
-    <Navigator tabBar={props => <BottomTabBar {...props} />}>
-      <Screen name="Agenda" component={AgendaNavigator} />
-      <Screen name="Testimonies" component={TestimonyNavigator} />
-      <Screen name="My Account" component={MyAccountNavigator} />
-      <Screen name="Help" component={HelpNavigator} />
+    <Navigator
+      tabBar={props => <BottomTabBar {...props} />}
+      screenOptions={{ headerShown: false }}
+    >
+      <Screen name="Agenda Navigator" component={AgendaNavigator} />
+      <Screen name="Testimony Navigator" component={TestimonyNavigator} />
+      <Screen name="My Account Navigator" component={MyAccountNavigator} />
+      <Screen name="Help Navigator" component={HelpNavigator} />
     </Navigator>
   );
 };

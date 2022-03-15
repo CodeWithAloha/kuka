@@ -5,7 +5,7 @@ import { HelpScreen } from '../screens/HelpScreen';
 export const HelpNavigator = () => {
   const { Navigator, Screen } = createStackNavigator();
   return (
-    <Navigator headerMode="none">
+    <Navigator screenOptions={{ headerShown: false }}>
       <Screen name="My Testimonies" component={HelpScreen} />
     </Navigator>
   );

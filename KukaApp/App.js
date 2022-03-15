@@ -18,7 +18,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import auth from '@react-native-firebase/auth';
-import { GoogleSignin } from '@react-native-community/google-signin';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { LoginScreen } from './screens/LoginScreen';
 import { SignupScreen } from './screens/SignupScreen';
 import { ForgotPasswordScreen } from './screens/ForgotPasswordScreen';
@@ -55,7 +55,7 @@ export default () => {
             {authUser ? (
               <AuthNavigator />
             ) : (
-              <Navigator headerMode="none">
+              <Navigator screenOptions={{ headerShown: false }}>
                 <Screen name="Login" component={LoginScreen} />
                 <Screen name="Signup" component={SignupScreen} />
                 <Screen
