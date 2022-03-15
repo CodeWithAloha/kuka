@@ -13,7 +13,8 @@ $ yarn install
 ### Code Design
 Please leverage Husky for Code Style Checks (aka "Linting"), 
 testing is optional. If you choose to do TDD, please run 
-tests manually or feel free to contribute CI integration. 
+tests manually or feel free to contribute code for the CI/CD 
+implementation. Contributions are always welcome!
 
 
 ### Deploying the web app
