@@ -11,8 +11,23 @@ $ yarn install
 ```
 
 ### Code Design
-We do not have nor will have an automated Continous Integration and will not (design decision by current leads).
-As such, please ensure to do the `yarn install` step above.
+Please leverage Husky for Code Style Checks (aka "Linting"), 
+testing is optional. If you choose to do TDD, please run 
+tests manually or feel free to contribute CI integration. 
 
-Please leverage Husky for Code Style Checks (aka "Linting") and Testing is optional.
-If you choose to do TDD, please run the tests manually.
+
+### Deploying the web app
+Deploy the firebase app.
+
+```
+// Deploy firebase functions and web app
+$ firebase deploy
+
+// only web app
+firebase deploy --only hosting
+
+// only functions
+firebase deploy --only functions
+
+```
+
