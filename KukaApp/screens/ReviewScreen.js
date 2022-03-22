@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ScrollView, View, StyleSheet } from 'react-native';
 import Video from 'react-native-video';
 import auth from '@react-native-firebase/auth';
@@ -19,28 +19,30 @@ import { TopNav } from '../components/TopNav';
 
 export const ReviewScreen = ({ navigation, route }) => {
   const user = auth().currentUser;
-  const profileRef = firestore().collection('users').doc(user.uid);
-  const [profile, setProfile] = useState();
   const [position, setPosition] = useState();
   const [positionCaption, setPositionCaption] = useState(false);
   const [name, setName] = useState(user.displayName);
   const [nameCaption, setNameCaption] = useState(false);
   const [email, setEmail] = useState(user.email);
   const [emailCaption, setEmailCaption] = useState(false);
-  const [zipCode, setZipCode] = useState(profile?.zipCode);
+  const [zipCode, setZipCode] = useState();
   const [zipCodeCaption, setZipCodeCaption] = useState(false);
-  const [lobbyGroup, setLobbyGroup] = useState(profile?.lobbyGroup);
+  const [lobbyGroup, setLobbyGroup] = useState();
   const [uploading, setUploading] = useState(false);
   const [uploadError, setUploadError] = useState();
 
   useEffect(() => {
     (async () => {
-      setProfile(await profileRef.get());
+      const profileRef = firestore().collection('users').doc(user.uid);
+      const p = profileRef.get();
+      setZipCode(p?.zipCode);
+      setLobbyGroup(p?.lobbyGroup);
     })();
   }, []);
 
   const submit = async () => {
     try {
+      // clear any error messages in captions
       if (!position) {
         setPositionCaption(true);
       }
@@ -79,23 +81,28 @@ export const ReviewScreen = ({ navigation, route }) => {
           );
           const snapshot = await ref.putFile(route.params.uri);
 
-          agendaRef.collection('testimonies').add({
+          const t = {
             userId: user.uid,
             position,
             name,
             email,
             zipCode,
-            lobbyGroup,
             createdAt: firestore.FieldValue.serverTimestamp(),
             fullPath: snapshot.metadata.fullPath,
-          });
+          };
+
+          if (lobbyGroup) {
+            t.lobbyGroup = lobbyGroup;
+          }
+
+          agendaRef.collection('testimonies').add(t);
         } else {
           setUploadError('Only one testimony allowed per agenda.');
         }
       }
     } catch (error) {
       console.error(error);
-      setUploadError(error);
+      setUploadError(JSON.stringify(error));
     } finally {
       setUploading(false);
     }
