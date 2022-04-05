@@ -29,6 +29,7 @@ export const ReviewScreen = ({ navigation, route }) => {
   const [zipCodeCaption, setZipCodeCaption] = useState(false);
   const [lobbyGroup, setLobbyGroup] = useState();
   const [uploading, setUploading] = useState(false);
+  const [uploadPercentage, setUploadPercentage] = useState();
   const [uploadError, setUploadError] = useState();
 
   useEffect(() => {
@@ -42,7 +43,7 @@ export const ReviewScreen = ({ navigation, route }) => {
 
   const submit = async () => {
     try {
-      // clear any error messages in captions
+      // caption shows error message for required fields
       if (!position) {
         setPositionCaption(true);
       }
@@ -79,7 +80,15 @@ export const ReviewScreen = ({ navigation, route }) => {
           const ref = storage().ref(
             '/agenda-items/' + route.params.agendaId + '/' + uuidv1() + '.mp4'
           );
-          const snapshot = await ref.putFile(route.params.uri);
+          const task = ref.putFile(route.params.uri);
+
+          task.on('state_changed', snapshot => {
+            setUploadPercentage(
+              (snapshot.bytesTransferred / snapshot.totalBytes) * 100 + '%'
+            );
+          });
+
+          const snapshot = await task.then();
 
           const t = {
             userId: user.uid,
@@ -103,8 +112,6 @@ export const ReviewScreen = ({ navigation, route }) => {
     } catch (error) {
       console.error(error);
       setUploadError(JSON.stringify(error));
-    } finally {
-      setUploading(false);
     }
   };
 
@@ -117,6 +124,36 @@ export const ReviewScreen = ({ navigation, route }) => {
       <Text status="danger">{message}</Text>
     </View>
   );
+
+  const renderUploadingResult = () => {
+    if (uploadError) {
+      return (
+        <>
+          <Text status="danger" style={{ marginBottom: 16 }}>
+            {uploadError}
+          </Text>
+          <Button
+            onPress={() => {
+              setUploadError('');
+              setUploading(false);
+            }}
+          >
+            Close
+          </Button>
+        </>
+      );
+    } else if (uploading) {
+      return (
+        <>
+          <Spinner />
+          <Text style={{ marginBottom: 16 }}>{uploadPercentage}</Text>
+          <Button onPress={() => navigation.navigate('Agenda Items')}>
+            Back To Agenda Items
+          </Button>
+        </>
+      );
+    }
+  };
 
   return (
     <View style={{ flex: 1 }}>
@@ -225,18 +262,14 @@ export const ReviewScreen = ({ navigation, route }) => {
         visible={uploading || uploadError}
         backdropStyle={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}
       >
-        {uploading && <Spinner />}
-        {uploadError && (
+        {uploading && (
           <Card>
             <View
               style={{
                 alignItems: 'center',
               }}
             >
-              <Text status="danger" style={{ marginBottom: 16 }}>
-                {uploadError}
-              </Text>
-              <Button onPress={() => setUploadError('')}>Close</Button>
+              {renderUploadingResult()}
             </View>
           </Card>
         )}
