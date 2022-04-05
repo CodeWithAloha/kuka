@@ -2,13 +2,15 @@
 
 ## Development Setup
 
-Follow instructions here to set up your development environment: https://reactnative.dev/docs/environment-setup
+1. Follow instructions here to set up your development environment: https://reactnative.dev/docs/environment-setup
 
-`yarn install` to download dependencies.
+    > Note: Ensure you are following the "React Native CLI Quickstart" instructions, not the Expo CLI instructions
 
-`npx pod-install ios` to install and link native libraries.
+1. `yarn install` to download dependencies.
 
-`yarn ios` to run the app in the iOS simulator.
+1. `npx pod-install ios` to install and link native libraries.
+
+1. `yarn ios` to run the app in the iOS simulator.
 
 ## Production Setup
 
