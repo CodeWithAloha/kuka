@@ -16,6 +16,7 @@ import {
   Card,
 } from '@ui-kitten/components';
 import { TopNav } from '../components/TopNav';
+import ProgressCircle from 'react-native-progress/Circle';
 
 export const ReviewScreen = ({ navigation, route }) => {
   const user = auth().currentUser;
@@ -29,7 +30,7 @@ export const ReviewScreen = ({ navigation, route }) => {
   const [zipCodeCaption, setZipCodeCaption] = useState(false);
   const [lobbyGroup, setLobbyGroup] = useState();
   const [uploading, setUploading] = useState(false);
-  const [uploadPercentage, setUploadPercentage] = useState();
+  const [uploadPercentage, setUploadPercentage] = useState(0);
   const [uploadError, setUploadError] = useState();
 
   useEffect(() => {
@@ -76,6 +77,7 @@ export const ReviewScreen = ({ navigation, route }) => {
           .where('userId', '==', user.uid)
           .get();
 
+        // UX issue: testimony error will appear after loading modal
         if (testimony.empty) {
           const ref = storage().ref(
             '/agenda-items/' + route.params.agendaId + '/' + uuidv1() + '.mp4'
@@ -84,7 +86,7 @@ export const ReviewScreen = ({ navigation, route }) => {
 
           task.on('state_changed', snapshot => {
             setUploadPercentage(
-              (snapshot.bytesTransferred / snapshot.totalBytes) * 100 + '%'
+              snapshot.bytesTransferred / snapshot.totalBytes
             );
           });
 
@@ -145,8 +147,12 @@ export const ReviewScreen = ({ navigation, route }) => {
     } else if (uploading) {
       return (
         <>
-          <Spinner />
-          <Text style={{ marginBottom: 16 }}>{uploadPercentage}</Text>
+          <ProgressCircle
+            progress={uploadPercentage}
+            size={200}
+            showsText
+            style={{ marginTop: 20, marginBottom: 20 }}
+          />
           <Button onPress={() => navigation.navigate('Agenda Items')}>
             Back To Agenda Items
           </Button>
@@ -205,6 +211,7 @@ export const ReviewScreen = ({ navigation, route }) => {
             status={position === 'Comment' ? 'primary' : 'basic'}
             appearance="outline"
           >
+            {/* TODO fix centering */}
             <View style={styles.positionView}>
               <Icon
                 style={styles.icon}
@@ -281,4 +288,5 @@ export const ReviewScreen = ({ navigation, route }) => {
 const styles = StyleSheet.create({
   formField: { marginTop: 10 },
   icon: { width: 48, height: 64 },
+  positionView: { justifyContent: 'center' },
 });
