@@ -43,7 +43,7 @@ export const AgendaScreen = ({ navigation, route }) => {
       {
         mediaType: 'video',
         videoQuality: 'high',
-        durationLimit: 60,
+        durationLimit: 90,
         saveToPhotos: true,
       },
       res => {
@@ -58,7 +58,7 @@ export const AgendaScreen = ({ navigation, route }) => {
   };
 
   const openLibrary = () => {
-    launchImageLibrary({ mediaType: 'video' }, res => {
+    launchImageLibrary({ mediaType: 'video', durationLimit: 90 }, res => {
       if (!res.didCancel) {
         navigation.navigate('Review Testimony', {
           agendaId: route.params.id,
