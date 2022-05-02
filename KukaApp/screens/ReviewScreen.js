@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ScrollView, View, StyleSheet } from 'react-native';
 import Video from 'react-native-video';
 import auth from '@react-native-firebase/auth';
@@ -9,38 +9,41 @@ import { v1 as uuidv1 } from 'uuid';
 import {
   Input,
   Button,
-  Spinner,
   Text,
   Icon,
   Modal,
   Card,
 } from '@ui-kitten/components';
 import { TopNav } from '../components/TopNav';
+import ProgressCircle from 'react-native-progress/Circle';
 
 export const ReviewScreen = ({ navigation, route }) => {
   const user = auth().currentUser;
-  const profileRef = firestore().collection('users').doc(user.uid);
-  const [profile, setProfile] = useState();
   const [position, setPosition] = useState();
   const [positionCaption, setPositionCaption] = useState(false);
   const [name, setName] = useState(user.displayName);
   const [nameCaption, setNameCaption] = useState(false);
   const [email, setEmail] = useState(user.email);
   const [emailCaption, setEmailCaption] = useState(false);
-  const [zipCode, setZipCode] = useState(profile?.zipCode);
+  const [zipCode, setZipCode] = useState();
   const [zipCodeCaption, setZipCodeCaption] = useState(false);
-  const [lobbyGroup, setLobbyGroup] = useState(profile?.lobbyGroup);
+  const [lobbyGroup, setLobbyGroup] = useState();
   const [uploading, setUploading] = useState(false);
+  const [uploadPercentage, setUploadPercentage] = useState(0);
   const [uploadError, setUploadError] = useState();
 
   useEffect(() => {
     (async () => {
-      setProfile(await profileRef.get());
+      const profileRef = firestore().collection('users').doc(user.uid);
+      const p = profileRef.get();
+      setZipCode(p?.zipCode);
+      setLobbyGroup(p?.lobbyGroup);
     })();
   }, []);
 
   const submit = async () => {
     try {
+      // caption shows error message for required fields
       if (!position) {
         setPositionCaption(true);
       }
@@ -73,31 +76,43 @@ export const ReviewScreen = ({ navigation, route }) => {
           .where('userId', '==', user.uid)
           .get();
 
+        // UX issue: testimony error will appear after loading modal
         if (testimony.empty) {
           const ref = storage().ref(
             '/agenda-items/' + route.params.agendaId + '/' + uuidv1() + '.mp4'
           );
-          const snapshot = await ref.putFile(route.params.uri);
+          const task = ref.putFile(route.params.uri);
 
-          agendaRef.collection('testimonies').add({
+          task.on('state_changed', snapshot => {
+            setUploadPercentage(
+              snapshot.bytesTransferred / snapshot.totalBytes
+            );
+          });
+
+          const snapshot = await task.then();
+
+          const t = {
             userId: user.uid,
             position,
             name,
             email,
             zipCode,
-            lobbyGroup,
             createdAt: firestore.FieldValue.serverTimestamp(),
             fullPath: snapshot.metadata.fullPath,
-          });
+          };
+
+          if (lobbyGroup) {
+            t.lobbyGroup = lobbyGroup;
+          }
+
+          agendaRef.collection('testimonies').add(t);
         } else {
           setUploadError('Only one testimony allowed per agenda.');
         }
       }
     } catch (error) {
       console.error(error);
-      setUploadError(error);
-    } finally {
-      setUploading(false);
+      setUploadError(JSON.stringify(error));
     }
   };
 
@@ -110,6 +125,40 @@ export const ReviewScreen = ({ navigation, route }) => {
       <Text status="danger">{message}</Text>
     </View>
   );
+
+  const renderUploadingResult = () => {
+    if (uploadError) {
+      return (
+        <>
+          <Text status="danger" style={{ marginBottom: 16 }}>
+            {uploadError}
+          </Text>
+          <Button
+            onPress={() => {
+              setUploadError('');
+              setUploading(false);
+            }}
+          >
+            Close
+          </Button>
+        </>
+      );
+    } else if (uploading) {
+      return (
+        <>
+          <ProgressCircle
+            progress={uploadPercentage}
+            size={200}
+            showsText
+            style={{ marginTop: 20, marginBottom: 20 }}
+          />
+          <Button onPress={() => navigation.navigate('Agenda Items')}>
+            Back To Agenda Items
+          </Button>
+        </>
+      );
+    }
+  };
 
   return (
     <View style={{ flex: 1 }}>
@@ -161,6 +210,7 @@ export const ReviewScreen = ({ navigation, route }) => {
             status={position === 'Comment' ? 'primary' : 'basic'}
             appearance="outline"
           >
+            {/* TODO fix centering */}
             <View style={styles.positionView}>
               <Icon
                 style={styles.icon}
@@ -218,18 +268,14 @@ export const ReviewScreen = ({ navigation, route }) => {
         visible={uploading || uploadError}
         backdropStyle={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}
       >
-        {uploading && <Spinner />}
-        {uploadError && (
+        {uploading && (
           <Card>
             <View
               style={{
                 alignItems: 'center',
               }}
             >
-              <Text status="danger" style={{ marginBottom: 16 }}>
-                {uploadError}
-              </Text>
-              <Button onPress={() => setUploadError('')}>Close</Button>
+              {renderUploadingResult()}
             </View>
           </Card>
         )}
@@ -241,4 +287,5 @@ export const ReviewScreen = ({ navigation, route }) => {
 const styles = StyleSheet.create({
   formField: { marginTop: 10 },
   icon: { width: 48, height: 64 },
+  positionView: { justifyContent: 'center' },
 });
