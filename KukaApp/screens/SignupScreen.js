@@ -25,8 +25,15 @@ export const SignupScreen = () => {
       // After the user creates an account, they are automatically signed in.
       await auth().createUserWithEmailAndPassword(email, password);
     } catch (error) {
-      setMessage(error.message);
-      console.log(error);
+      console.error(error);
+      if (error.code === 'auth/invalid-email') {
+        setMessage('The provided email is invalid.');
+      } else if (error.code === 'auth/weak-password') {
+        setMessage('The provided password must be at least six characters.');
+      } else {
+        setMessage('There was an error creating a new account.');
+      }
+    } finally {
       setInProgress(false);
     }
   };
