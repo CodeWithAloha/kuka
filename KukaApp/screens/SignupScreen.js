@@ -30,7 +30,7 @@ export const SignupScreen = () => {
         setMessage('The provided email is invalid.');
       } else if (error.code === 'auth/weak-password') {
         setMessage('The provided password must be at least six characters.');
-      } else if (error.code === 'auth/email-already-exists') {
+      } else if (error.code === 'auth/email-already-in-use') {
         setMessage(error.nativeErrorMessage);
       } else {
         setMessage('There was an error creating a new account.');
@@ -57,6 +57,7 @@ export const SignupScreen = () => {
       >
         {({ handleChange, handleSubmit, values }) => (
           <View style={styles.bodyContainer}>
+            {message && <Text status="danger">{message}</Text>}
             <Input
               label="EMAIL"
               autoCapitalize="none"
@@ -80,9 +81,6 @@ export const SignupScreen = () => {
             >
               CREATE ACCOUNT
             </Button>
-
-            {/*TODO: Fix styling of this error message*/}
-            {message && <Text>{message}</Text>}
           </View>
         )}
       </Formik>
