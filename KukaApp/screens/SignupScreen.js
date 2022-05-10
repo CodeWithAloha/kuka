@@ -30,6 +30,8 @@ export const SignupScreen = () => {
         setMessage('The provided email is invalid.');
       } else if (error.code === 'auth/weak-password') {
         setMessage('The provided password must be at least six characters.');
+      } else if (error.code === 'auth/email-already-exists') {
+        setMessage(error.nativeErrorMessage);
       } else {
         setMessage('There was an error creating a new account.');
       }

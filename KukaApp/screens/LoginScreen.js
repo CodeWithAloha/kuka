@@ -174,7 +174,7 @@ export const LoginScreen = ({ navigation }) => {
       />
       <View style={styles.bodyContainer}>
         <View>
-          {message && <Text status="error">{message}</Text>}
+          {message && <Text status="danger">{message}</Text>}
           <Input
             autoCapitalize="none"
             value={email}
