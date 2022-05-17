@@ -11,7 +11,7 @@ import { differenceInCalendarDays, format } from 'date-fns';
 import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
 import { TopNav } from '../components/TopNav';
 import { IconText } from '../components/IconText';
-import { HeaderText } from '../components/HeaderText';
+import { Header } from '../components/Header';
 
 const themedStyles = StyleService.create({
   headerIcon: {
@@ -72,7 +72,7 @@ export const AgendaScreen = ({ navigation, route }) => {
     <View style={{ flex: 1 }}>
       <TopNav {...{ navigation, route }} />
       <ScrollView>
-        <HeaderText text={route.params.title} />
+        <Header text={route.params.title} />
         <IconText
           name="book-outline"
           style={styles.headerIcon}

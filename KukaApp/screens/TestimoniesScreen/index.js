@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { ScrollView, View } from 'react-native';
 import { StyleService, useStyleSheet } from '@ui-kitten/components';
-import { HeaderText } from '../../components/HeaderText';
-import { TopNav } from '../../components/TopNav';
+import { Header } from '../../components/Header';
 import TestimonyCard from './TestimonyCard';
+import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
 
 export const TestimoniesScreen = ({ navigation, route }) => {
+  const [testimonies, setTestimonies] = useState();
   const styles = useStyleSheet(themedStyles);
 
   // Barebones data
@@ -30,10 +32,34 @@ export const TestimoniesScreen = ({ navigation, route }) => {
     position: 'COMMENT',
   };
 
+  useEffect(() => {
+    (async () => {
+      try {
+        const user = auth().currentUser;
+
+        return firestore()
+          .collectionGroup('testimonies')
+          .where('userId', '==', user.uid)
+          .onSnapshot(
+            querySnapshot => {
+              let docs = [];
+              querySnapshot.forEach(documentSnapshot =>
+                docs.push(documentSnapshot.data())
+              );
+              setTestimonies(docs);
+            },
+            error => console.error(error)
+          );
+      } catch (e) {
+        console.error(e);
+      }
+    })();
+  }, []);
+
   return (
     <View style={styles.container}>
       <ScrollView>
-        <HeaderText text={'Testimonies'} />
+        <Header text="Testimonies" inset />
         {/*placeholder cards for approve/disapprove/comment and upload-in-progress*/}
         <TestimonyCard agendaItem={fakeAgendaItem} testimony={fakeTestimony} />
         <TestimonyCard agendaItem={fakeAgendaItem} testimony={fakeDisapprove} />

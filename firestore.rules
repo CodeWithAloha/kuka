@@ -16,6 +16,11 @@ service cloud.firestore {
       }
     }
 
+    // applies to collection group queries
+    match /{path=**}/testimonies/{testimonyId} {
+      allow read: if resource.data.userId == request.auth.uid;
+    }
+
     match /users/{userId} {
       allow read, update: if request.auth != null && request.auth.uid == userId;
     }

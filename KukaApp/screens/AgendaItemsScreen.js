@@ -140,7 +140,7 @@ export const AgendaItemsScreen = ({ navigation, route }) => {
 
   return (
     <Layout style={{ flex: 1 }}>
-      <Header text="Agenda Items" />
+      <Header text="Agenda Items" inset />
       <TabView
         style={{ flex: 1, paddingTop: 8 }}
         selectedIndex={selectedIndex}

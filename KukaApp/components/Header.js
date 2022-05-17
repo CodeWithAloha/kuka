@@ -13,13 +13,16 @@ const themedStyles = StyleService.create({
   },
 });
 
-export const Header = ({ text }) => {
+export const Header = ({ inset, text }) => {
   const insets = useSafeAreaInsets();
   const styles = useStyleSheet(themedStyles);
 
   return (
     <Text
-      style={{ ...styles.headerContainer, paddingTop: insets.top }}
+      style={{
+        ...styles.headerContainer,
+        paddingTop: inset ? insets.top : null,
+      }}
       category="h2"
       appearance="alternative"
     >
