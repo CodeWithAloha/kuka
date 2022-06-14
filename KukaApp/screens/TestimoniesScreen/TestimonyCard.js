@@ -11,6 +11,13 @@ import { format } from 'date-fns';
 import TestimonyStatusIcon from './TestimonyStatusIcon';
 import BookIcon from '../../assets/images/book.svg';
 
+/**
+ *
+ * @param title
+ * @param billCode
+ * @param position
+ * @returns {JSX.Element}
+ */
 const Header = ({ title, billCode, position }) => {
   return (
     <View style={{ padding: 20, display: 'flex', flexDirection: 'row' }}>
@@ -30,33 +37,49 @@ const Header = ({ title, billCode, position }) => {
   );
 };
 
-const Footer = () => (
-  <View
-    style={{
-      flex: 1,
-      flexDirection: 'row',
-      justifyContent: 'space-around',
-      padding: 15,
-    }}
-  >
-    <Button appearance="outline" status="basic" size="small">
-      HEARING DETAILS
-    </Button>
-    <Button appearance="outline" size="small">
-      TESTIMONY
-    </Button>
-  </View>
-);
-
 /**
  *
  * @param agendaItem
- * @param testimony
- * @param uploadPercentComplete, floating point 0% = 0.0, 50% = 0.5, 100% = 1.0
+ * @param navigation
+ * @returns {JSX.Element}
+ */
+const Footer = ({ agendaItem, navigation }) => {
+  const handlePress = () => {
+    navigation.navigate('Agenda', agendaItem);
+  };
+
+  return (
+    <View
+      style={{
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        padding: 15,
+      }}
+    >
+      <Button
+        appearance="outline"
+        status="info"
+        size="small"
+        onPress={handlePress}
+      >
+        AGENDA DETAILS
+      </Button>
+      <Button appearance="outline" size="small">
+        TESTIMONY
+      </Button>
+    </View>
+  );
+};
+
+/**
+ *
+ * @param history
+ * @param navigation
  * @returns {JSX.Element}
  * @constructor
  */
-export const TestimonyCard = ({ history }) => {
+export const TestimonyCard = ({ history, navigation }) => {
   const styles = useStyleSheet(themedStyles);
 
   return (
@@ -94,7 +117,7 @@ export const TestimonyCard = ({ history }) => {
       <View>
         <Divider />
         <View>
-          <Footer />
+          <Footer agendaItem={history.agenda} navigation={navigation} />
         </View>
       </View>
     </View>

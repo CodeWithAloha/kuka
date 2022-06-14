@@ -101,27 +101,29 @@ export const AgendaScreen = ({ navigation, route }) => {
           <Text>{route.params.description}</Text>
         </View>
       </ScrollView>
-      <View
-        style={{
-          padding: 16,
-          flexDirection: 'row',
-          justifyContent: 'space-evenly',
-        }}
-      >
-        <Button
-          onPress={record}
-          accessoryLeft={props => <Icon {...props} name="video-outline" />}
+      {navigation.getState().routeNames[0] === 'Agenda Items' && (
+        <View
+          style={{
+            padding: 16,
+            flexDirection: 'row',
+            justifyContent: 'space-evenly',
+          }}
         >
-          Record
-        </Button>
-        <Button
-          appearance="outline"
-          onPress={openLibrary}
-          accessoryLeft={props => <Icon {...props} name="folder-outline" />}
-        >
-          Choose...
-        </Button>
-      </View>
+          <Button
+            onPress={record}
+            accessoryLeft={props => <Icon {...props} name="video-outline" />}
+          >
+            Record
+          </Button>
+          <Button
+            appearance="outline"
+            onPress={openLibrary}
+            accessoryLeft={props => <Icon {...props} name="folder-outline" />}
+          >
+            Choose...
+          </Button>
+        </View>
+      )}
     </View>
   );
 };

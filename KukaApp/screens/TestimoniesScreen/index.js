@@ -53,9 +53,10 @@ export const TestimoniesScreen = ({ navigation, route }) => {
     <View style={styles.container}>
       <ScrollView>
         <Header text="Testimonies" inset />
-        {console.log(history)}
         {history &&
-          history.map((i, index) => <TestimonyCard history={i} key={index} />)}
+          history.map((i, index) => (
+            <TestimonyCard history={i} key={index} navigation={navigation} />
+          ))}
       </ScrollView>
     </View>
   );
