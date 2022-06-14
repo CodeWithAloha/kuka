@@ -7,7 +7,7 @@ import {
   Text,
   useStyleSheet,
 } from '@ui-kitten/components';
-import { Bar } from 'react-native-progress';
+import { format } from 'date-fns';
 import TestimonyStatusIcon from './TestimonyStatusIcon';
 import BookIcon from '../../assets/images/book.svg';
 
@@ -56,21 +56,16 @@ const Footer = () => (
  * @returns {JSX.Element}
  * @constructor
  */
-export const TestimonyCard = ({
-  agendaItem,
-  testimony,
-  uploadPercentComplete,
-}) => {
+export const TestimonyCard = ({ history }) => {
   const styles = useStyleSheet(themedStyles);
-  const position = uploadPercentComplete < 1.0 ? 'sync' : testimony.position;
 
   return (
     <View style={styles.card}>
       <View>
         <Header
-          title={agendaItem.title}
-          billCode={agendaItem.billCode}
-          position={position}
+          title={history.agenda.title}
+          billCode={history.agenda.billCode}
+          position={history.testimony.position}
         />
       </View>
       <Divider />
@@ -85,27 +80,16 @@ export const TestimonyCard = ({
       >
         <View style={styles.inlineTable}>
           <Text style={styles.inlineTableTitle}>Hearing Date</Text>
-          <Text style={styles.inlineTableText}>Sept 30, 2020</Text>
+          <Text style={styles.inlineTableText}>
+            {format(history.agenda.sessionTime.toDate(), 'MMM d, y')}
+          </Text>
         </View>
-        {uploadPercentComplete ? (
-          <View style={styles.inlineTable}>
-            <Text style={styles.inlineTableTitle}>Uploading Testimony</Text>
-            <View style={{ padding: 9 }}>
-              <Bar
-                progress={uploadPercentComplete}
-                width={130}
-                borderWidth={0}
-                unfilledColor="#EDF1F7"
-                color="#0089A8"
-              />
-            </View>
-          </View>
-        ) : (
-          <View style={styles.inlineTable}>
-            <Text style={styles.inlineTableTitle}>Testimony Submitted</Text>
-            <Text style={styles.inlineTableText}>Jul 23, 2020</Text>
-          </View>
-        )}
+        <View style={styles.inlineTable}>
+          <Text style={styles.inlineTableTitle}>Testimony Submitted</Text>
+          <Text style={styles.inlineTableText}>
+            {format(history.testimony.createdAt.toDate(), 'MMM d, y')}
+          </Text>
+        </View>
       </View>
       <View>
         <Divider />
