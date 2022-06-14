@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ScrollView, View } from 'react-native';
+import { ScrollView, View, Text } from 'react-native';
 import { StyleService, useStyleSheet } from '@ui-kitten/components';
 import { Header } from '../../components/Header';
 import TestimonyCard from './TestimonyCard';
@@ -42,11 +42,26 @@ export const TestimoniesScreen = ({ navigation, route }) => {
           .where('userId', '==', user.uid)
           .onSnapshot(
             querySnapshot => {
-              let docs = [];
-              querySnapshot.forEach(documentSnapshot =>
-                docs.push(documentSnapshot.data())
-              );
-              setTestimonies(docs);
+              let promises = [];
+              // retrieve agenda data for each corresponding testimony
+              querySnapshot.forEach(documentSnapshot => {
+                const testimony = documentSnapshot.data();
+
+                promises.push(
+                  new Promise((resolve, reject) => {
+                    documentSnapshot.ref.parent.parent.parent.get().then(
+                      snapshot => {
+                        resolve({
+                          agenda: snapshot.docs[0].data(),
+                          testimony: testimony,
+                        });
+                      },
+                      error => reject(error)
+                    );
+                  })
+                );
+              });
+              Promise.all(promises).then(result => setTestimonies(result));
             },
             error => console.error(error)
           );
@@ -60,6 +75,12 @@ export const TestimoniesScreen = ({ navigation, route }) => {
     <View style={styles.container}>
       <ScrollView>
         <Header text="Testimonies" inset />
+        {testimonies &&
+          testimonies.map((i, index) => (
+            <View style={{ padding: 20 }} key={index}>
+              <Text>{JSON.stringify(i)}</Text>
+            </View>
+          ))}
         {/*placeholder cards for approve/disapprove/comment and upload-in-progress*/}
         <TestimonyCard agendaItem={fakeAgendaItem} testimony={fakeTestimony} />
         <TestimonyCard agendaItem={fakeAgendaItem} testimony={fakeDisapprove} />
