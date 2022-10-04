@@ -11,7 +11,7 @@ import { differenceInCalendarDays, format } from 'date-fns';
 import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
 import { TopNav } from '../components/TopNav';
 import { IconText } from '../components/IconText';
-import { HeaderText } from '../components/HeaderText';
+import { Header } from '../components/Header';
 
 const themedStyles = StyleService.create({
   headerIcon: {
@@ -21,7 +21,7 @@ const themedStyles = StyleService.create({
   },
 });
 
-export const AgendaScreen = ({ navigation, route }) => {
+export const AgendaItemScreen = ({ navigation, route }) => {
   const styles = useStyleSheet(themedStyles);
   const { deadlineTime, sessionTime } = route.params;
   // TODO: deadline should be a couple business days before session
@@ -72,7 +72,7 @@ export const AgendaScreen = ({ navigation, route }) => {
     <View style={{ flex: 1 }}>
       <TopNav {...{ navigation, route }} />
       <ScrollView>
-        <HeaderText text={route.params.title} />
+        <Header text={route.params.title} />
         <IconText
           name="book-outline"
           style={styles.headerIcon}
@@ -101,27 +101,29 @@ export const AgendaScreen = ({ navigation, route }) => {
           <Text>{route.params.description}</Text>
         </View>
       </ScrollView>
-      <View
-        style={{
-          padding: 16,
-          flexDirection: 'row',
-          justifyContent: 'space-evenly',
-        }}
-      >
-        <Button
-          onPress={record}
-          accessoryLeft={props => <Icon {...props} name="video-outline" />}
+      {navigation.getState().routeNames[0] === 'Agenda Items' && (
+        <View
+          style={{
+            padding: 16,
+            flexDirection: 'row',
+            justifyContent: 'space-evenly',
+          }}
         >
-          Record
-        </Button>
-        <Button
-          appearance="outline"
-          onPress={openLibrary}
-          accessoryLeft={props => <Icon {...props} name="folder-outline" />}
-        >
-          Choose...
-        </Button>
-      </View>
+          <Button
+            onPress={record}
+            accessoryLeft={props => <Icon {...props} name="video-outline" />}
+          >
+            Record
+          </Button>
+          <Button
+            appearance="outline"
+            onPress={openLibrary}
+            accessoryLeft={props => <Icon {...props} name="folder-outline" />}
+          >
+            Choose...
+          </Button>
+        </View>
+      )}
     </View>
   );
 };

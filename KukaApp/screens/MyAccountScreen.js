@@ -35,7 +35,7 @@ export const MyAccountScreen = ({ navigation, route }) => {
 
   return (
     <Layout styles={styles.container}>
-      <Header text="My Account" />
+      <Header text="My Account" inset />
       {profile ? (
         <Formik
           initialValues={{ ...profile }}

@@ -1,48 +1,62 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { ScrollView, View } from 'react-native';
 import { StyleService, useStyleSheet } from '@ui-kitten/components';
-import { HeaderText } from '../../components/HeaderText';
-import { TopNav } from '../../components/TopNav';
+import { Header } from '../../components/Header';
 import TestimonyCard from './TestimonyCard';
+import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
 
 export const TestimoniesScreen = ({ navigation, route }) => {
+  const [history, setHistory] = useState();
   const styles = useStyleSheet(themedStyles);
 
-  // Barebones data
-  const fakeAgendaItem = {
-    title:
-      'DIRECTOR OF FINANCE, informing of the acceptance of a Warranty Deed ',
-    billCode: 'CC 20-468',
-  };
+  useEffect(() => {
+    (async () => {
+      try {
+        const user = auth().currentUser;
 
-  const fakeTestimony = {
-    testimonySubmitDate: '2020-01-01',
-    position: 'APPROVE',
-  };
+        return firestore()
+          .collectionGroup('testimonies')
+          .where('userId', '==', user.uid)
+          .onSnapshot(
+            querySnapshot => {
+              let promises = [];
+              // retrieve agenda data for each corresponding testimony
+              querySnapshot.forEach(documentSnapshot => {
+                const testimony = documentSnapshot.data();
 
-  const fakeDisapprove = {
-    ...fakeTestimony,
-    position: 'DISAPPROVE',
-  };
-
-  const fakeComment = {
-    ...fakeTestimony,
-    position: 'COMMENT',
-  };
+                promises.push(
+                  new Promise((resolve, reject) => {
+                    documentSnapshot.ref.parent.parent.get().then(
+                      snapshot => {
+                        resolve({
+                          agenda: snapshot.data(),
+                          testimony: testimony,
+                        });
+                      },
+                      error => reject(error)
+                    );
+                  })
+                );
+              });
+              Promise.all(promises).then(result => setHistory(result));
+            },
+            error => console.error(error)
+          );
+      } catch (e) {
+        console.error(e);
+      }
+    })();
+  }, []);
 
   return (
     <View style={styles.container}>
       <ScrollView>
-        <HeaderText text={'Testimonies'} />
-        {/*placeholder cards for approve/disapprove/comment and upload-in-progress*/}
-        <TestimonyCard agendaItem={fakeAgendaItem} testimony={fakeTestimony} />
-        <TestimonyCard agendaItem={fakeAgendaItem} testimony={fakeDisapprove} />
-        <TestimonyCard agendaItem={fakeAgendaItem} testimony={fakeComment} />
-        <TestimonyCard
-          agendaItem={fakeAgendaItem}
-          testimony={fakeComment}
-          uploadPercentComplete={0.5}
-        />
+        <Header text="Testimonies" inset />
+        {history &&
+          history.map((i, index) => (
+            <TestimonyCard history={i} key={index} navigation={navigation} />
+          ))}
       </ScrollView>
     </View>
   );
@@ -60,9 +74,4 @@ const themedStyles = StyleService.create({
     flex: 1,
     backgroundColor: 'white',
   },
-
-  // itemFooter: {
-  //   flexDirection: 'row',
-  //   justifyContent: 'space-around',
-  // },
 });

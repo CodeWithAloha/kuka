@@ -1,34 +1,29 @@
 import React from 'react';
 import ThumbsUp from '../../assets/images/thumbsup.svg';
 import MessageCircle from '../../assets/images/message-circle.svg';
-import Sync from '../../assets/images/sync.svg';
 import { View } from 'react-native';
 
 const states = {
-  APPROVE: {
+  Approve: {
     Component: ThumbsUp,
     borderColor: '#3A7714',
     backgroundColor: '#3A771412',
   },
-  DISAPPROVE: {
+  Disapprove: {
     Component: ThumbsUp,
     borderColor: '#BF2B15',
     backgroundColor: '#BF2B1512',
     transform: [{ scaleY: -1 }],
   },
-  COMMENT: {
+  Comment: {
     Component: MessageCircle,
     borderColor: '#0089A8',
-  },
-  sync: {
-    Component: Sync,
-    borderColor: '#222B45',
   },
 };
 
 /**
  * TestimonyStatusIcon
- * @param userPosition: 'APPROVE', 'DISAPPROVE', 'COMMENT', 'sync'
+ * @param userPosition: 'Approve', 'Disapprove', 'Comment'
  * @returns {JSX.Element}
  * @constructor
  */

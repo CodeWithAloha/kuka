@@ -43,7 +43,7 @@ const UpcomingList = ({ navigation }) => {
   }, [now]);
 
   const handlePress = item => {
-    navigation.navigate('Agenda', item);
+    navigation.navigate('Agenda Item', item);
   };
 
   const renderItem = ({ item, index }) => {
@@ -87,7 +87,7 @@ const HistoryList = ({ navigation }) => {
   const [agendas, setAgendas] = useState();
 
   const handlePress = item => {
-    navigation.navigate('Agenda', item);
+    navigation.navigate('Agenda Item', item);
   };
 
   const renderItem = ({ item, index }) => {
@@ -140,7 +140,7 @@ export const AgendaItemsScreen = ({ navigation, route }) => {
 
   return (
     <Layout style={{ flex: 1 }}>
-      <Header text="Agenda Items" />
+      <Header text="Agenda Items" inset />
       <TabView
         style={{ flex: 1, paddingTop: 8 }}
         selectedIndex={selectedIndex}
