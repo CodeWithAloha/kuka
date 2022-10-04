@@ -9,7 +9,10 @@ import {
   useStyleSheet,
   StyleService,
 } from '@ui-kitten/components';
-import { GoogleSignin } from '@react-native-google-signin/google-signin';
+import {
+  GoogleSignin,
+  statusCodes,
+} from '@react-native-google-signin/google-signin';
 import {
   LoginManager,
   AccessToken,
@@ -31,12 +34,28 @@ export const LoginScreen = ({ navigation }) => {
 
   const onEmailSignIn = async () => {
     try {
-      setMessage(null);
-      setInProgress(true);
-      await auth().signInWithEmailAndPassword(email, password);
+      if (email && password) {
+        setMessage(null);
+        setInProgress(true);
+        await auth().signInWithEmailAndPassword(email, password);
+      } else {
+        setMessage('Please provide both an email and password.');
+      }
     } catch (error) {
-      setMessage(error.message);
-      // console.error(error);
+      // https://rnfirebase.io/reference/app/nativefirebaseerror
+      // https://firebase.google.com/docs/auth/admin/errors
+      console.error(error);
+      // note that error.message concatenates the code and message
+      if (error.code === 'auth/invalid-email') {
+        setMessage('The provided email is invalid.');
+      } else if (error.code === 'auth/user-not-found') {
+        setMessage('There is no existing user with that email and password.');
+      } else if (error.code === 'auth/invalid-password') {
+        setMessage('The provided password is invalid.');
+      } else {
+        setMessage('There was an error signing in with email and password.');
+      }
+    } finally {
       setInProgress(false);
     }
   };
@@ -53,8 +72,11 @@ export const LoginScreen = ({ navigation }) => {
         linkCredential = null;
       }
     } catch (error) {
-      setMessage(error.message);
-      // console.error(error);
+      if (error.code !== statusCodes.SIGN_IN_CANCELLED) {
+        setMessage('There was an error signing in using Google.');
+        console.error(error);
+      }
+    } finally {
       setInProgress(false);
     }
   };
@@ -71,13 +93,13 @@ export const LoginScreen = ({ navigation }) => {
       ]);
 
       if (result.isCancelled) {
-        throw { message: 'User cancelled the login process' };
+        return;
       }
 
       const data = await AccessToken.getCurrentAccessToken();
 
       if (!data) {
-        throw { message: 'Something went wrong obtaining access token' };
+        throw { message: 'Something went wrong obtaining an access token.' };
       }
 
       credential = auth.FacebookAuthProvider.credential(data.accessToken);
@@ -90,9 +112,8 @@ export const LoginScreen = ({ navigation }) => {
           null,
           async (error, result) => {
             if (error) {
-              console.error(error.toString());
-              setMessage(error.toString());
-              setInProgress(false);
+              console.error(error);
+              setMessage('There was an error signing in using Facebook.');
             } else if (result) {
               linkCredential = credential;
               const providers = await auth().fetchSignInMethodsForEmail(
@@ -104,10 +125,11 @@ export const LoginScreen = ({ navigation }) => {
         );
         new GraphRequestManager().addRequest(request).start();
       } else {
-        setMessage(error.message);
         console.error(error);
-        setInProgress(false);
+        setMessage('There was an error signing in using Facebook.');
       }
+    } finally {
+      setInProgress(false);
     }
   };
 
@@ -140,7 +162,7 @@ export const LoginScreen = ({ navigation }) => {
         ]
       );
     } else {
-      Alert.alert('Login Error', 'Sign in using a different provider');
+      Alert.alert('Login Error', 'Sign in using a different provider.');
     }
   };
 
@@ -148,11 +170,11 @@ export const LoginScreen = ({ navigation }) => {
     <Layout style={styles.container}>
       <AuthHeader
         titleText="Sign In"
-        leadText="Please enter your credentials to proceed"
+        leadText="Please enter your credentials to proceed."
       />
       <View style={styles.bodyContainer}>
         <View>
-          {message && <Text status="warning">{message}</Text>}
+          {message && <Text status="danger">{message}</Text>}
           <Input
             autoCapitalize="none"
             value={email}
