@@ -21,7 +21,7 @@ const themedStyles = StyleService.create({
   },
 });
 
-export const AgendaScreen = ({ navigation, route }) => {
+export const AgendaItemScreen = ({ navigation, route }) => {
   const styles = useStyleSheet(themedStyles);
   const { deadlineTime, sessionTime } = route.params;
   // TODO: deadline should be a couple business days before session

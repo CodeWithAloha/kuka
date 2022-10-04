@@ -43,7 +43,7 @@ const UpcomingList = ({ navigation }) => {
   }, [now]);
 
   const handlePress = item => {
-    navigation.navigate('Agenda', item);
+    navigation.navigate('Agenda Item', item);
   };
 
   const renderItem = ({ item, index }) => {
@@ -87,7 +87,7 @@ const HistoryList = ({ navigation }) => {
   const [agendas, setAgendas] = useState();
 
   const handlePress = item => {
-    navigation.navigate('Agenda', item);
+    navigation.navigate('Agenda Item', item);
   };
 
   const renderItem = ({ item, index }) => {

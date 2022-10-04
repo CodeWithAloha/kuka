@@ -45,7 +45,7 @@ const Header = ({ title, billCode, position }) => {
  */
 const Footer = ({ agendaItem, navigation }) => {
   const handlePress = () => {
-    navigation.navigate('Agenda', agendaItem);
+    navigation.navigate('Agenda Item', agendaItem);
   };
 
   return (
