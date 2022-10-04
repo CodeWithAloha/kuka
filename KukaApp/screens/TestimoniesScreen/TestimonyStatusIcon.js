@@ -23,7 +23,7 @@ const states = {
 
 /**
  * TestimonyStatusIcon
- * @param userPosition: 'APPROVE', 'DISAPPROVE', 'COMMENT'
+ * @param userPosition: 'Approve', 'Disapprove', 'Comment'
  * @returns {JSX.Element}
  * @constructor
  */
