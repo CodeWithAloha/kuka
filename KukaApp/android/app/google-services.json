@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "921635578637",
+    "firebase_url": "https://kuka-dev.firebaseio.com",
+    "project_id": "kuka-dev",
+    "storage_bucket": "kuka-dev.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:921635578637:android:d82bcf3f83f333bf7ac644",
+        "android_client_info": {
+          "package_name": "org.codeforhawaii.kuka"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "921635578637-6ougl5t2glp64h5jumno7bmjj51525dc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDrMDFsj8HtsCJ3bLar5sVgRrtB7QT1-ZM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "921635578637-6ougl5t2glp64h5jumno7bmjj51525dc.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "921635578637-ma0i915tikp1q0v9q9gmfuefvd8grom6.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.codeforhawaii.kukadev"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
